@@ -3,7 +3,7 @@ import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
 import { MapPin, Heart, Book, User, Clipboard, Calendar, Plane, Home } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import JourneyIndex from "@/components/JourneyIndex";
+import JourneySidebar from "@/components/JourneySidebar";
 
 const Index = () => {
   const [currentRole] = useState<UserRole>("pilgrim");
@@ -582,6 +582,37 @@ const Index = () => {
     }
   };
 
+  const sidebarSections = [
+    {
+      id: "preparation",
+      title: "Preparation",
+      icon: <Clipboard className="h-5 w-5" />,
+      color: "bg-purple-600",
+      lightColor: "bg-purple-100"
+    },
+    {
+      id: "travel-arrangements",
+      title: "Travel & Logistics",
+      icon: <Plane className="h-5 w-5" />,
+      color: "bg-blue-600",
+      lightColor: "bg-blue-100"
+    },
+    {
+      id: "during-umrah",
+      title: "Manasik",
+      icon: <Heart className="h-5 w-5" />,
+      color: "bg-red-600",
+      lightColor: "bg-red-100"
+    },
+    {
+      id: "reflection",
+      title: "Reflection",
+      icon: <Book className="h-5 w-5" />,
+      color: "bg-green-600",
+      lightColor: "bg-green-100"
+    }
+  ];
+
   const indexSections = [
     {
       id: "preparation",
@@ -613,106 +644,132 @@ const Index = () => {
     }
   ];
 
+  const getSectionClassName = (sectionId: string) => {
+    const sectionConfig = sidebarSections.find(section => section.id === sectionId);
+    return sectionConfig ? sectionConfig.lightColor : "";
+  };
+
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">
-      <div className="container mx-auto p-4 md:p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-3xl font-bold">Umrah Journey Map</h1>
+      <div className="container mx-auto px-0 md:px-4">
+        <div className="flex items-center justify-between p-4 border-b">
+          <h1 className="text-2xl md:text-3xl font-bold">Umrah Journey Map</h1>
           <ThemeToggle />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="hidden md:block md:col-span-1 h-fit sticky top-6">
-            <JourneyIndex 
-              sections={indexSections}
+        <div className="flex">
+          <div className="hidden md:block w-64 border-r">
+            <JourneySidebar 
+              sections={sidebarSections}
               activeSectionId={activeSectionId}
-              activeItemId={activeItemId}
-              onNavigate={handleNavigate}
+              onSectionSelect={(sectionId) => {
+                setActiveSectionId(sectionId);
+                const firstItemId = sectionId === "preparation" ? 1 :
+                                    sectionId === "travel-arrangements" ? 6 :
+                                    sectionId === "during-umrah" ? 9 : 12;
+                handleNavigate(sectionId, firstItemId);
+              }}
             />
           </div>
           
-          <div className="col-span-1 md:col-span-2 space-y-8">
-            <div className="block md:hidden mb-6">
-              <JourneyIndex 
-                sections={indexSections}
-                activeSectionId={activeSectionId}
-                activeItemId={activeItemId}
-                onNavigate={handleNavigate}
-              />
+          <div className="flex-1 p-4 md:p-6 lg:pr-8">
+            <div className="space-y-8 max-w-3xl mx-auto">
+              <div 
+                id="preparation" 
+                className={`p-4 rounded-lg ${getSectionClassName("preparation")}`}
+              >
+                <JourneySection
+                  id="preparation"
+                  title="Preparation"
+                  description="Spiritual and practical preparation before departure"
+                  items={preparationItems}
+                  icon={<Clipboard />}
+                  currentRole={currentRole}
+                  initiallyOpen={activeSectionId === "preparation"}
+                  animationDelay={0}
+                  color="purple"
+                  onItemVisibilityChange={(itemId, isVisible) => {
+                    if (isVisible) {
+                      setActiveSectionId("preparation");
+                      setActiveItemId(itemId);
+                    }
+                  }}
+                  registerRef={registerSectionRef}
+                />
+              </div>
+              
+              <div 
+                id="travel-arrangements" 
+                className={`p-4 rounded-lg ${getSectionClassName("travel-arrangements")}`}
+              >
+                <JourneySection
+                  id="travel-arrangements"
+                  title="Travel Arrangements"
+                  description="Booking flights, accommodation, and transportation"
+                  items={travelArrangementsItems}
+                  icon={<Plane />}
+                  currentRole={currentRole}
+                  initiallyOpen={activeSectionId === "travel-arrangements"}
+                  animationDelay={1}
+                  color="blue"
+                  onItemVisibilityChange={(itemId, isVisible) => {
+                    if (isVisible) {
+                      setActiveSectionId("travel-arrangements");
+                      setActiveItemId(itemId);
+                    }
+                  }}
+                  registerRef={registerSectionRef}
+                />
+              </div>
+              
+              <div 
+                id="during-umrah" 
+                className={`p-4 rounded-lg ${getSectionClassName("during-umrah")}`}
+              >
+                <JourneySection
+                  id="during-umrah"
+                  title="During Umrah"
+                  description="Performing the rituals of Umrah in Makkah"
+                  items={duringUmrahItems}
+                  icon={<Heart />}
+                  currentRole={currentRole}
+                  initiallyOpen={activeSectionId === "during-umrah"}
+                  animationDelay={2}
+                  color="red"
+                  onItemVisibilityChange={(itemId, isVisible) => {
+                    if (isVisible) {
+                      setActiveSectionId("during-umrah");
+                      setActiveItemId(itemId);
+                    }
+                  }}
+                  registerRef={registerSectionRef}
+                />
+              </div>
+              
+              <div 
+                id="reflection" 
+                className={`p-4 rounded-lg ${getSectionClassName("reflection")}`}
+              >
+                <JourneySection
+                  id="reflection"
+                  title="Reflection and Improvement"
+                  description="Reflecting on the journey and making positive changes"
+                  items={reflectionAndImprovementItems}
+                  icon={<Book />}
+                  currentRole={currentRole}
+                  initiallyOpen={activeSectionId === "reflection"}
+                  animationDelay={3}
+                  color="green"
+                  onItemVisibilityChange={(itemId, isVisible) => {
+                    if (isVisible) {
+                      setActiveSectionId("reflection");
+                      setActiveItemId(itemId);
+                    }
+                  }}
+                  registerRef={registerSectionRef}
+                />
+              </div>
             </div>
-            
-            <JourneySection
-              id="preparation"
-              title="Preparation"
-              description="Spiritual and practical preparation before departure"
-              items={preparationItems}
-              icon={<Clipboard />}
-              currentRole={currentRole}
-              initiallyOpen={true}
-              animationDelay={0}
-              color="purple"
-              onItemVisibilityChange={(itemId, isVisible) => {
-                if (isVisible) {
-                  setActiveSectionId("preparation");
-                  setActiveItemId(itemId);
-                }
-              }}
-              registerRef={registerSectionRef}
-            />
-            
-            <JourneySection
-              id="travel-arrangements"
-              title="Travel Arrangements"
-              description="Booking flights, accommodation, and transportation"
-              items={travelArrangementsItems}
-              icon={<Plane />}
-              currentRole={currentRole}
-              animationDelay={1}
-              color="blue"
-              onItemVisibilityChange={(itemId, isVisible) => {
-                if (isVisible) {
-                  setActiveSectionId("travel-arrangements");
-                  setActiveItemId(itemId);
-                }
-              }}
-              registerRef={registerSectionRef}
-            />
-            
-            <JourneySection
-              id="during-umrah"
-              title="During Umrah"
-              description="Performing the rituals of Umrah in Makkah"
-              items={duringUmrahItems}
-              icon={<Heart />}
-              currentRole={currentRole}
-              animationDelay={2}
-              color="red"
-              onItemVisibilityChange={(itemId, isVisible) => {
-                if (isVisible) {
-                  setActiveSectionId("during-umrah");
-                  setActiveItemId(itemId);
-                }
-              }}
-              registerRef={registerSectionRef}
-            />
-            
-            <JourneySection
-              id="reflection"
-              title="Reflection and Improvement"
-              description="Reflecting on the journey and making positive changes"
-              items={reflectionAndImprovementItems}
-              icon={<Book />}
-              currentRole={currentRole}
-              animationDelay={3}
-              color="green"
-              onItemVisibilityChange={(itemId, isVisible) => {
-                if (isVisible) {
-                  setActiveSectionId("reflection");
-                  setActiveItemId(itemId);
-                }
-              }}
-              registerRef={registerSectionRef}
-            />
           </div>
         </div>
       </div>

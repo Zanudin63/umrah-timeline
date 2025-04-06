@@ -368,13 +368,13 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                         </AccordionItem>
                       )}
 
-                      {/* Muhasabah (Self-reflection) Section */}
+                      {/* Self Reflection Section (Changed from Muhasabah) */}
                       {item.muhasabah && (
                         <AccordionItem value={`muhasabah-${item.id}`} className="border rounded-md">
                           <AccordionTrigger className="px-4 py-2">
                             <div className="flex items-center text-sm font-medium">
                               <Heart className="mr-2 h-4 w-4 text-red-500" />
-                              Muhasabah (Self-reflection)
+                              Self Reflection
                             </div>
                           </AccordionTrigger>
                           <AccordionContent className="px-4 pb-2">
