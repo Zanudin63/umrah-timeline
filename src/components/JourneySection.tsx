@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from "react";
 import { MapPin, Video, Headphones, ChevronDown, CheckCircle, AlertCircle, DollarSign, HelpCircle, Heart, FileText } from "lucide-react";
 import { 
@@ -41,6 +42,20 @@ export interface JourneyItem {
     solution: string;
   }[];
   muhasabah?: string;
+}
+
+export interface JourneySectionProps {
+  id: string;
+  title: string;
+  description: string;
+  items: JourneyItem[];
+  icon: React.ReactNode;
+  currentRole: UserRole;
+  initiallyOpen?: boolean;
+  animationDelay?: number;
+  color?: "purple" | "blue" | "red" | "green" | "amber";
+  onItemVisibilityChange?: (itemId: number, isVisible: boolean) => void;
+  registerRef?: (sectionId: string, itemId: number, ref: HTMLDivElement) => void;
 }
 
 const colorClasses = {
