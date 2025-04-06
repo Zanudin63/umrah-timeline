@@ -11,6 +11,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { UserRole } from "./EditButtons";
 import { EditButtons } from "./EditButtons";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export interface JourneyItem {
   id: number;
@@ -43,6 +49,22 @@ interface JourneySectionProps {
   initiallyOpen?: boolean;
   animationDelay?: number;
 }
+
+// Helper function to convert comma-separated lists into bullet points
+const formatTextWithBullets = (text: string): React.ReactNode => {
+  if (!text.includes(", ")) return text;
+  
+  const items = text.split(", ");
+  if (items.length <= 2) return text;
+  
+  return (
+    <ul className="list-disc pl-5 mt-2 space-y-1">
+      {items.map((item, index) => (
+        <li key={index} className="text-sm">{item}</li>
+      ))}
+    </ul>
+  );
+};
 
 const JourneySection: React.FC<JourneySectionProps> = ({
   title,
@@ -119,7 +141,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                   />
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <p className="text-sm text-muted-foreground">{item.details}</p>
+                  <p className="text-sm text-muted-foreground">{formatTextWithBullets(item.details)}</p>
                   
                   <div className="flex flex-wrap gap-2">
                     {item.audioDescription && (
@@ -145,97 +167,119 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                     )}
                   </div>
                   
-                  {item.checklistItems && item.checklistItems.length > 0 && (
-                    <div className="mt-3 border-t pt-3">
-                      <h4 className="mb-2 flex items-center text-sm font-medium">
-                        <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-                        Checklist:
-                      </h4>
-                      <ul className="space-y-1">
-                        {item.checklistItems.map((checkItem, index) => (
-                          <li key={index} className="flex items-center text-sm">
+                  <Accordion type="multiple" className="w-full space-y-2">
+                    {item.checklistItems && item.checklistItems.length > 0 && (
+                      <AccordionItem value={`checklist-${item.id}`} className="border rounded-md">
+                        <AccordionTrigger className="px-4 py-2">
+                          <div className="flex items-center text-sm font-medium">
                             <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-                            {checkItem}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                            Checklist
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="px-4 pb-2">
+                          <ul className="space-y-1">
+                            {item.checklistItems.map((checkItem, index) => (
+                              <li key={index} className="flex items-center text-sm">
+                                <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
+                                {checkItem}
+                              </li>
+                            ))}
+                          </ul>
+                        </AccordionContent>
+                      </AccordionItem>
+                    )}
 
-                  {/* Common Mistakes Section */}
-                  {item.commonMistakes && item.commonMistakes.length > 0 && (
-                    <div className="mt-3 border-t pt-3">
-                      <h4 className="mb-2 flex items-center text-sm font-medium">
-                        <AlertCircle className="mr-2 h-4 w-4 text-amber-500" />
-                        Common Mistakes:
-                      </h4>
-                      <ul className="space-y-1">
-                        {item.commonMistakes.map((mistake, index) => (
-                          <li key={index} className="flex items-center text-sm">
+                    {/* Common Mistakes Section */}
+                    {item.commonMistakes && item.commonMistakes.length > 0 && (
+                      <AccordionItem value={`mistakes-${item.id}`} className="border rounded-md">
+                        <AccordionTrigger className="px-4 py-2">
+                          <div className="flex items-center text-sm font-medium">
                             <AlertCircle className="mr-2 h-4 w-4 text-amber-500" />
-                            {mistake}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                            Common Mistakes
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="px-4 pb-2">
+                          <ul className="space-y-1">
+                            {item.commonMistakes.map((mistake, index) => (
+                              <li key={index} className="flex items-center text-sm">
+                                <AlertCircle className="mr-2 h-4 w-4 text-amber-500" />
+                                {mistake}
+                              </li>
+                            ))}
+                          </ul>
+                        </AccordionContent>
+                      </AccordionItem>
+                    )}
 
-                  {/* Costs Section */}
-                  {item.costs && item.costs.length > 0 && (
-                    <div className="mt-3 border-t pt-3">
-                      <h4 className="mb-2 flex items-center text-sm font-medium">
-                        <DollarSign className="mr-2 h-4 w-4 text-blue-500" />
-                        Estimated Costs:
-                      </h4>
-                      <div className="space-y-1">
-                        {item.costs.map((cost, index) => (
-                          <div key={index} className="flex items-start gap-2 text-sm">
-                            <DollarSign className="mt-0.5 h-4 w-4 text-blue-500" />
-                            <div>
-                              <div className="flex items-center justify-between">
-                                <span className="font-medium">{cost.item}:</span> 
-                                <span className="ml-2">{cost.amount}</span>
+                    {/* Costs Section */}
+                    {item.costs && item.costs.length > 0 && (
+                      <AccordionItem value={`costs-${item.id}`} className="border rounded-md">
+                        <AccordionTrigger className="px-4 py-2">
+                          <div className="flex items-center text-sm font-medium">
+                            <DollarSign className="mr-2 h-4 w-4 text-blue-500" />
+                            Estimated Costs
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="px-4 pb-2">
+                          <div className="space-y-1">
+                            {item.costs.map((cost, index) => (
+                              <div key={index} className="flex items-start gap-2 text-sm">
+                                <DollarSign className="mt-0.5 h-4 w-4 text-blue-500" />
+                                <div>
+                                  <div className="flex items-center justify-between">
+                                    <span className="font-medium">{cost.item}:</span> 
+                                    <span className="ml-2">{cost.amount}</span>
+                                  </div>
+                                  {cost.note && (
+                                    <p className="text-xs text-muted-foreground">{cost.note}</p>
+                                  )}
+                                </div>
                               </div>
-                              {cost.note && (
-                                <p className="text-xs text-muted-foreground">{cost.note}</p>
-                              )}
-                            </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                        </AccordionContent>
+                      </AccordionItem>
+                    )}
 
-                  {/* What Ifs Section */}
-                  {item.whatIfs && item.whatIfs.length > 0 && (
-                    <div className="mt-3 border-t pt-3">
-                      <h4 className="mb-2 flex items-center text-sm font-medium">
-                        <HelpCircle className="mr-2 h-4 w-4 text-purple-500" />
-                        What If Scenarios:
-                      </h4>
-                      <div className="space-y-3">
-                        {item.whatIfs.map((scenario, index) => (
-                          <div key={index} className="rounded-md bg-secondary p-2 text-sm">
-                            <p className="font-medium text-primary">{scenario.scenario}</p>
-                            <p className="mt-1 text-muted-foreground">{scenario.solution}</p>
+                    {/* What Ifs Section */}
+                    {item.whatIfs && item.whatIfs.length > 0 && (
+                      <AccordionItem value={`whatifs-${item.id}`} className="border rounded-md">
+                        <AccordionTrigger className="px-4 py-2">
+                          <div className="flex items-center text-sm font-medium">
+                            <HelpCircle className="mr-2 h-4 w-4 text-purple-500" />
+                            What If Scenarios
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                        </AccordionTrigger>
+                        <AccordionContent className="px-4 pb-2">
+                          <div className="space-y-3">
+                            {item.whatIfs.map((scenario, index) => (
+                              <div key={index} className="rounded-md bg-secondary p-2 text-sm">
+                                <p className="font-medium text-primary">{scenario.scenario}</p>
+                                <p className="mt-1 text-muted-foreground">{scenario.solution}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    )}
 
-                  {/* Muhasabah (Self-reflection) Section */}
-                  {item.muhasabah && (
-                    <div className="mt-3 border-t pt-3">
-                      <h4 className="mb-2 flex items-center text-sm font-medium">
-                        <Heart className="mr-2 h-4 w-4 text-red-500" />
-                        Muhasabah (Self-reflection):
-                      </h4>
-                      <div className="italic rounded-md bg-accent/30 p-3 text-sm">
-                        {item.muhasabah}
-                      </div>
-                    </div>
-                  )}
+                    {/* Muhasabah (Self-reflection) Section */}
+                    {item.muhasabah && (
+                      <AccordionItem value={`muhasabah-${item.id}`} className="border rounded-md">
+                        <AccordionTrigger className="px-4 py-2">
+                          <div className="flex items-center text-sm font-medium">
+                            <Heart className="mr-2 h-4 w-4 text-red-500" />
+                            Muhasabah (Self-reflection)
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="px-4 pb-2">
+                          <div className="italic rounded-md bg-accent/30 p-3 text-sm">
+                            {item.muhasabah}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    )}
+                  </Accordion>
                 </CardContent>
               </Card>
             ))}
