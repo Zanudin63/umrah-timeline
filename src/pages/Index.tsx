@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
 import { MapPin, Heart, Book, User, Clipboard, Calendar, Plane, Home } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import JourneyIndex from "@/components/JourneyIndex";
 
 const Index = () => {
   const [currentRole] = useState<UserRole>("pilgrim");
+  const [activeSectionId, setActiveSectionId] = useState<string | null>("preparation");
+  const [activeItemId, setActiveItemId] = useState<number | null>(1);
+  const sectionRefs = useRef<Record<string, Record<number, HTMLDivElement>>>({});
 
   const preparationItems: JourneyItem[] = [
     {
@@ -558,43 +563,158 @@ const Index = () => {
     }
   ];
 
+  const registerSectionRef = (sectionId: string, itemId: number, ref: HTMLDivElement) => {
+    if (!sectionRefs.current[sectionId]) {
+      sectionRefs.current[sectionId] = {};
+    }
+    sectionRefs.current[sectionId][itemId] = ref;
+  };
+
+  const handleNavigate = (sectionId: string, itemId: number) => {
+    setActiveSectionId(sectionId);
+    setActiveItemId(itemId);
+    
+    if (sectionRefs.current[sectionId]?.[itemId]) {
+      sectionRefs.current[sectionId][itemId].scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  };
+
+  const indexSections = [
+    {
+      id: "preparation",
+      title: "Preparation",
+      icon: <Clipboard className="h-3 w-3 text-white" />,
+      color: "bg-purple-500",
+      items: preparationItems.map(item => ({ id: item.id, title: item.title }))
+    },
+    {
+      id: "travel-arrangements",
+      title: "Travel Arrangements",
+      icon: <Plane className="h-3 w-3 text-white" />,
+      color: "bg-blue-500",
+      items: travelArrangementsItems.map(item => ({ id: item.id, title: item.title }))
+    },
+    {
+      id: "during-umrah",
+      title: "During Umrah",
+      icon: <Heart className="h-3 w-3 text-white" />,
+      color: "bg-red-500",
+      items: duringUmrahItems.map(item => ({ id: item.id, title: item.title }))
+    },
+    {
+      id: "reflection",
+      title: "Reflection",
+      icon: <Book className="h-3 w-3 text-white" />,
+      color: "bg-green-500",
+      items: reflectionAndImprovementItems.map(item => ({ id: item.id, title: item.title }))
+    }
+  ];
+
   return (
-    <div className="container mx-auto p-4 md:p-6">
-      <h1 className="mb-8 text-3xl font-bold text-center">Umrah Journey Map</h1>
-      <div className="space-y-8">
-        <JourneySection
-          title="Preparation"
-          description="Spiritual and practical preparation before departure"
-          items={preparationItems}
-          icon={<Clipboard />}
-          currentRole={currentRole}
-          initiallyOpen={true}
-          animationDelay={0}
-        />
-        <JourneySection
-          title="Travel Arrangements"
-          description="Booking flights, accommodation, and transportation"
-          items={travelArrangementsItems}
-          icon={<Plane />}
-          currentRole={currentRole}
-          animationDelay={1}
-        />
-        <JourneySection
-          title="During Umrah"
-          description="Performing the rituals of Umrah in Makkah"
-          items={duringUmrahItems}
-          icon={<Heart />}
-          currentRole={currentRole}
-          animationDelay={2}
-        />
-        <JourneySection
-          title="Reflection and Improvement"
-          description="Reflecting on the journey and making positive changes"
-          items={reflectionAndImprovementItems}
-          icon={<Book />}
-          currentRole={currentRole}
-          animationDelay={3}
-        />
+    <div className="min-h-screen bg-background transition-colors duration-300">
+      <div className="container mx-auto p-4 md:p-6">
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-3xl font-bold">Umrah Journey Map</h1>
+          <ThemeToggle />
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="hidden md:block md:col-span-1 h-fit sticky top-6">
+            <JourneyIndex 
+              sections={indexSections}
+              activeSectionId={activeSectionId}
+              activeItemId={activeItemId}
+              onNavigate={handleNavigate}
+            />
+          </div>
+          
+          <div className="col-span-1 md:col-span-2 space-y-8">
+            <div className="block md:hidden mb-6">
+              <JourneyIndex 
+                sections={indexSections}
+                activeSectionId={activeSectionId}
+                activeItemId={activeItemId}
+                onNavigate={handleNavigate}
+              />
+            </div>
+            
+            <JourneySection
+              id="preparation"
+              title="Preparation"
+              description="Spiritual and practical preparation before departure"
+              items={preparationItems}
+              icon={<Clipboard />}
+              currentRole={currentRole}
+              initiallyOpen={true}
+              animationDelay={0}
+              color="purple"
+              onItemVisibilityChange={(itemId, isVisible) => {
+                if (isVisible) {
+                  setActiveSectionId("preparation");
+                  setActiveItemId(itemId);
+                }
+              }}
+              registerRef={registerSectionRef}
+            />
+            
+            <JourneySection
+              id="travel-arrangements"
+              title="Travel Arrangements"
+              description="Booking flights, accommodation, and transportation"
+              items={travelArrangementsItems}
+              icon={<Plane />}
+              currentRole={currentRole}
+              animationDelay={1}
+              color="blue"
+              onItemVisibilityChange={(itemId, isVisible) => {
+                if (isVisible) {
+                  setActiveSectionId("travel-arrangements");
+                  setActiveItemId(itemId);
+                }
+              }}
+              registerRef={registerSectionRef}
+            />
+            
+            <JourneySection
+              id="during-umrah"
+              title="During Umrah"
+              description="Performing the rituals of Umrah in Makkah"
+              items={duringUmrahItems}
+              icon={<Heart />}
+              currentRole={currentRole}
+              animationDelay={2}
+              color="red"
+              onItemVisibilityChange={(itemId, isVisible) => {
+                if (isVisible) {
+                  setActiveSectionId("during-umrah");
+                  setActiveItemId(itemId);
+                }
+              }}
+              registerRef={registerSectionRef}
+            />
+            
+            <JourneySection
+              id="reflection"
+              title="Reflection and Improvement"
+              description="Reflecting on the journey and making positive changes"
+              items={reflectionAndImprovementItems}
+              icon={<Book />}
+              currentRole={currentRole}
+              animationDelay={3}
+              color="green"
+              onItemVisibilityChange={(itemId, isVisible) => {
+                if (isVisible) {
+                  setActiveSectionId("reflection");
+                  setActiveItemId(itemId);
+                }
+              }}
+              registerRef={registerSectionRef}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

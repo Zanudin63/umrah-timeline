@@ -74,6 +74,12 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Dark mode overrides */
+  .dark .bg-white,
+  .dark .bg-background {
+    @apply bg-background text-foreground;
+  }
 }
 
 /* Timeline styling */
@@ -86,7 +92,7 @@
 }
 
 .location-dot-inner {
-  @apply h-4 w-4 rounded-full border-2 border-primary bg-white;
+  @apply h-4 w-4 rounded-full border-2 border-primary bg-white dark:bg-secondary;
 }
 
 .travel-card {
