@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -253,6 +252,32 @@
   animation: fadeInUp 0.5s ease forwards;
 }
 
+/* Checklist section header styling */
+.accordion-content ul li:has(div.font-semibold) {
+  margin-top: 0.75rem;
+}
+
+.accordion-content ul li:first-child:has(div.font-semibold) {
+  margin-top: 0;
+}
+
+.accordion-content ul li div.font-semibold {
+  color: hsl(var(--primary));
+  padding: 0.25rem 0;
+  border-bottom: 1px solid hsl(var(--primary) / 0.2);
+  margin-bottom: 0.25rem;
+  width: 100%;
+}
+
+/* Reduced spacing for checklist items */
+.accordion-content ul {
+  margin-top: 0.25rem;
+}
+
+.accordion-content ul li {
+  margin-bottom: 0.15rem;
+}
+
 /* Animations */
 @keyframes fadeInUp {
   to {
@@ -327,5 +352,20 @@
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+  }
+  
+  /* Checklist subsection spacing on mobile */
+  .accordion-content ul li:has(div.font-semibold) {
+    margin-top: 0.5rem;
+  }
+  
+  /* Better fit for long checklist items on mobile */
+  .accordion-content ul li {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .accordion-content ul li svg {
+    margin-top: 0.15rem;
   }
 }

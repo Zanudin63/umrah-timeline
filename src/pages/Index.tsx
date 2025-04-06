@@ -418,12 +418,36 @@ const Index = () => {
       details: "Make sure to be in a state of purity. Start at the Black Stone and circle the Kaaba seven times, reciting prayers.",
       audioDescription: "Tawaf involves circling the Kaaba seven times, starting at the Black Stone.",
       checklistItems: [
+        "1- Getting Ready In Hotel Room",
         "Ensure you are in a state of purity (wudu)",
+        "Prepare your Ihram clothing if performing with Umrah",
+        "Make dua and intention (niyyah) before leaving",
+        "Bring water bottle and comfortable footwear",
+        
+        "2- While On The Way To Tawaf",
+        "Keep reciting talbiyah if in Ihram state",
+        "Maintain focus and avoid worldly conversations",
+        "Prepare mentally for the spiritual experience",
+        "Review the duas for Tawaf",
+        
+        "3- Tawaf Step by Step",
         "Start Tawaf at the Black Stone (Hajar al-Aswad)",
         "Circle the Kaaba seven times counterclockwise",
         "Recite prayers and supplications during Tawaf",
+        "Follow the green markers for pacing",
+        "Walk at moderate pace, neither rushing nor dawdling",
+        
+        "4- During Tawaf",
         "Avoid pushing or causing harm to others",
-        "Follow the guidance of your group leader"
+        "Maintain focus on Allah and avoid idle talk",
+        "Keep track of your rounds (use counter if needed)",
+        "Remain respectful of other worshippers",
+        
+        "5- Muhasabah Tawaf",
+        "Reflect on the symbolism of circling Allah's house",
+        "Contemplate your life revolving around Allah's commands",
+        "Consider how the Kaaba unites Muslims of all backgrounds",
+        "Think about your spiritual journey and commitment"
       ],
       editableBy: ["imam", "guide", "admin"],
       commonMistakes: [

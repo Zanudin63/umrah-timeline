@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { MapPin, Video, Headphones, ChevronDown, CheckCircle, AlertCircle, DollarSign, HelpCircle, Heart } from "lucide-react";
 import { 
@@ -55,7 +54,6 @@ interface JourneySectionProps {
   registerRef?: (sectionId: string, itemId: number, ref: HTMLDivElement) => void;
 }
 
-// Color mapping for different sections
 const colorClasses = {
   purple: {
     badge: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
@@ -89,11 +87,15 @@ const colorClasses = {
   }
 };
 
-// Function to integrate comma-separated text into paragraph format instead of bullets
 const formatTextIntegrated = (text: string): string => {
   if (!text.includes(", ")) return text;
   
   return text.replace(/, /g, " ");
+};
+
+const isChecklistHeader = (item: string): boolean => {
+  return item.startsWith("1-") || item.startsWith("2-") || item.startsWith("3-") || 
+         item.startsWith("4-") || item.startsWith("5-");
 };
 
 const JourneySection: React.FC<JourneySectionProps> = ({
@@ -119,24 +121,20 @@ const JourneySection: React.FC<JourneySectionProps> = ({
       title: "Edit Mode",
       description: `Editing ${items.find(item => item.id === itemId)?.title} as ${role}`,
     });
-    // In a real app, this would open an edit modal or navigate to an edit page
   };
 
   const playAudio = (description: string) => {
-    // In a real app, this would play audio using text-to-speech or a recorded audio file
     toast({
       title: "Audio Description",
       description: "Playing audio description...",
     });
 
-    // Basic text-to-speech implementation
     if ('speechSynthesis' in window) {
       const utterance = new SpeechSynthesisUtterance(description);
       speechSynthesis.speak(utterance);
     }
   };
 
-  // Setup intersection observer for each item
   useEffect(() => {
     if (!onItemVisibilityChange) return;
 
@@ -164,7 +162,6 @@ const JourneySection: React.FC<JourneySectionProps> = ({
     };
   }, [items, onItemVisibilityChange]);
 
-  // Register refs
   useEffect(() => {
     if (!registerRef || !id) return;
     
@@ -268,18 +265,26 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           </AccordionTrigger>
                           <AccordionContent className="px-3 pb-1">
                             <ul className="space-y-0.5">
-                              {item.checklistItems.map((checkItem, index) => (
-                                <li key={index} className="flex items-center text-xs">
-                                  <CheckCircle className="mr-1 h-3 w-3 text-green-500" />
-                                  {checkItem}
-                                </li>
-                              ))}
+                              {item.checklistItems.map((checkItem, index) => {
+                                if (isChecklistHeader(checkItem)) {
+                                  return (
+                                    <li key={index} className="flex items-start mt-2 first:mt-0">
+                                      <div className="font-semibold text-xs text-primary">{checkItem}</div>
+                                    </li>
+                                  );
+                                }
+                                return (
+                                  <li key={index} className="flex items-center text-xs ml-2">
+                                    <CheckCircle className="mr-1 h-3 w-3 text-green-500 flex-shrink-0" />
+                                    <span className="text-xs">{checkItem}</span>
+                                  </li>
+                                );
+                              })}
                             </ul>
                           </AccordionContent>
                         </AccordionItem>
                       )}
 
-                      {/* Common Mistakes Section */}
                       {item.commonMistakes && item.commonMistakes.length > 0 && (
                         <AccordionItem value={`mistakes-${item.id}`} className="border rounded-md">
                           <AccordionTrigger className="px-3 py-1">
@@ -301,7 +306,6 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                         </AccordionItem>
                       )}
 
-                      {/* Costs Section */}
                       {item.costs && item.costs.length > 0 && (
                         <AccordionItem value={`costs-${item.id}`} className="border rounded-md">
                           <AccordionTrigger className="px-3 py-1">
@@ -331,7 +335,6 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                         </AccordionItem>
                       )}
 
-                      {/* What Ifs Section */}
                       {item.whatIfs && item.whatIfs.length > 0 && (
                         <AccordionItem value={`whatifs-${item.id}`} className="border rounded-md">
                           <AccordionTrigger className="px-3 py-1">
@@ -353,7 +356,6 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                         </AccordionItem>
                       )}
 
-                      {/* Self Reflection Section */}
                       {item.muhasabah && (
                         <AccordionItem value={`muhasabah-${item.id}`} className="border rounded-md">
                           <AccordionTrigger className="px-3 py-1">

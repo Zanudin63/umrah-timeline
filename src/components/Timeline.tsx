@@ -40,7 +40,7 @@ const Timeline: React.FC<TimelineProps> = ({ locations }) => {
         </Card>
       </div>
       
-      <div className="ml-6 space-y-3">
+      <div className="ml-6 space-y-2">
         {locations.map((location, index) => (
           <div key={location.id} className="relative">
             {/* Timeline connector (vertical line) */}
