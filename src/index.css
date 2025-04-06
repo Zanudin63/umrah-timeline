@@ -79,7 +79,7 @@
     @apply bg-background text-foreground;
   }
 
-  /* Dark mode overrides */
+  /* Dark mode overrides with improved contrast */
   .dark .bg-white {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
@@ -90,9 +90,21 @@
     color: hsl(var(--foreground));
   }
   
-  /* Description accent color in dark mode */
+  /* Description text in dark mode with specific color for higher contrast */
   .dark .section-description {
-    color: hsl(var(--description-accent));
+    color: #ecf081; /* Exact color requested */
+  }
+
+  /* Improve dark mode card contrast */
+  .dark .rounded-lg {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Improve dark mode icon contrast */
+  .dark svg {
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 0;
   }
 }
 
@@ -161,4 +173,11 @@
 
 .timeline-animation {
   animation-name: fadeIn;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .journey-content {
+    padding-right: 1.5rem;
+  }
 }
