@@ -1,3 +1,4 @@
+
 import React from "react";
 import { MapPin, Plane, Clock, Route } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -32,13 +33,13 @@ const TravelInfo: React.FC<TravelInfoProps> = ({
   const getIcon = () => {
     switch (location.icon) {
       case 'start':
-        return <MapPin className="h-5 w-5 text-primary" />;
+        return <MapPin className="h-4 w-4 text-primary" />; // Reduced from h-5 w-5
       case 'transit':
-        return <Plane className="h-5 w-5 text-accent" />;
+        return <Plane className="h-4 w-4 text-accent" />; // Reduced from h-5 w-5
       case 'end':
-        return <MapPin className="h-5 w-5 text-primary" />;
+        return <MapPin className="h-4 w-4 text-primary" />; // Reduced from h-5 w-5
       default:
-        return <MapPin className="h-5 w-5 text-primary" />;
+        return <MapPin className="h-4 w-4 text-primary" />; // Reduced from h-5 w-5
     }
   };
 
@@ -59,13 +60,13 @@ const TravelInfo: React.FC<TravelInfoProps> = ({
       style={{ animationDelay: `${animationDelay * 0.1}s` }}
     >
       <Card className="border-l-4 border-l-primary">
-        <CardHeader className="flex flex-row items-center gap-2 pb-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
+        <CardHeader className="flex flex-row items-center gap-2 py-1.5 px-3"> {/* Reduced from pb-2 to py-1.5 px-3 */}
+          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10"> {/* Reduced from h-8 w-8 to h-6 w-6 */}
             {getIcon()}
           </div>
           <div className="flex-1">
-            <CardTitle className="text-lg">{location.name}</CardTitle>
-            <CardDescription>{location.time}</CardDescription>
+            <CardTitle className="text-base leading-tight">{location.name}</CardTitle> {/* Reduced from text-lg to text-base and added leading-tight */}
+            <CardDescription className="text-xs">{location.time}</CardDescription> {/* Added text-xs */}
           </div>
           <EditButtons 
             itemId={location.id} 
@@ -74,16 +75,16 @@ const TravelInfo: React.FC<TravelInfoProps> = ({
             onEdit={handleEdit} 
           />
         </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground">{location.description}</p>
+        <CardContent className="py-1.5 px-3"> {/* Added custom padding */}
+          <p className="text-xs text-muted-foreground leading-tight">{location.description}</p> {/* Reduced from text-sm to text-xs and added leading-tight */}
           {location.duration && (
-            <div className="mt-2 flex items-center text-xs text-muted-foreground">
-              <Clock className="mr-1 h-3.5 w-3.5" />
+            <div className="mt-1 flex items-center text-xs text-muted-foreground"> {/* Reduced from mt-2 to mt-1 */}
+              <Clock className="mr-1 h-3 w-3" /> {/* Reduced from h-3.5 w-3.5 to h-3 w-3 */}
               <span>{location.duration}</span>
             </div>
           )}
           {location.notes && (
-            <div className="mt-2 rounded-md bg-secondary p-2 text-xs">
+            <div className="mt-1 rounded-md bg-secondary p-1.5 text-xs"> {/* Reduced from mt-2 p-2 to mt-1 p-1.5 */}
               <p>{location.notes}</p>
             </div>
           )}
