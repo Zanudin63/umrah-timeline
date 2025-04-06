@@ -417,6 +417,8 @@ const Index = () => {
       description: "Performing the ritual of circling the Kaaba",
       details: "Make sure to be in a state of purity. Start at the Black Stone and circle the Kaaba seven times, reciting prayers.",
       audioDescription: "Tawaf involves circling the Kaaba seven times, starting at the Black Stone.",
+      audioLink: "https://youtu.be/uacBne6E_OA?si=3ppUwAom7OQcIlOz",
+      audioCredit: "credit Dato' Ustaz Daud Che Ngah - Membatalkan Tawaf",
       checklistItems: [
         "1- Getting Ready In Hotel Room",
         "Ensure you are in a state of purity (wudu)",

@@ -24,6 +24,8 @@ export interface JourneyItem {
   description: string;
   details: string;
   audioDescription?: string;
+  audioLink?: string;
+  audioCredit?: string;
   videoLink?: string;
   checklistItems?: string[];
   editableBy: UserRole[];
@@ -135,6 +137,14 @@ const JourneySection: React.FC<JourneySectionProps> = ({
     }
   };
 
+  const openAudioLink = (link: string, credit: string) => {
+    window.open(link, '_blank');
+    toast({
+      title: "Audio Resource",
+      description: credit || "Opening audio resource...",
+    });
+  };
+
   useEffect(() => {
     if (!onItemVisibilityChange) return;
 
@@ -237,6 +247,18 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           className="h-7 text-xs"
                         >
                           <Headphones className="mr-1 h-3 w-3" />
+                          Listen (TTS)
+                        </Button>
+                      )}
+
+                      {item.audioLink && (
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          onClick={() => openAudioLink(item.audioLink || "", item.audioCredit || "")}
+                          className="h-7 text-xs"
+                        >
+                          <Headphones className="mr-1 h-3 w-3" />
                           Listen
                         </Button>
                       )}
@@ -269,7 +291,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                                 if (isChecklistHeader(checkItem)) {
                                   return (
                                     <li key={index} className="flex items-start mt-2 first:mt-0">
-                                      <div className="font-semibold text-xs text-primary">{checkItem}</div>
+                                      <div className="font-semibold text-xs text-primary dark:text-[#e3f0c0]">{checkItem}</div>
                                     </li>
                                   );
                                 }
