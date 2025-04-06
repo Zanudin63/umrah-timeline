@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
-import { MapPin, Heart, Book, User, Clipboard, Calendar, Plane, Home, Landmark } from "lucide-react";
+import { Luggage, Heart, Book, Camel, Plane } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import JourneySidebar from "@/components/JourneySidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -721,35 +721,35 @@ const Index = () => {
     {
       id: "preparation",
       title: "Preparation",
-      icon: <Clipboard className="h-5 w-5" />,
+      icon: <Luggage className="h-10 w-10" strokeWidth={1.5} />,
       color: "bg-purple-600",
       lightColor: "bg-purple-100"
     },
     {
       id: "travel-arrangements",
       title: "Travel & Logistics",
-      icon: <Plane className="h-5 w-5" />,
+      icon: <Plane className="h-10 w-10" strokeWidth={1.5} />,
       color: "bg-blue-600",
       lightColor: "bg-blue-100"
     },
     {
       id: "during-umrah",
       title: "Manasik",
-      icon: <Heart className="h-5 w-5" />,
+      icon: <Heart className="h-10 w-10" strokeWidth={1.5} />,
       color: "bg-red-600",
       lightColor: "bg-red-100"
     },
     {
       id: "ziarah",
       title: "Ziarah",
-      icon: <Landmark className="h-5 w-5" />,
+      icon: <Camel className="h-10 w-10" strokeWidth={1.5} />,
       color: "bg-amber-600",
       lightColor: "bg-amber-100"
     },
     {
       id: "reflection",
       title: "Reflection",
-      icon: <Book className="h-5 w-5" />,
+      icon: <Book className="h-10 w-10" strokeWidth={1.5} />,
       color: "bg-green-600",
       lightColor: "bg-green-100"
     }
@@ -759,35 +759,35 @@ const Index = () => {
     {
       id: "preparation",
       title: "Preparation",
-      icon: <Clipboard className="h-3 w-3 text-white" />,
+      icon: <Luggage className="h-6 w-6 text-white" strokeWidth={1.5} />,
       color: "bg-purple-500",
       items: preparationItems.map(item => ({ id: item.id, title: item.title }))
     },
     {
       id: "travel-arrangements",
       title: "Travel Arrangements",
-      icon: <Plane className="h-3 w-3 text-white" />,
+      icon: <Plane className="h-6 w-6 text-white" strokeWidth={1.5} />,
       color: "bg-blue-500",
       items: travelArrangementsItems.map(item => ({ id: item.id, title: item.title }))
     },
     {
       id: "during-umrah",
       title: "During Umrah",
-      icon: <Heart className="h-3 w-3 text-white" />,
+      icon: <Heart className="h-6 w-6 text-white" strokeWidth={1.5} />,
       color: "bg-red-500",
       items: duringUmrahItems.map(item => ({ id: item.id, title: item.title }))
     },
     {
       id: "ziarah",
       title: "Ziarah",
-      icon: <Landmark className="h-3 w-3 text-white" />,
+      icon: <Camel className="h-6 w-6 text-white" strokeWidth={1.5} />,
       color: "bg-amber-500",
       items: ziarahItems.map(item => ({ id: item.id, title: item.title }))
     },
     {
       id: "reflection",
       title: "Reflection",
-      icon: <Book className="h-3 w-3 text-white" />,
+      icon: <Book className="h-6 w-6 text-white" strokeWidth={1.5} />,
       color: "bg-green-500",
       items: reflectionAndImprovementItems.map(item => ({ id: item.id, title: item.title }))
     }
@@ -899,7 +899,7 @@ const Index = () => {
                   title="Preparation"
                   description="Spiritual and practical preparation before departure"
                   items={preparationItems}
-                  icon={<Clipboard />}
+                  icon={<Luggage className="h-10 w-10" strokeWidth={1.5} />}
                   currentRole={currentRole}
                   initiallyOpen={activeSectionId === "preparation"}
                   animationDelay={0}
@@ -923,7 +923,7 @@ const Index = () => {
                   title="Travel Arrangements"
                   description="Booking flights, accommodation, and transportation"
                   items={travelArrangementsItems}
-                  icon={<Plane />}
+                  icon={<Plane className="h-10 w-10" strokeWidth={1.5} />}
                   currentRole={currentRole}
                   initiallyOpen={activeSectionId === "travel-arrangements"}
                   animationDelay={1}
@@ -947,7 +947,7 @@ const Index = () => {
                   title="During Umrah"
                   description="Performing the rituals of Umrah in Makkah"
                   items={duringUmrahItems}
-                  icon={<Heart />}
+                  icon={<Heart className="h-10 w-10" strokeWidth={1.5} />}
                   currentRole={currentRole}
                   initiallyOpen={activeSectionId === "during-umrah"}
                   animationDelay={2}
@@ -971,7 +971,7 @@ const Index = () => {
                   title="Ziarah"
                   description="Visiting historical and significant sites in Makkah and Madinah"
                   items={ziarahItems}
-                  icon={<Landmark />}
+                  icon={<Camel className="h-10 w-10" strokeWidth={1.5} />}
                   currentRole={currentRole}
                   initiallyOpen={activeSectionId === "ziarah"}
                   animationDelay={2.5}
@@ -995,7 +995,7 @@ const Index = () => {
                   title="Reflection and Improvement"
                   description="Reflecting on the journey and making positive changes"
                   items={reflectionAndImprovementItems}
-                  icon={<Book />}
+                  icon={<Book className="h-10 w-10" strokeWidth={1.5} />}
                   currentRole={currentRole}
                   initiallyOpen={activeSectionId === "reflection"}
                   animationDelay={3}

@@ -2,6 +2,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Luggage, Book, MapPin, Heart } from "lucide-react";
 
 interface SidebarTabProps {
   title: string;
