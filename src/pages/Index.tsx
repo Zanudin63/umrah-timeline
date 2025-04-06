@@ -476,6 +476,82 @@ const Index = () => {
 
   const duringUmrahItems: JourneyItem[] = [
     {
+      id: 19,
+      title: "Miqat, Niat & Ihram",
+      description: "Understanding and performing the first essential rituals of Umrah",
+      details: "Miqat is the designated place/boundary where pilgrims must enter the state of Ihram before proceeding to perform Umrah or Hajj. Ihram refers to both the special clothing worn and the sacred state a pilgrim enters, while Niat (intention) consecrates the beginning of the ritual.",
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/TH-NOTA%20KAH%201446H%20_%20M3.pdf",
+      checklistItems: [
+        "1- Understanding Miqat Boundaries",
+        "Dhul Hulaifah (Abyar Ali) - for pilgrims from Madinah (450 km from Mecca)",
+        "Juhfah (Rabigh) - for pilgrims from the direction of Syria, Egypt, and North Africa (190 km from Mecca)",
+        "Qarn al-Manazil - for pilgrims from the direction of Najd and Taif (90 km from Mecca)",
+        "Dhat Irq - for pilgrims from the direction of Iraq (94 km from Mecca)",
+        "Yalamlam - for pilgrims from the direction of Yemen (54 km from Mecca)",
+        "Confirm your specific Miqat based on your travel route",
+        
+        "2- Preparation before Miqat",
+        "Cut nails, trim moustache, and remove unwanted body hair",
+        "Perform ghusl (full ritual bath) if possible, or at minimum wudhu",
+        "Men: Prepare two pieces of white unsewn cloth (izar for lower body and rida for upper body)",
+        "Women: Prepare regular modest clothing (any color except fully black) that covers the entire body except face and hands",
+        "Bring items needed during Ihram: unscented soap, belt or money pouch, slippers/sandals, prayer mat",
+        "Ensure you have the Tabung Haji guidebook or official instructions",
+        
+        "3- At the Miqat",
+        "Perform two raka'at (units) of prayer with intention for Ihram",
+        "Men: Put on the two pieces of Ihram cloth properly, leaving head uncovered",
+        "Women: Maintain modest clothing but cannot cover face (niqab) or hands (gloves)",
+        "Make clear intention (niat) for Umrah by saying: 'Labbayka Allahumma bi-'Umrah' ('Here I am O Allah, for Umrah')",
+        "Start reciting the Talbiyah immediately after intention",
+        
+        "4- Talbiyah Recitation",
+        "Recite: 'Labbayk Allahumma labbayk, labbayka la sharika laka labbayk, innal-hamda wan-ni'mata laka wal-mulk, la sharika lak'",
+        "Meaning: 'Here I am O Allah, here I am. Here I am, You have no partner, here I am. Verily all praise, grace and sovereignty belong to You. You have no partner'",
+        "Men: Recite loudly; Women: Recite softly",
+        "Continue reciting Talbiyah frequently until reaching Kaabah for Tawaf",
+        
+        "5- Prohibited Acts During Ihram",
+        "Avoid cutting hair or nails",
+        "Avoid using scented soap, perfume, or cosmetics",
+        "Men: Avoid covering head or wearing stitched clothes",
+        "Women: Avoid covering face or wearing gloves",
+        "Avoid hunting or killing animals",
+        "Avoid sexual relations or marriage proposals",
+        "Avoid arguments, disputes, or using abusive language"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      commonMistakes: [
+        "Entering state of Ihram before reaching the proper Miqat boundary",
+        "Passing the Miqat boundary without being in the state of Ihram",
+        "Men wearing stitched clothing or covering their heads after Ihram",
+        "Using scented soap, shampoo, or toothpaste during Ihram",
+        "Not making a clear intention (niat) for Umrah",
+        "Stopping the Talbiyah recitation too early",
+        "Women covering their faces or wearing gloves during Ihram",
+        "Cutting nails, hair, or removing unwanted hair after entering Ihram state"
+      ],
+      whatIfs: [
+        {
+          scenario: "What if I accidentally crossed the Miqat without making intention for Ihram?",
+          solution: "Return to the Miqat if possible to enter Ihram properly. If not possible, enter Ihram wherever you are, but a penalty (dam/fidyah) may be required. Consult with a scholar or Tabung Haji official for guidance."
+        },
+        {
+          scenario: "What if I'm on an airplane passing over Miqat?",
+          solution: "Make your intention and enter the state of Ihram on the airplane when the pilot announces you're passing over the Miqat. Change into Ihram clothes before reaching the Miqat or in the airplane toilet."
+        },
+        {
+          scenario: "What if I need to change my Ihram clothes because they became unclean?",
+          solution: "It is permissible to change Ihram garments if needed. The restriction is on the type of clothing (unsewn for men), not the specific garment itself. Ensure the replacement follows the same rules."
+        },
+        {
+          scenario: "What if I have a medical necessity that conflicts with Ihram rules?",
+          solution: "Islam provides concessions for necessities. If you need to wear specific clothes or use medication with scent for medical reasons, it's allowed but may require fidyah (compensation). Consult a scholar for specific guidance."
+        }
+      ],
+      muhasabah: "Have I prepared myself spiritually for this sacred journey? Am I entering Ihram with complete submission to Allah's commands? Do I understand that Ihram is not just the clothing but a state of mind and heart? Am I ready to leave behind worldly concerns and focus entirely on worship? Am I approaching this ritual with sincerity and reverence as taught in the Tabung Haji guidance?"
+    },
+    {
       id: 9,
       title: "Performing Tawaf",
       description: "Performing the ritual of circling the Kaaba",
@@ -622,463 +698,3 @@ const Index = () => {
         "Learn about the historical significance of each site",
         "Perform prayers at each mosque if possible",
         "Take respectful photos for personal remembrance"
-      ],
-      editableBy: ["guide", "imam", "admin"],
-      commonMistakes: [
-        "Rushing through visits without understanding significance",
-        "Missing the opportunity to pray at Quba Mosque",
-        "Visiting only popular sites and missing other significant locations",
-        "Taking disrespectful photos or disturbing worshippers",
-        "Not planning visits according to prayer times"
-      ],
-      whatIfs: [
-        {
-          scenario: "What if the mosques are closed when I visit?",
-          solution: "Check opening times beforehand. Most historical mosques follow prayer times. Plan your visit accordingly."
-        },
-        {
-          scenario: "What if it's too crowded during my visit?",
-          solution: "Visit during off-peak hours early morning or late evening. Weekdays are generally less crowded than weekends."
-        }
-      ],
-      muhasabah: "Am I visiting these sacred sites with proper reverence and intention? Am I taking the time to understand their historical significance in Islam? How can I apply the lessons from these places in my daily life?"
-    },
-    {
-      id: 16,
-      title: "Visit to Madinah",
-      description: "Visiting the Prophet's Mosque and significant sites in Madinah",
-      details: "Visit Masjid Nabawi, the Prophet's Mosque, and pay respect at the Rawdah and the Prophet's (PBUH) grave. Visit Jannat Al-Baqi cemetery and Mount Uhud.",
-      checklistItems: [
-        "Visit Masjid Nabawi and offer prayers",
-        "Visit Rawdah (the Garden of Paradise)",
-        "Send peace and blessings upon the Prophet (PBUH) at his grave",
-        "Visit graves of companions at Jannat Al-Baqi",
-        "Visit Mount Uhud and learn about the Battle of Uhud",
-        "Visit Quba Mosque on Saturday (if possible)"
-      ],
-      editableBy: ["guide", "imam", "admin"],
-      commonMistakes: [
-        "Pushing or crowding near the Prophet's (PBUH) grave",
-        "Taking photos in restricted areas",
-        "Touching or kissing walls, grilles, or structures",
-        "Making loud supplications disturbing others",
-        "Insisting on visiting Rawdah during peak times"
-      ],
-      whatIfs: [
-        {
-          scenario: "What if I cannot enter Rawdah due to crowds?",
-          solution: "Try during less busy times such as late night or early morning. Women have special times allocated. Remember, praying anywhere in Masjid Nabawi carries great reward."
-        },
-        {
-          scenario: "What if I become separated from my group?",
-          solution: "Establish meeting points before entering crowded areas. Carry your hotel information and group leader's contact. Stay calm and ask security for assistance."
-        }
-      ],
-      muhasabah: "Am I following the Prophet's (PBUH) example in my behavior while visiting his city? Am I maintaining proper adab (etiquette) during my visit? How can I carry the spiritual connection I feel here back to my daily life?"
-    },
-    {
-      id: 17,
-      title: "Visit to Battlefield Sites",
-      description: "Visiting significant battle sites in Islamic history",
-      details: "Visit sites of important battles in Islamic history, such as Badr, Uhud, and Khandaq, to learn about their historical significance and the lessons they teach.",
-      checklistItems: [
-        "Visit Mount Uhud and learn about the Battle of Uhud",
-        "Visit the site of Battle of Badr (if accessible)",
-        "Visit the site of Battle of Khandaq (Trench)",
-        "Learn about the strategies employed during these battles",
-        "Reflect on the sacrifices made by the companions",
-        "Understand how these battles shaped Islamic history"
-      ],
-      editableBy: ["guide", "imam", "admin"],
-      commonMistakes: [
-        "Treating battlefield sites as mere tourist attractions",
-        "Not learning about the historical context before visiting",
-        "Taking inappropriate photos or selfies at sacred sites",
-        "Collecting stones or soil from the sites as souvenirs",
-        "Not reflecting on the spiritual lessons from these events"
-      ],
-      whatIfs: [
-        {
-          scenario: "What if some battlefield sites are restricted or inaccessible?",
-          solution: "Some sites may have restricted access or be difficult to reach. Join organized tours by reputable agencies that have necessary permissions."
-        },
-        {
-          scenario: "What if I want to learn more about the battles than what guides provide?",
-          solution: "Read books about the Seerah and Islamic history before your trip. Many educational apps offer detailed information about these sites with historical context."
-        }
-      ],
-      muhasabah: "What lessons can I draw from the struggles and sacrifices of early Muslims? How can I apply the strategies of patience, perseverance, and trust in Allah that were demonstrated in these battles to my own challenges? Am I honoring the memory of those who sacrificed for Islam through my own actions?"
-    }
-  ];
-
-  const reflectionAndImprovementItems: JourneyItem[] = [
-    {
-      id: 12,
-      title: "Reflecting on the Journey",
-      description: "Taking time to reflect on the Umrah experience",
-      details: "Think about the spiritual lessons learned, the challenges faced, and the blessings received. Plan for personal growth and positive changes in your life.",
-      checklistItems: [
-        "Set aside time for quiet reflection",
-        "Think about the spiritual lessons learned",
-        "Identify challenges faced during the journey",
-        "Acknowledge the blessings received",
-        "Plan for personal growth and positive changes",
-        "Write down reflections in a journal"
-      ],
-      editableBy: ["guide", "admin"],
-      muhasabah: "What have I learned about myself and my relationship with Allah? How can I apply these lessons in my daily life? What changes do I need to make to become a better Muslim?"
-    },
-    {
-      id: 13,
-      title: "Making Positive Changes",
-      description: "Implementing positive changes in your life after Umrah",
-      details: "Strive to improve your character, increase acts of worship, strengthen family ties, and contribute positively to your community.",
-      checklistItems: [
-        "Identify areas for improvement in your character",
-        "Increase acts of worship and devotion",
-        "Strengthen family ties and relationships",
-        "Contribute positively to your community",
-        "Set realistic and achievable goals",
-        "Seek support from friends and family"
-      ],
-      editableBy: ["guide", "admin"],
-      muhasabah: "Am I striving to live a life that is pleasing to Allah? Am I making a positive impact on the world around me? Am I grateful for the opportunity to have performed Umrah?"
-    },
-    {
-      id: 14,
-      title: "Sharing Experiences and Knowledge",
-      description: "Sharing your Umrah experiences and knowledge with others",
-      details: "Share your experiences with family, friends, and community members. Offer guidance and support to those planning to perform Umrah.",
-      checklistItems: [
-        "Share your experiences with family and friends",
-        "Offer guidance and support to others",
-        "Write articles or blog posts about your journey",
-        "Give presentations at your local mosque or community center",
-        "Answer questions and provide advice",
-        "Encourage others to perform Umrah"
-      ],
-      editableBy: ["guide", "admin"],
-      muhasabah: "Am I using my experiences to benefit others? Am I being humble and sincere in sharing my knowledge? Am I encouraging others to seek closeness to Allah?"
-    }
-  ];
-
-  const registerSectionRef = (sectionId: string, itemId: number, ref: HTMLDivElement) => {
-    if (!sectionRefs.current[sectionId]) {
-      sectionRefs.current[sectionId] = {};
-    }
-    sectionRefs.current[sectionId][itemId] = ref;
-  };
-
-  const handleNavigate = (sectionId: string, itemId: number) => {
-    setActiveSectionId(sectionId);
-    setActiveItemId(itemId);
-    
-    if (sectionRefs.current[sectionId]?.[itemId]) {
-      sectionRefs.current[sectionId][itemId].scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
-      });
-    }
-  };
-
-  const sidebarSections = [
-    {
-      id: "preparation",
-      title: "Preparation",
-      icon: <Luggage className="h-10 w-10" strokeWidth={1.5} />,
-      color: "bg-purple-600",
-      lightColor: "bg-purple-100"
-    },
-    {
-      id: "travel-arrangements",
-      title: "Travel & Logistics",
-      icon: <Plane className="h-10 w-10" strokeWidth={1.5} />,
-      color: "bg-blue-600",
-      lightColor: "bg-blue-100"
-    },
-    {
-      id: "during-umrah",
-      title: "Manasik Umrah",
-      icon: <PanelsTopLeft className="h-10 w-10" strokeWidth={1.5} />,
-      color: "bg-red-600",
-      lightColor: "bg-red-100"
-    },
-    {
-      id: "ziarah",
-      title: "Ziarah",
-      icon: <MapPin className="h-10 w-10" strokeWidth={1.5} />,
-      color: "bg-amber-600",
-      lightColor: "bg-amber-100"
-    },
-    {
-      id: "reflection",
-      title: "Reflection",
-      icon: <Book className="h-10 w-10" strokeWidth={1.5} />,
-      color: "bg-green-600",
-      lightColor: "bg-green-100"
-    }
-  ];
-
-  const indexSections = [
-    {
-      id: "preparation",
-      title: "Preparation",
-      icon: <Luggage className="h-6 w-6 text-white" strokeWidth={1.5} />,
-      color: "bg-purple-500",
-      items: preparationItems.map(item => ({ id: item.id, title: item.title }))
-    },
-    {
-      id: "travel-arrangements",
-      title: "Travel Arrangements",
-      icon: <Plane className="h-6 w-6 text-white" strokeWidth={1.5} />,
-      color: "bg-blue-500",
-      items: travelArrangementsItems.map(item => ({ id: item.id, title: item.title }))
-    },
-    {
-      id: "during-umrah",
-      title: "Manasik Umrah",
-      icon: <PanelsTopLeft className="h-6 w-6 text-white" strokeWidth={1.5} />,
-      color: "bg-red-500",
-      items: duringUmrahItems.map(item => ({ id: item.id, title: item.title }))
-    },
-    {
-      id: "ziarah",
-      title: "Ziarah",
-      icon: <MapPin className="h-6 w-6 text-white" strokeWidth={1.5} />,
-      color: "bg-amber-500",
-      items: ziarahItems.map(item => ({ id: item.id, title: item.title }))
-    },
-    {
-      id: "reflection",
-      title: "Reflection",
-      icon: <Book className="h-6 w-6 text-white" strokeWidth={1.5} />,
-      color: "bg-green-500",
-      items: reflectionAndImprovementItems.map(item => ({ id: item.id, title: item.title }))
-    }
-  ];
-
-  const getSectionClassName = (sectionId: string) => {
-    const sectionConfig = sidebarSections.find(section => section.id === sectionId);
-    return sectionConfig ? sectionConfig.lightColor : "";
-  };
-
-  const getSectionLabelClass = (sectionId: string) => {
-    return `phase-label ${sectionId}`;
-  };
-
-  const toggleSidebar = () => {
-    setShowSidebar(!showSidebar);
-  };
-
-  useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (isMobile && showSidebar) {
-        const sidebarElement = document.getElementById('journey-sidebar');
-        if (sidebarElement && !sidebarElement.contains(e.target as Node)) {
-          setShowSidebar(false);
-        }
-      }
-    };
-
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, [isMobile, showSidebar]);
-
-  return (
-    <div className="min-h-screen bg-background transition-colors duration-300">
-      <div className="container mx-auto px-2 md:px-4">
-        <div className="flex items-center justify-between p-4 border-b">
-          <h1 className="text-xl md:text-3xl font-bold">Umrah Journey Map</h1>
-          <div className="flex items-center gap-2">
-            {isMobile && (
-              <button 
-                onClick={toggleSidebar} 
-                className="p-2 rounded-md bg-primary/10 text-primary"
-              >
-                <span className="sr-only">Toggle Sidebar</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                  <line x1="3" y1="12" x2="21" y2="12"></line>
-                  <line x1="3" y1="6" x2="21" y2="6"></line>
-                  <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-              </button>
-            )}
-            <ThemeToggle />
-          </div>
-        </div>
-        
-        <div aria-hidden="true">
-          {sidebarSections.map((section) => (
-            <div 
-              key={section.id}
-              className={getSectionLabelClass(section.id)}
-              onClick={() => {
-                setActiveSectionId(section.id);
-                const firstItemId = section.id === "preparation" ? 1 :
-                                  section.id === "travel-arrangements" ? 6 :
-                                  section.id === "during-umrah" ? 9 :
-                                  section.id === "ziarah" ? 15 : 12;
-                handleNavigate(section.id, firstItemId);
-              }}
-            >
-              {section.title}
-            </div>
-          ))}
-        </div>
-        
-        <div className="flex relative">
-          {isMobile && showSidebar && (
-            <div className="fixed inset-0 bg-black/50 z-20" onClick={() => setShowSidebar(false)}></div>
-          )}
-          
-          <div 
-            id="journey-sidebar"
-            className={`${isMobile ? 'fixed z-30 left-0 top-0 bottom-0 bg-background' : 'hidden md:block'} w-64 border-r`}
-            style={{ display: isMobile ? (showSidebar ? 'block' : 'none') : '' }}
-          >
-            <JourneySidebar 
-              sections={sidebarSections}
-              activeSectionId={activeSectionId}
-              onSectionSelect={(sectionId) => {
-                setActiveSectionId(sectionId);
-                const firstItemId = sectionId === "preparation" ? 1 :
-                                    sectionId === "travel-arrangements" ? 6 :
-                                    sectionId === "during-umrah" ? 9 :
-                                    sectionId === "ziarah" ? 15 : 12;
-                handleNavigate(sectionId, firstItemId);
-              }}
-            />
-          </div>
-          
-          <div className="flex-1 p-2 md:p-6 lg:pr-14">
-            <div className="space-y-8 mx-auto">
-              <div 
-                id="preparation" 
-                className={`p-4 rounded-lg ${getSectionClassName("preparation")}`}
-              >
-                <JourneySection
-                  id="preparation"
-                  title="Preparation"
-                  description="Spiritual and practical preparation before departure"
-                  items={preparationItems}
-                  icon={<Luggage className="h-10 w-10" strokeWidth={1.5} />}
-                  currentRole={currentRole}
-                  initiallyOpen={activeSectionId === "preparation"}
-                  animationDelay={0}
-                  color="purple"
-                  onItemVisibilityChange={(itemId, isVisible) => {
-                    if (isVisible) {
-                      setActiveSectionId("preparation");
-                      setActiveItemId(itemId);
-                    }
-                  }}
-                  registerRef={registerSectionRef}
-                />
-              </div>
-              
-              <div 
-                id="travel-arrangements" 
-                className={`p-4 rounded-lg ${getSectionClassName("travel-arrangements")}`}
-              >
-                <JourneySection
-                  id="travel-arrangements"
-                  title="Travel Arrangements"
-                  description="Booking flights, accommodation, and transportation"
-                  items={travelArrangementsItems}
-                  icon={<Plane className="h-10 w-10" strokeWidth={1.5} />}
-                  currentRole={currentRole}
-                  initiallyOpen={activeSectionId === "travel-arrangements"}
-                  animationDelay={1}
-                  color="blue"
-                  onItemVisibilityChange={(itemId, isVisible) => {
-                    if (isVisible) {
-                      setActiveSectionId("travel-arrangements");
-                      setActiveItemId(itemId);
-                    }
-                  }}
-                  registerRef={registerSectionRef}
-                />
-              </div>
-              
-              <div 
-                id="during-umrah" 
-                className={`p-4 rounded-lg ${getSectionClassName("during-umrah")}`}
-              >
-                <JourneySection
-                  id="during-umrah"
-                  title="Manasik Umrah"
-                  description="Performing the rituals of Umrah in Makkah"
-                  items={duringUmrahItems}
-                  icon={<PanelsTopLeft className="h-10 w-10" strokeWidth={1.5} />}
-                  currentRole={currentRole}
-                  initiallyOpen={activeSectionId === "during-umrah"}
-                  animationDelay={2}
-                  color="red"
-                  onItemVisibilityChange={(itemId, isVisible) => {
-                    if (isVisible) {
-                      setActiveSectionId("during-umrah");
-                      setActiveItemId(itemId);
-                    }
-                  }}
-                  registerRef={registerSectionRef}
-                />
-              </div>
-              
-              <div 
-                id="ziarah" 
-                className={`p-4 rounded-lg ${getSectionClassName("ziarah")}`}
-              >
-                <JourneySection
-                  id="ziarah"
-                  title="Ziarah"
-                  description="Visiting historical and significant sites in Makkah and Madinah"
-                  items={ziarahItems}
-                  icon={<MapPin className="h-10 w-10" strokeWidth={1.5} />}
-                  currentRole={currentRole}
-                  initiallyOpen={activeSectionId === "ziarah"}
-                  animationDelay={2.5}
-                  color="amber"
-                  onItemVisibilityChange={(itemId, isVisible) => {
-                    if (isVisible) {
-                      setActiveSectionId("ziarah");
-                      setActiveItemId(itemId);
-                    }
-                  }}
-                  registerRef={registerSectionRef}
-                />
-              </div>
-              
-              <div 
-                id="reflection" 
-                className={`p-4 rounded-lg ${getSectionClassName("reflection")}`}
-              >
-                <JourneySection
-                  id="reflection"
-                  title="Reflection and Improvement"
-                  description="Reflecting on the journey and making positive changes"
-                  items={reflectionAndImprovementItems}
-                  icon={<Book className="h-10 w-10" strokeWidth={1.5} />}
-                  currentRole={currentRole}
-                  initiallyOpen={activeSectionId === "reflection"}
-                  animationDelay={3}
-                  color="green"
-                  onItemVisibilityChange={(itemId, isVisible) => {
-                    if (isVisible) {
-                      setActiveSectionId("reflection");
-                      setActiveItemId(itemId);
-                    }
-                  }}
-                  registerRef={registerSectionRef}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Index;
