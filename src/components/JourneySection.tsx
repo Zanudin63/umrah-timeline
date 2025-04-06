@@ -1,6 +1,6 @@
 
 import React from "react";
-import { MapPin, Video, Headphones, ChevronDown, CheckCircle } from "lucide-react";
+import { MapPin, Video, Headphones, ChevronDown, CheckCircle, AlertCircle, DollarSign, HelpCircle, Heart } from "lucide-react";
 import { 
   Collapsible, 
   CollapsibleContent, 
@@ -21,6 +21,17 @@ export interface JourneyItem {
   videoLink?: string;
   checklistItems?: string[];
   editableBy: UserRole[];
+  commonMistakes?: string[];
+  costs?: {
+    item: string;
+    amount: string;
+    note?: string;
+  }[];
+  whatIfs?: {
+    scenario: string;
+    solution: string;
+  }[];
+  muhasabah?: string;
 }
 
 interface JourneySectionProps {
@@ -110,32 +121,36 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                 <CardContent className="space-y-3">
                   <p className="text-sm text-muted-foreground">{item.details}</p>
                   
-                  {item.audioDescription && (
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => playAudio(item.audioDescription || item.details)}
-                      className="mr-2"
-                    >
-                      <Headphones className="mr-2 h-4 w-4" />
-                      Listen
-                    </Button>
-                  )}
-                  
-                  {item.videoLink && (
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => window.open(item.videoLink, '_blank')}
-                    >
-                      <Video className="mr-2 h-4 w-4" />
-                      Watch Video
-                    </Button>
-                  )}
+                  <div className="flex flex-wrap gap-2">
+                    {item.audioDescription && (
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => playAudio(item.audioDescription || item.details)}
+                      >
+                        <Headphones className="mr-2 h-4 w-4" />
+                        Listen
+                      </Button>
+                    )}
+                    
+                    {item.videoLink && (
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => window.open(item.videoLink, '_blank')}
+                      >
+                        <Video className="mr-2 h-4 w-4" />
+                        Watch Video
+                      </Button>
+                    )}
+                  </div>
                   
                   {item.checklistItems && item.checklistItems.length > 0 && (
-                    <div className="mt-3">
-                      <h4 className="mb-2 text-sm font-medium">Checklist:</h4>
+                    <div className="mt-3 border-t pt-3">
+                      <h4 className="mb-2 flex items-center text-sm font-medium">
+                        <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
+                        Checklist:
+                      </h4>
                       <ul className="space-y-1">
                         {item.checklistItems.map((checkItem, index) => (
                           <li key={index} className="flex items-center text-sm">
@@ -144,6 +159,81 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           </li>
                         ))}
                       </ul>
+                    </div>
+                  )}
+
+                  {/* Common Mistakes Section */}
+                  {item.commonMistakes && item.commonMistakes.length > 0 && (
+                    <div className="mt-3 border-t pt-3">
+                      <h4 className="mb-2 flex items-center text-sm font-medium">
+                        <AlertCircle className="mr-2 h-4 w-4 text-amber-500" />
+                        Common Mistakes:
+                      </h4>
+                      <ul className="space-y-1">
+                        {item.commonMistakes.map((mistake, index) => (
+                          <li key={index} className="flex items-center text-sm">
+                            <AlertCircle className="mr-2 h-4 w-4 text-amber-500" />
+                            {mistake}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Costs Section */}
+                  {item.costs && item.costs.length > 0 && (
+                    <div className="mt-3 border-t pt-3">
+                      <h4 className="mb-2 flex items-center text-sm font-medium">
+                        <DollarSign className="mr-2 h-4 w-4 text-blue-500" />
+                        Estimated Costs:
+                      </h4>
+                      <div className="space-y-1">
+                        {item.costs.map((cost, index) => (
+                          <div key={index} className="flex items-start gap-2 text-sm">
+                            <DollarSign className="mt-0.5 h-4 w-4 text-blue-500" />
+                            <div>
+                              <div className="flex items-center justify-between">
+                                <span className="font-medium">{cost.item}:</span> 
+                                <span className="ml-2">{cost.amount}</span>
+                              </div>
+                              {cost.note && (
+                                <p className="text-xs text-muted-foreground">{cost.note}</p>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* What Ifs Section */}
+                  {item.whatIfs && item.whatIfs.length > 0 && (
+                    <div className="mt-3 border-t pt-3">
+                      <h4 className="mb-2 flex items-center text-sm font-medium">
+                        <HelpCircle className="mr-2 h-4 w-4 text-purple-500" />
+                        What If Scenarios:
+                      </h4>
+                      <div className="space-y-3">
+                        {item.whatIfs.map((scenario, index) => (
+                          <div key={index} className="rounded-md bg-secondary p-2 text-sm">
+                            <p className="font-medium text-primary">{scenario.scenario}</p>
+                            <p className="mt-1 text-muted-foreground">{scenario.solution}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Muhasabah (Self-reflection) Section */}
+                  {item.muhasabah && (
+                    <div className="mt-3 border-t pt-3">
+                      <h4 className="mb-2 flex items-center text-sm font-medium">
+                        <Heart className="mr-2 h-4 w-4 text-red-500" />
+                        Muhasabah (Self-reflection):
+                      </h4>
+                      <div className="italic rounded-md bg-accent/30 p-3 text-sm">
+                        {item.muhasabah}
+                      </div>
                     </div>
                   )}
                 </CardContent>
