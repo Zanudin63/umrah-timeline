@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Timeline from '@/components/Timeline';
 import TravelHorizonChart from '@/components/TravelHorizonChart';
@@ -94,7 +93,7 @@ const Index = () => {
       audioDescription: "For Hajj and Umrah, book your flights at least 3-4 months in advance. Choose reputable airlines with good track records for pilgrimage travel.",
       videoLink: "https://www.youtube.com/watch?v=example1",
       checklistItems: ["Book roundtrip flights", "Arrange airport transfers", "Purchase travel insurance", "Save digital copies of all tickets"],
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     },
     {
       id: 102,
@@ -104,7 +103,7 @@ const Index = () => {
       audioDescription: "The Umrah visa application must be done through authorized agencies. Your passport must have sufficient validity and the visa typically lasts for 30 days.",
       videoLink: "https://www.youtube.com/watch?v=example2",
       checklistItems: ["Check passport validity", "Apply for Umrah visa", "Make copies of passport", "Check entry/exit requirements"],
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     },
     {
       id: 103,
@@ -113,7 +112,7 @@ const Index = () => {
       details: "Get a thorough medical check-up before travel. Discuss with your doctor about the physical demands of Umrah and any necessary precautions given your health conditions.",
       audioDescription: "Umrah involves considerable walking and standing. Ensure you're physically prepared and have any necessary medications with proper documentation.",
       checklistItems: ["Complete medical check-up", "Prepare first aid kit", "Pack regular medications", "Get doctor's note for prescribed medications"],
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 104,
@@ -122,7 +121,7 @@ const Index = () => {
       details: "Meningococcal vaccination is mandatory for Hajj/Umrah visas. Other recommended vaccinations include seasonal influenza, pneumococcal, and COVID-19 vaccines.",
       audioDescription: "The Meningitis ACWY vaccine is required for pilgrimage visas. Make sure to get vaccinated at least 10 days before travel and carry the certificate.",
       checklistItems: ["Get meningococcal vaccination", "Consider flu vaccination", "Update routine vaccinations", "Carry vaccination certificates"],
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 105,
@@ -132,7 +131,7 @@ const Index = () => {
       audioDescription: "Accommodations near the Haram are more expensive but save time and energy on travel. Book through reputable agencies that specialize in pilgrimage trips.",
       videoLink: "https://www.youtube.com/watch?v=example3",
       checklistItems: ["Book Makkah accommodation", "Book Madinah accommodation", "Confirm all reservations", "Check cancellation policies"],
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     },
     {
       id: 106,
@@ -142,7 +141,7 @@ const Index = () => {
       audioDescription: "Pack light, breathable fabrics. Bring a small prayer mat, umbrella for sun protection, comfortable walking shoes, and minimal toiletries.",
       videoLink: "https://www.youtube.com/watch?v=example4",
       checklistItems: ["Prayer garments", "Comfortable walking shoes", "Travel adapter", "Basic medications", "Modest clothing", "Travel prayer mat"],
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 107,
@@ -151,7 +150,7 @@ const Index = () => {
       details: "Prepare a detailed budget. Bring a mix of cash (Saudi Riyals) and cards. Inform your bank about international travel to prevent card blocks.",
       audioDescription: "Estimate costs for meals, transportation, optional tours, and gifts. Keep some emergency funds and consider money belt for security.",
       checklistItems: ["Notify bank of travel", "Exchange currency", "Prepare emergency funds", "Create detailed budget", "Research tipping customs"],
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     }
   ];
 
@@ -163,7 +162,7 @@ const Index = () => {
       details: "Miqat refers to the designated boundary points around Makkah where pilgrims must enter the state of ihram before proceeding to Umrah. For flights to Jeddah, most pilgrims will enter ihram while on the airplane as they pass over or near Qarn al-Manazil.",
       audioDescription: "Miqat is a designated boundary around Makkah where you must enter the state of Ihram. Prepare by performing ghusl (full body wash), applying unscented products, and wearing proper ihram garments before crossing this boundary.",
       videoLink: "https://www.youtube.com/watch?v=example5",
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 202,
@@ -172,7 +171,7 @@ const Index = () => {
       details: "After entering the state of ihram at the Miqat, make the intention for Umrah by saying 'Labbayk Allahumma bi-Umrah' (Here I am O Allah, for Umrah). This verbal declaration should match your heartfelt intention.",
       audioDescription: "The intention or niyyah is made in your heart and then verbalized. Declare clearly 'Labbayk Allahumma bi-Umrah' (Here I am O Allah, for Umrah).",
       videoLink: "https://www.youtube.com/watch?v=example6",
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 203,
@@ -182,7 +181,7 @@ const Index = () => {
       audioDescription: "For men, ihram consists of two white unstitched cloths - one wrapped around the waist and the other draped over the shoulders. Women wear normal modest clothing. Maintain this sacred state by avoiding prohibited actions until completing Umrah.",
       videoLink: "https://www.youtube.com/watch?v=example7",
       checklistItems: ["Ihram garments (for men)", "Unscented toiletries", "Belt or pins to secure ihram", "Modest clothing (for women)"],
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 204,
@@ -191,7 +190,7 @@ const Index = () => {
       details: "Tawaf involves circling the Kaaba seven times in a counterclockwise direction, starting and ending at the Black Stone. During Tawaf, make supplications and recite prayers as you circle. The first three rounds are performed at a quick pace for men, while the remaining four are done at a normal walking pace.",
       audioDescription: "Begin tawaf from the Black Stone corner. Each circuit counts when you return to this starting point. Men perform 'ramal' (brisk walking) in the first three circuits. Supplicate freely in your language during this ritual.",
       videoLink: "https://www.youtube.com/watch?v=example8",
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 205,
@@ -200,7 +199,7 @@ const Index = () => {
       details: "Saie commemorates Hajar's search for water for her son Ismail. It involves walking seven times between the hills of Safa and Marwah, starting at Safa and ending at Marwah. There is a section where men traditionally jog lightly, marked by green lights.",
       audioDescription: "Begin at Safa by facing the Kaaba and reciting prayers. Walk to Marwah, then return to Safa. Each stretch counts as one lap. Men lightly jog in the marked section (between green lights). Complete seven laps, ending at Marwah.",
       videoLink: "https://www.youtube.com/watch?v=example9",
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 206,
@@ -209,7 +208,7 @@ const Index = () => {
       details: "After completing Saie, men shave their heads or trim their hair, and women trim a small amount of hair. This act marks the end of Umrah and releases you from the restrictions of ihram.",
       audioDescription: "For men, shaving the head completely is more rewarding, though trimming is acceptable. Women cut a small piece of hair (about the length of a fingertip). With this, your Umrah is complete and ihram restrictions end.",
       videoLink: "https://www.youtube.com/watch?v=example10",
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     }
   ];
 
@@ -221,7 +220,7 @@ const Index = () => {
       details: "Beyond performing Umrah, spend time in prayer and reflection at the Sacred Mosque. Visit the various floors and sections, observe the architecture, and find peaceful spots for personal worship.",
       audioDescription: "Masjid al-Haram has multiple levels and extensive facilities. Explore when less crowded, usually after Fajr or late evening prayers. Take time to appreciate its historical and spiritual significance.",
       videoLink: "https://www.youtube.com/watch?v=example11",
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 302,
@@ -230,7 +229,7 @@ const Index = () => {
       details: "This mountain contains the cave where Prophet Muhammad ﷺ and Abu Bakr hid for three days during their migration from Makkah to Madinah. Visiting requires a short journey from Makkah and climbing the mountain path.",
       audioDescription: "The cave in Jabal Thawr provided shelter to the Prophet and his companion. The difficult journey up the mountain offers historical perspective on this pivotal moment in Islamic history.",
       videoLink: "https://www.youtube.com/watch?v=example12",
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     },
     {
       id: 303,
@@ -239,7 +238,7 @@ const Index = () => {
       details: "Jabal Nur houses Cave Hira, where Prophet Muhammad ﷺ received his first revelation. The climb is strenuous, taking about 1-2 hours depending on fitness level.",
       audioDescription: "Cave Hira is where the first verses of the Quran were revealed. The challenging ascent offers magnificent views of Makkah and a profound spiritual connection to the beginnings of Islam.",
       videoLink: "https://www.youtube.com/watch?v=example13",
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     },
     {
       id: 304,
@@ -248,7 +247,7 @@ const Index = () => {
       details: "Although primarily Hajj sites, some Umrah pilgrims visit these locations to familiarize themselves with the Hajj journey. Mina is the tent city, Arafat is the plain of gathering, and Muzdalifah is where pilgrims collect pebbles for the stoning ritual.",
       audioDescription: "These sites are quieter outside Hajj season. Visiting provides insight into the complete pilgrimage experience and helps those planning for future Hajj.",
       videoLink: "https://www.youtube.com/watch?v=example14",
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     }
   ];
 
@@ -260,7 +259,7 @@ const Index = () => {
       details: "Most pilgrims travel from Makkah to Madinah by bus or car, a journey of approximately 450 km taking 5-6 hours. Some choose to fly between Jeddah and Madinah to save time.",
       audioDescription: "The road journey offers views of the Arabian landscape. Buses are comfortable with air conditioning and rest stops. Consider the Haramain High Speed Rail for a premium option that cuts travel time significantly.",
       videoLink: "https://www.youtube.com/watch?v=example15",
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     },
     {
       id: 402,
@@ -268,7 +267,7 @@ const Index = () => {
       description: "Lodging near Masjid Nabawi",
       details: "Like in Makkah, accommodations closer to the main mosque (Masjid Nabawi) are more convenient but pricier. The central area around the mosque has hotels in all price ranges.",
       audioDescription: "Madinah generally offers more affordable accommodation compared to Makkah. Consider the Markaziyah area for proximity to the mosque while maintaining reasonable prices.",
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     }
   ];
 
@@ -280,7 +279,7 @@ const Index = () => {
       details: "Masjid Nabawi houses the tomb of Prophet Muhammad ﷺ and his companions Abu Bakr and Umar. The mosque features the Rawdah (Garden of Paradise), an area between the Prophet's tomb and his pulpit, highly regarded for prayer.",
       audioDescription: "Enter with right foot first, reciting appropriate prayers. Pray in the Rawdah if possible, though this area gets extremely crowded. Visit the Prophet's tomb (women have specific times), offering salam and prayers in a calm, respectful manner.",
       videoLink: "https://www.youtube.com/watch?v=example16",
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 502,
@@ -289,7 +288,7 @@ const Index = () => {
       details: "This is the main cemetery of Madinah where many of the Prophet's companions, wives, and family members are buried. It's located adjacent to Masjid Nabawi.",
       audioDescription: "Men can visit Baqi during specific times. Recite appropriate prayers for the deceased and reflect on the legacy of early Muslims buried here.",
       videoLink: "https://www.youtube.com/watch?v=example17",
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 503,
@@ -298,7 +297,7 @@ const Index = () => {
       details: "Located about 5 km from Masjid Nabawi, this was the first mosque built in Islamic history. The Prophet ﷺ encouraged visiting it and praying there, saying it's equivalent to performing an Umrah.",
       audioDescription: "Visit Quba preferably on Saturday, following the Prophet's tradition. Pray two rakats and gain the reward equivalent to performing an Umrah.",
       videoLink: "https://www.youtube.com/watch?v=example18",
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     }
   ];
 
@@ -310,7 +309,7 @@ const Index = () => {
       details: "This mountain bears historical significance as the site of the Battle of Uhud in 625 CE. Visitors can see the martyrs' graves and gain historical perspective on this important event in Islamic history.",
       audioDescription: "The battle of Uhud taught important lessons about obedience and steadfastness. Visit the martyrs' cemetery and reflect on their sacrifice. The mountain provides context to the historical narratives of early Islam.",
       videoLink: "https://www.youtube.com/watch?v=example19",
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     },
     {
       id: 602,
@@ -319,7 +318,7 @@ const Index = () => {
       details: "This mosque is where the Prophet ﷺ received revelation to change the prayer direction (qiblah) from Jerusalem to the Kaaba in Makkah. It features two mihrabs (prayer niches) pointing in both directions.",
       audioDescription: "This site commemorates the transition in prayer direction. Observe the unique architecture with two mihrabs, a physical reminder of this significant change in Islamic practice.",
       videoLink: "https://www.youtube.com/watch?v=example20",
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     },
     {
       id: 603,
@@ -328,7 +327,7 @@ const Index = () => {
       details: "This area contains several small mosques commemorating the Battle of the Trench (Khandaq). Though called 'seven mosques,' the site actually contains six mosques including one where the Prophet ﷺ prayed during the battle.",
       audioDescription: "These modest mosques mark significant locations during the Siege of Medina. Understanding this battle provides insight into the challenging early period of Islam and the strategy employed to defend the city.",
       videoLink: "https://www.youtube.com/watch?v=example21",
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     }
   ];
 
@@ -340,7 +339,7 @@ const Index = () => {
       details: "Check out from your hotel, ensuring you've packed all belongings. Confirm your flight details and allow sufficient time to reach the airport, considering potential traffic delays.",
       audioDescription: "Purchase any final souvenirs or gifts (dates, prayer beads, Zamzam water if permitted). Settle all bills and notify your bank about your return to prevent card issues.",
       checklistItems: ["Confirm flight details", "Check hotel checkout time", "Pack all belongings", "Arrange airport transfer"],
-      editableBy: ['traveler', 'agent', 'admin']
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     },
     {
       id: 702,
@@ -349,7 +348,7 @@ const Index = () => {
       details: "Arrive at the airport at least 3 hours before your international flight. The airport can be busy, particularly during Hajj and Umrah seasons. Complete all exit procedures and security checks.",
       audioDescription: "The new Jeddah airport terminal has improved facilities. Be prepared for comprehensive security screening. Check whether you're allowed to carry Zamzam water (special containers might be required or airline policies might restrict it).",
       checklistItems: ["Allow 3+ hours before departure", "Check Zamzam water regulations", "Complete exit formalities", "Keep boarding pass and documents accessible"],
-      editableBy: ['traveler', 'airline', 'airport', 'admin']
+      editableBy: ['traveler', 'airline', 'airport', 'admin'] as UserRole[]
     },
     {
       id: 703,
@@ -357,7 +356,7 @@ const Index = () => {
       description: "Return journey by air",
       details: "The direct flight from Jeddah to Kuala Lumpur takes approximately 9-10 hours. Stay hydrated and move occasionally to prevent stiffness during the long flight.",
       audioDescription: "Use the flight time for reflection on your pilgrimage experience. Record your thoughts and memories while they're fresh. Consider your spiritual goals upon returning home.",
-      editableBy: ['airline', 'admin']
+      editableBy: ['airline', 'admin'] as UserRole[]
     },
     {
       id: 704,
@@ -366,7 +365,7 @@ const Index = () => {
       details: "Complete immigration and customs procedures at Kuala Lumpur International Airport. Declare any restricted items, particularly large quantities of Zamzam water if you're carrying it.",
       audioDescription: "Malaysian citizens usually have expedited entry procedures. Have your completed arrival card and passport ready. Collect luggage and proceed through customs declaration if necessary.",
       checklistItems: ["Complete arrival card", "Pass immigration control", "Collect baggage", "Clear customs"],
-      editableBy: ['traveler', 'airport', 'admin']
+      editableBy: ['traveler', 'airport', 'admin'] as UserRole[]
     },
     {
       id: 705,
@@ -374,7 +373,7 @@ const Index = () => {
       description: "Final leg of your journey",
       details: "Arrange transportation from KLIA to your home. Share your expected arrival time with family members who might be receiving you.",
       audioDescription: "It's traditional for returning pilgrims to be warmly welcomed by family and friends. Consider how you'll integrate the spiritual lessons from your journey into daily life going forward.",
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[]
     }
   ];
 
