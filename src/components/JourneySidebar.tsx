@@ -14,19 +14,64 @@ interface SidebarTabProps {
 const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: SidebarTabProps) => {
   // Special color for Preparations phase
   const isPreparations = title.toLowerCase() === "preparations";
+  // Special color for Travel Arrangements phase
+  const isTravelArrangements = title.toLowerCase() === "travel arrangements";
+  // Special color for Manasik Umrah phase (previously "During Umrah")
+  const isManasikUmrah = title.toLowerCase() === "during umrah" || title.toLowerCase() === "manasik umrah";
+  
+  // Transform "During Umrah" to "MANASIK UMRAH" for display
+  const displayTitle = isManasikUmrah ? "MANASIK UMRAH" : title;
+  
+  // Determine background color based on phase type and active state
+  let bgColorClass = "";
+  if (active) {
+    if (isPreparations) {
+      bgColorClass = "bg-[#112eed]";
+    } else if (isTravelArrangements) {
+      bgColorClass = "bg-[#410e69]";
+    } else if (isManasikUmrah) {
+      bgColorClass = "bg-[#410e69]";
+    } else {
+      bgColorClass = color;
+    }
+  } else if (isPreparations) {
+    bgColorClass = "hover:bg-[#112eed]/80 dark:hover:bg-[#112eed]/80";
+  } else if (isTravelArrangements || isManasikUmrah) {
+    bgColorClass = "hover:bg-[#410e69]/80 dark:hover:bg-[#410e69]/80";
+  } else {
+    bgColorClass = "hover:bg-muted dark:hover:bg-gray-700";
+  }
+  
+  // Determine text color for different phases
+  let textColorClass = "";
+  if (active) {
+    textColorClass = "text-white";
+  } else if (isPreparations && !active) {
+    textColorClass = "dark:text-[#8eed11]";
+  } else if ((isTravelArrangements || isManasikUmrah) && !active) {
+    textColorClass = "dark:text-[#8eed11]";
+  } else {
+    textColorClass = "sidebar-title";
+  }
   
   return (
     <div 
       className={cn(
         "flex items-center p-3 cursor-pointer transition-all rounded-l-lg mb-2 w-full",
-        active ? (isPreparations ? "bg-[#112eed] text-white" : `${color} text-white`) : 
-                 (isPreparations ? "hover:bg-[#112eed]/80 dark:hover:bg-[#112eed]/80" : "hover:bg-muted dark:hover:bg-gray-700")
+        bgColorClass,
+        textColorClass
       )}
       onClick={onClick}
     >
       <div className="mr-3 text-current">{icon}</div>
-      <span className={`font-medium text-sm uppercase ${isPreparations && !active ? "dark:text-[#8eed11]" : "sidebar-title"}`}>{title}</span>
-      {active && <div className={`absolute right-0 h-full w-1 ${isPreparations ? "bg-[#112eed]" : color}`} />}
+      <span className={`font-medium text-sm uppercase ${textColorClass}`}>{displayTitle}</span>
+      {active && (
+        <div className={`absolute right-0 h-full w-1 ${
+          isPreparations ? "bg-[#112eed]" : 
+          (isTravelArrangements || isManasikUmrah) ? "bg-[#410e69]" : 
+          color
+        }`} />
+      )}
     </div>
   );
 };
@@ -48,18 +93,31 @@ const JourneySidebar = ({
   activeSectionId, 
   onSectionSelect 
 }: JourneySidebarProps) => {
+  // Update section titles to reflect the new naming
+  const updatedSections = sections.map(section => {
+    if (section.title.toLowerCase() === "during umrah") {
+      return { ...section, title: "Manasik Umrah" };
+    }
+    return section;
+  });
+
   return (
     <div className="sticky top-6 h-[calc(100vh-3rem)] flex flex-col pr-2 overflow-y-auto w-[200px] mr-4">
       <div className="mb-6">
         <h3 className="font-bold uppercase mb-2 text-lg px-3 dark:text-[#8eed11] sidebar-title">Journey Phases</h3>
       </div>
       <div className="flex-1 flex flex-col w-full">
-        {sections.map((section) => (
+        {updatedSections.map((section) => (
           <SidebarTab
             key={section.id}
             title={section.title}
             active={activeSectionId === section.id}
-            color={section.title.toLowerCase() === "preparations" ? "bg-[#112eed]" : section.color}
+            color={
+              section.title.toLowerCase() === "preparations" ? "bg-[#112eed]" : 
+              (section.title.toLowerCase() === "travel arrangements" || 
+               section.title.toLowerCase() === "manasik umrah") ? "bg-[#410e69]" : 
+              section.color
+            }
             lightColor={section.lightColor}
             onClick={() => onSectionSelect(section.id)}
             icon={section.icon}

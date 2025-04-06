@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -66,8 +65,13 @@ export default {
 				phaseHeader: {
 					green: '#8eed11',
 					blue: '#112eed',
+					purple: '#410e69',
 					preparationsText: '#8eed11',
-					preparationsBackground: '#112eed'
+					preparationsBackground: '#112eed',
+					travelArrangementsText: '#8eed11',
+					travelArrangementsBackground: '#410e69',
+					manasikUmrahText: '#8eed11',
+					manasikUmrahBackground: '#410e69'
 				}
 			},
 			borderRadius: {

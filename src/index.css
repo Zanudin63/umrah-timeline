@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -106,9 +105,45 @@
     color: #8eed11;
   }
 
+  /* Special styling for Travel Arrangements phase */
+  .dark #travel-arrangements {
+    background-color: #410e69;
+  }
+  
+  .dark .travel-arrangements-header {
+    background-color: #410e69;
+    color: #8eed11;
+  }
+
+  /* Special styling for Manasik Umrah phase (previously During Umrah) */
+  .dark #during-umrah,
+  .dark #manasik-umrah {
+    background-color: #410e69;
+  }
+  
+  .dark .during-umrah-header,
+  .dark .manasik-umrah-header {
+    background-color: #410e69;
+    color: #8eed11;
+  }
+
   /* Make Preparations text always #8eed11 in dark mode */
   .dark [id="preparation"] h2,
   .dark [id="preparation"] .section-title {
+    color: #8eed11 !important;
+  }
+
+  /* Make Travel Arrangements text always #8eed11 in dark mode */
+  .dark [id="travel-arrangements"] h2,
+  .dark [id="travel-arrangements"] .section-title {
+    color: #8eed11 !important;
+  }
+
+  /* Make Manasik Umrah text always #8eed11 in dark mode */
+  .dark [id="during-umrah"] h2,
+  .dark [id="during-umrah"] .section-title,
+  .dark [id="manasik-umrah"] h2,
+  .dark [id="manasik-umrah"] .section-title {
     color: #8eed11 !important;
   }
 
