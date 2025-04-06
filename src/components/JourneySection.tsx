@@ -263,7 +263,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                               Checklist
                             </div>
                           </AccordionTrigger>
-                          <AccordionContent className="px-3 pb-1">
+                          <AccordionContent className="px-3 pb-1 accordion-content">
                             <ul className="space-y-0.5">
                               {item.checklistItems.map((checkItem, index) => {
                                 if (isChecklistHeader(checkItem)) {

@@ -225,6 +225,11 @@
   .section-content {
     @apply max-w-full;
   }
+
+  /* Update checklist subsection headers color for better legibility in dark mode */
+  .dark .accordion-content ul li div.font-semibold {
+    color: #e3f0c0 !important; 
+  }
 }
 
 /* Timeline styling */
