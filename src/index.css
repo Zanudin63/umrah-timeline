@@ -7,14 +7,14 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
- 
+
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
  
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 221.2 83.2% 53.3%;
+    --primary: 262 83% 58%;
     --primary-foreground: 210 40% 98%;
  
     --secondary: 210 40% 96.1%;
@@ -23,15 +23,15 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
  
-    --accent: 210 40% 96.1%;
+    --accent: 262 83% 88%;
     --accent-foreground: 222.2 47.4% 11.2%;
  
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
- 
+
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --ring: 262 83% 58%;
  
     --radius: 0.5rem;
   }
@@ -46,7 +46,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
  
-    --primary: 217.2 91.2% 59.8%;
+    --primary: 262 83% 58%;
     --primary-foreground: 222.2 47.4% 11.2%;
  
     --secondary: 217.2 32.6% 17.5%;
@@ -55,7 +55,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
  
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 262 83% 28%;
     --accent-foreground: 210 40% 98%;
  
     --destructive: 0 62.8% 30.6%;
@@ -63,7 +63,7 @@
  
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.5% 48%;
+    --ring: 262 83% 58%;
   }
 }
  
@@ -76,53 +76,40 @@
   }
 }
 
-/* Timeline specific styles */
+/* Timeline styling */
 .timeline-connector {
-  position: absolute;
-  left: 15px;
-  top: 24px;
-  bottom: 0;
-  width: 2px;
-  background: hsl(var(--primary));
-  transform: translateX(-50%);
+  @apply absolute top-0 left-0 h-full w-0.5 bg-primary/50;
 }
 
 .location-dot {
-  position: absolute;
-  left: 0;
-  top: 24px;
-  width: 16px;
-  height: 16px;
-  background: hsl(var(--background));
-  border: 2px solid hsl(var(--primary));
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
+  @apply absolute top-0 left-[-20px] z-10 mt-3;
 }
 
 .location-dot-inner {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 6px;
-  height: 6px;
-  background: hsl(var(--primary));
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+  @apply h-4 w-4 rounded-full border-2 border-primary bg-white;
 }
 
-/* Animation classes */
-.timeline-animation {
-  opacity: 0;
+.travel-card {
+  @apply mb-8 opacity-0;
   transform: translateY(20px);
   animation: fadeInUp 0.5s ease forwards;
 }
 
+.journey-section-animation {
+  @apply opacity-0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Animations */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+@keyframes slideUp {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -130,10 +117,18 @@
 }
 
 .animate-slide-up {
+  transform: translateY(20px);
   animation: slideUp 0.5s ease forwards;
+  animation-delay: var(--delay, 0s);
 }
 
-@keyframes slideUp {
+/* Add Timeline Animation */
+.timeline-animation {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -144,11 +139,6 @@
   }
 }
 
-.travel-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.travel-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+.timeline-animation {
+  animation-name: fadeIn;
 }
