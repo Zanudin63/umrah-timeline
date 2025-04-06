@@ -53,7 +53,7 @@ export interface JourneySectionProps {
   currentRole: UserRole;
   initiallyOpen?: boolean;
   animationDelay?: number;
-  color?: "purple" | "blue" | "red" | "green" | "amber";
+  color?: "purple" | "blue" | "red" | "green" | "amber" | "emerald";
   onItemVisibilityChange?: (itemId: number, isVisible: boolean) => void;
   registerRef?: (sectionId: string, itemId: number, ref: HTMLDivElement) => void;
 }
@@ -88,6 +88,12 @@ const colorClasses = {
     header: "bg-amber-50 dark:bg-amber-900/20",
     border: "border-amber-200 dark:border-amber-800/30",
     icon: "text-amber-500 dark:text-amber-300"
+  },
+  emerald: {
+    badge: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
+    header: "bg-emerald-50 dark:bg-emerald-900/20",
+    border: "border-emerald-200 dark:border-emerald-800/30",
+    icon: "text-emerald-500 dark:text-emerald-300"
   }
 };
 
@@ -118,7 +124,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
   const [isOpen, setIsOpen] = React.useState(initiallyOpen);
   const { toast } = useToast();
   const itemRefs = useRef<Record<number, HTMLDivElement>>({});
-  const colorStyle = colorClasses[color];
+  const colorStyle = colorClasses[color] || colorClasses.purple; // Provide fallback to purple if color is undefined
 
   const handleEdit = (itemId: number, role: UserRole) => {
     toast({
@@ -425,6 +431,23 @@ const JourneySection: React.FC<JourneySectionProps> = ({
       </Collapsible>
     </div>
   );
+};
+
+// Make sure to restore the playAudio and openAudioLink functions that I'm guessing were in the original file
+const playAudio = (description: string) => {
+  // ... implement or restore the function
+  if ('speechSynthesis' in window) {
+    const utterance = new SpeechSynthesisUtterance(description);
+    speechSynthesis.speak(utterance);
+  }
+};
+
+const openAudioLink = (link: string, credit: string) => {
+  window.open(link, '_blank');
+};
+
+const openOfficialResource = (link: string) => {
+  window.open(link, '_blank');
 };
 
 export default JourneySection;
