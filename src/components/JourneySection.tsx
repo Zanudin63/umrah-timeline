@@ -89,20 +89,11 @@ const colorClasses = {
   }
 };
 
-// Helper function to convert comma-separated lists into bullet points
-const formatTextWithBullets = (text: string): React.ReactNode => {
+// Function to integrate comma-separated text into paragraph format instead of bullets
+const formatTextIntegrated = (text: string): string => {
   if (!text.includes(", ")) return text;
   
-  const items = text.split(", ");
-  if (items.length <= 2) return text;
-  
-  return (
-    <ul className="list-disc pl-5 mt-2 space-y-1">
-      {items.map((item, index) => (
-        <li key={index} className="text-sm">{item}</li>
-      ))}
-    </ul>
-  );
+  return text.replace(/, /g, " ");
 };
 
 const JourneySection: React.FC<JourneySectionProps> = ({
@@ -195,23 +186,23 @@ const JourneySection: React.FC<JourneySectionProps> = ({
         <CollapsibleTrigger asChild>
           <Button 
             variant="ghost" 
-            className={`flex w-full items-center justify-between rounded-t-lg p-4 hover:bg-muted ${colorStyle.header}`}
+            className={`flex w-full items-center justify-between rounded-t-lg py-2 hover:bg-muted ${colorStyle.header}`}
           >
             <div className="flex items-center gap-2">
-              <div className={`flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 ${colorStyle.icon}`}>
+              <div className={`flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 ${colorStyle.icon}`}>
                 {icon}
               </div>
-              <div className="text-left">
-                <h3 className="text-lg font-bold uppercase">{title}</h3>
-                <p className="text-sm text-muted-foreground section-description">{description}</p>
+              <div className="text-left flex flex-col items-start justify-center">
+                <h3 className="text-lg font-bold uppercase leading-tight">{title}</h3>
+                <p className="text-xs text-muted-foreground section-description leading-tight mt-0">{description}</p>
               </div>
             </div>
-            <ChevronDown className={`h-5 w-5 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+            <ChevronDown className={`h-4 w-4 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
           </Button>
         </CollapsibleTrigger>
         
-        <CollapsibleContent className="rounded-b-lg p-4">
-          <div className="space-y-4">
+        <CollapsibleContent className="rounded-b-lg p-3">
+          <div className="space-y-3">
             {items.map((item) => (
               <div
                 key={item.id}
@@ -223,12 +214,10 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                 <Card 
                   className={`overflow-hidden transition-shadow hover:shadow-md ${colorStyle.border}`}
                 >
-                  <CardHeader className="flex flex-row items-center justify-between pb-2">
+                  <CardHeader className="flex flex-row items-center justify-between py-2 px-3">
                     <div>
-                      <CardTitle className="flex items-center text-md">
-                        {item.title}
-                      </CardTitle>
-                      <CardDescription className="section-description">{item.description}</CardDescription>
+                      <CardTitle className="flex items-center text-md">{item.title}</CardTitle>
+                      <CardDescription className="section-description text-xs">{item.description}</CardDescription>
                     </div>
                     <EditButtons 
                       itemId={item.id} 
@@ -237,9 +226,9 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                       onEdit={handleEdit} 
                     />
                   </CardHeader>
-                  <CardContent className="space-y-3">
+                  <CardContent className="space-y-2 py-1 px-3">
                     <div className="text-sm text-muted-foreground">
-                      {formatTextWithBullets(item.details)}
+                      {formatTextIntegrated(item.details)}
                     </div>
                     
                     <div className="flex flex-wrap gap-2">
@@ -248,8 +237,9 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           variant="outline" 
                           size="sm" 
                           onClick={() => playAudio(item.audioDescription || item.details)}
+                          className="h-7 text-xs"
                         >
-                          <Headphones className="mr-2 h-4 w-4" />
+                          <Headphones className="mr-1 h-3 w-3" />
                           Listen
                         </Button>
                       )}
@@ -259,27 +249,28 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           variant="outline" 
                           size="sm" 
                           onClick={() => window.open(item.videoLink, '_blank')}
+                          className="h-7 text-xs"
                         >
-                          <Video className="mr-2 h-4 w-4" />
+                          <Video className="mr-1 h-3 w-3" />
                           Watch Video
                         </Button>
                       )}
                     </div>
                     
-                    <Accordion type="multiple" className="w-full space-y-2">
+                    <Accordion type="multiple" className="w-full space-y-1">
                       {item.checklistItems && item.checklistItems.length > 0 && (
                         <AccordionItem value={`checklist-${item.id}`} className="border rounded-md">
-                          <AccordionTrigger className="px-4 py-2">
-                            <div className="flex items-center text-sm font-medium">
-                              <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
+                          <AccordionTrigger className="px-3 py-1">
+                            <div className="flex items-center text-xs font-medium">
+                              <CheckCircle className="mr-1 h-3 w-3 text-green-500" />
                               Checklist
                             </div>
                           </AccordionTrigger>
-                          <AccordionContent className="px-4 pb-2">
-                            <ul className="space-y-1">
+                          <AccordionContent className="px-3 pb-1">
+                            <ul className="space-y-0.5">
                               {item.checklistItems.map((checkItem, index) => (
-                                <li key={index} className="flex items-center text-sm">
-                                  <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
+                                <li key={index} className="flex items-center text-xs">
+                                  <CheckCircle className="mr-1 h-3 w-3 text-green-500" />
                                   {checkItem}
                                 </li>
                               ))}
@@ -291,17 +282,17 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                       {/* Common Mistakes Section */}
                       {item.commonMistakes && item.commonMistakes.length > 0 && (
                         <AccordionItem value={`mistakes-${item.id}`} className="border rounded-md">
-                          <AccordionTrigger className="px-4 py-2">
-                            <div className="flex items-center text-sm font-medium">
-                              <AlertCircle className="mr-2 h-4 w-4 text-amber-500" />
+                          <AccordionTrigger className="px-3 py-1">
+                            <div className="flex items-center text-xs font-medium">
+                              <AlertCircle className="mr-1 h-3 w-3 text-amber-500" />
                               Common Mistakes
                             </div>
                           </AccordionTrigger>
-                          <AccordionContent className="px-4 pb-2">
-                            <ul className="space-y-1">
+                          <AccordionContent className="px-3 pb-1">
+                            <ul className="space-y-0.5">
                               {item.commonMistakes.map((mistake, index) => (
-                                <li key={index} className="flex items-center text-sm">
-                                  <AlertCircle className="mr-2 h-4 w-4 text-amber-500" />
+                                <li key={index} className="flex items-center text-xs">
+                                  <AlertCircle className="mr-1 h-3 w-3 text-amber-500" />
                                   {mistake}
                                 </li>
                               ))}
@@ -313,21 +304,21 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                       {/* Costs Section */}
                       {item.costs && item.costs.length > 0 && (
                         <AccordionItem value={`costs-${item.id}`} className="border rounded-md">
-                          <AccordionTrigger className="px-4 py-2">
-                            <div className="flex items-center text-sm font-medium">
-                              <DollarSign className="mr-2 h-4 w-4 text-blue-500" />
+                          <AccordionTrigger className="px-3 py-1">
+                            <div className="flex items-center text-xs font-medium">
+                              <DollarSign className="mr-1 h-3 w-3 text-blue-500" />
                               Estimated Costs
                             </div>
                           </AccordionTrigger>
-                          <AccordionContent className="px-4 pb-2">
-                            <div className="space-y-1">
+                          <AccordionContent className="px-3 pb-1">
+                            <div className="space-y-0.5">
                               {item.costs.map((cost, index) => (
-                                <div key={index} className="flex items-start gap-2 text-sm">
-                                  <DollarSign className="mt-0.5 h-4 w-4 text-blue-500" />
+                                <div key={index} className="flex items-start gap-1 text-xs">
+                                  <DollarSign className="mt-0.5 h-3 w-3 text-blue-500" />
                                   <div>
                                     <div className="flex items-center justify-between">
                                       <span className="font-medium">{cost.item}:</span> 
-                                      <span className="ml-2">{cost.amount}</span>
+                                      <span className="ml-1">{cost.amount}</span>
                                     </div>
                                     {cost.note && (
                                       <p className="text-xs text-muted-foreground">{cost.note}</p>
@@ -343,18 +334,18 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                       {/* What Ifs Section */}
                       {item.whatIfs && item.whatIfs.length > 0 && (
                         <AccordionItem value={`whatifs-${item.id}`} className="border rounded-md">
-                          <AccordionTrigger className="px-4 py-2">
-                            <div className="flex items-center text-sm font-medium">
-                              <HelpCircle className="mr-2 h-4 w-4 text-purple-500" />
+                          <AccordionTrigger className="px-3 py-1">
+                            <div className="flex items-center text-xs font-medium">
+                              <HelpCircle className="mr-1 h-3 w-3 text-purple-500" />
                               What If Scenarios
                             </div>
                           </AccordionTrigger>
-                          <AccordionContent className="px-4 pb-2">
-                            <div className="space-y-3">
+                          <AccordionContent className="px-3 pb-1">
+                            <div className="space-y-1">
                               {item.whatIfs.map((scenario, index) => (
-                                <div key={index} className="rounded-md bg-secondary p-2 text-sm">
+                                <div key={index} className="rounded-md bg-secondary p-1 text-xs">
                                   <p className="font-medium text-primary">{scenario.scenario}</p>
-                                  <p className="mt-1 text-muted-foreground">{scenario.solution}</p>
+                                  <p className="mt-0.5 text-muted-foreground">{scenario.solution}</p>
                                 </div>
                               ))}
                             </div>
@@ -365,14 +356,14 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                       {/* Self Reflection Section */}
                       {item.muhasabah && (
                         <AccordionItem value={`muhasabah-${item.id}`} className="border rounded-md">
-                          <AccordionTrigger className="px-4 py-2">
-                            <div className="flex items-center text-sm font-medium">
-                              <Heart className="mr-2 h-4 w-4 text-red-500" />
+                          <AccordionTrigger className="px-3 py-1">
+                            <div className="flex items-center text-xs font-medium">
+                              <Heart className="mr-1 h-3 w-3 text-red-500" />
                               Self Reflection
                             </div>
                           </AccordionTrigger>
-                          <AccordionContent className="px-4 pb-2">
-                            <div className="italic rounded-md bg-accent/30 p-3 text-sm">
+                          <AccordionContent className="px-3 pb-1">
+                            <div className="italic rounded-md bg-accent/30 p-2 text-xs">
                               {item.muhasabah}
                             </div>
                           </AccordionContent>

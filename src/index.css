@@ -77,18 +77,18 @@
   }
   body {
     @apply bg-background text-foreground;
-    line-height: 1.4; /* Reduced from default */
+    line-height: 1.2; /* Further reduced line height */
   }
 
   /* Optimize heading spacing */
   h1, h2, h3, h4, h5, h6 {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
   }
 
   /* Reduce paragraph spacing */
   p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
   }
 
   /* Dark mode overrides with improved contrast */
@@ -234,23 +234,23 @@
 }
 
 .location-dot {
-  @apply absolute top-0 left-[-20px] z-10 mt-2; /* Reduced from mt-3 */
+  @apply absolute top-0 left-[-18px] z-10 mt-1.5;
 }
 
 .location-dot-inner {
-  @apply h-3 w-3 rounded-full border-2 border-primary bg-white dark:bg-secondary; /* Reduced from h-4 w-4 */
+  @apply h-2.5 w-2.5 rounded-full border-2 border-primary bg-white dark:bg-secondary;
 }
 
 .travel-card {
-  @apply mb-5 opacity-0; /* Reduced from mb-8 */
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s ease forwards;
+  @apply mb-3 opacity-0;
+  transform: translateY(15px);
+  animation: fadeInUp 0.4s ease forwards;
 }
 
 .journey-section-animation {
   @apply opacity-0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease forwards;
+  transform: translateY(15px);
+  animation: fadeInUp 0.5s ease forwards;
 }
 
 /* Animations */
@@ -269,21 +269,21 @@
 }
 
 .animate-slide-up {
-  transform: translateY(20px);
-  animation: slideUp 0.5s ease forwards;
+  transform: translateY(15px);
+  animation: slideUp 0.4s ease forwards;
   animation-delay: var(--delay, 0s);
 }
 
 /* Add Timeline Animation */
 .timeline-animation {
-  animation-duration: 0.5s;
+  animation-duration: 0.4s;
   animation-fill-mode: both;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
@@ -314,7 +314,7 @@
   
   /* Adjust spacing for mobile */
   .p-4 {
-    padding: 0.5rem; /* Reduced from 0.75rem */
+    padding: 0.5rem;
   }
   
   /* Make sure checkboxes and inputs stay within bounds */
