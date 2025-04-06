@@ -1,8 +1,7 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
-import { Luggage, Book, MapPin, Plane, PanelsTopLeft } from "lucide-react";
+import { Luggage, Book, MapPin, Plane, PanelsTopLeft, BookOpen } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import JourneySidebar from "@/components/JourneySidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -752,10 +751,241 @@ const Index = () => {
     }
   ];
 
+  const manasikHajiItems: JourneyItem[] = [
+    {
+      id: 20,
+      title: "Introduction to Hajj",
+      description: "Understanding the pillars and requirements of Hajj",
+      details: "Hajj is the fifth pillar of Islam, a mandatory religious duty that must be performed at least once in a lifetime by every able-bodied and financially capable Muslim. The rituals of Hajj take place during Dhul Hijjah, the last month of the Islamic calendar.",
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/TH-NOTA%20KAH%201446H%20_%20M3.pdf",
+      checklistItems: [
+        "1- Understanding the Five Pillars of Hajj",
+        "Ihram - Entering the sacred state with proper intention and attire",
+        "Wuquf at Arafah - Standing in Arafah from noon to sunset on 9th Dhul Hijjah",
+        "Tawaf Ifadah - Circling the Kaaba seven times after Wuquf",
+        "Sa'i - Walking between Safa and Marwa seven times",
+        "Staying within the boundaries of Mina during the prescribed days",
+        
+        "2- Types of Hajj",
+        "Hajj Ifrad - Performing Hajj only, without Umrah",
+        "Hajj Qiran - Performing Hajj and Umrah together with a single Ihram",
+        "Hajj Tamattu' - Performing Umrah first, then Hajj with a separate Ihram",
+        "Understand which type of Hajj is most suitable for your situation",
+        "Consult with knowledgeable scholars about the requirements for each type",
+        
+        "3- Preparation for Hajj",
+        "Physical preparation: Build stamina through regular walking",
+        "Financial preparation: Ensure funds are from halal sources",
+        "Spiritual preparation: Seek forgiveness and settle debts",
+        "Educational preparation: Learn about Hajj rituals in detail",
+        "Administrative preparation: Apply through authorized agents/Tabung Haji"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      commonMistakes: [
+        "Not understanding the difference between Hajj and Umrah rituals",
+        "Choosing an inappropriate type of Hajj for your situation",
+        "Insufficient physical preparation for the demanding rituals",
+        "Neglecting to learn the specific supplications for each ritual",
+        "Not understanding the specific requirements for women during Hajj"
+      ],
+      costs: [
+        {
+          item: "Basic Hajj Package",
+          amount: "$8,000 - $15,000",
+          note: "Varies by country of origin and package type"
+        },
+        {
+          item: "Additional Services",
+          amount: "$2,000 - $5,000",
+          note: "Premium accommodations, transportation, and food"
+        },
+        {
+          item: "Qurbani (Sacrifice)",
+          amount: "$150 - $300",
+          note: "Required for Hajj Tamattu' and Qiran"
+        }
+      ],
+      whatIfs: [
+        {
+          scenario: "What if I'm unable to complete all rituals due to health issues?",
+          solution: "Islam provides concessions for those with valid excuses. Consult Tabung Haji officials or scholars about alternatives or compensations available in your situation."
+        },
+        {
+          scenario: "What if I miss Wuquf at Arafah?",
+          solution: "Wuquf at Arafah is essential; without it, Hajj is invalid. If missed due to exceptional circumstances, you may need to perform Umrah instead and return for Hajj another year."
+        },
+        {
+          scenario: "What if I'm confused about which type of Hajj to perform?",
+          solution: "Consult with knowledgeable scholars or Tabung Haji officials. Generally, Hajj Tamattu' is recommended for first-timers as it's considered easier to manage."
+        }
+      ],
+      muhasabah: "Have I understood the significance of Hajj as a pillar of Islam? Am I undertaking this journey solely for Allah's pleasure? Am I prepared spiritually, physically, and educationally for this sacred duty? Have I settled my worldly affairs properly before embarking on this journey?"
+    },
+    {
+      id: 21,
+      title: "Wuquf at Arafah",
+      description: "The essential standing on the plain of Arafah",
+      details: "Wuquf (standing) at Arafah is the most crucial pillar of Hajj, without which the Hajj is invalid. It takes place on the 9th day of Dhul Hijjah, from noon until sunset, on the plain of Arafah.",
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/TH-NOTA%20KAH%201446H%20_%20M3.pdf",
+      checklistItems: [
+        "1- Before Wuquf",
+        "Ensure you are in the state of Ihram",
+        "Prepare physically and spiritually for the day",
+        "Bring sufficient water and sun protection",
+        "Learn the recommended supplications for Arafah",
+        "Understand the boundaries of Arafah",
+        
+        "2- During Wuquf",
+        "Remain within the boundaries of Arafah from noon until sunset",
+        "Stand facing the Qiblah when possible",
+        "Engage in continuous dua (supplication) and dhikr (remembrance of Allah)",
+        "Recite the Quran and seek forgiveness",
+        "Reflect on your life and renew your commitment to Allah",
+        
+        "3- Specific Duas for Arafah",
+        "Recite the dua: 'La ilaha illallahu wahdahu la sharika lah, lahul mulku wa lahul hamdu wa huwa 'ala kulli shay'in qadir'",
+        "Make abundant istighfar (seeking forgiveness)",
+        "Make personal duas in your native language if needed",
+        "Make duas for family, friends, and the entire Muslim ummah",
+        "Recite recommended duas from authentic sources"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      commonMistakes: [
+        "Leaving Arafah before sunset",
+        "Not being physically present within the boundaries of Arafah",
+        "Wasting time in idle conversation instead of worship",
+        "Not taking advantage of this special time for dua",
+        "Becoming distracted or sleeping through significant portions of Wuquf"
+      ],
+      whatIfs: [
+        {
+          scenario: "What if I fall ill during Wuquf?",
+          solution: "If you are physically present within the boundaries of Arafah for any portion of the prescribed time, even if ill or sleeping, your Wuquf is valid. Seek medical help if needed while remaining in Arafah if possible."
+        },
+        {
+          scenario: "What if I arrive late to Arafah?",
+          solution: "As long as you arrive at Arafah before Fajr of the 10th of Dhul Hijjah, your Hajj is valid, although it's best to be present for the entire prescribed time."
+        },
+        {
+          scenario: "What if I accidentally leave the boundaries of Arafah?",
+          solution: "Return to Arafah immediately if you realize you've crossed its boundaries. Consult with Tabung Haji officials or scholars if you're unsure about your situation."
+        }
+      ],
+      muhasabah: "Am I making the most of this unique opportunity at Arafah? Am I focusing on sincere repentance and dua during this critical time? Do I recognize that this day resembles the Day of Judgment, when all will stand before Allah? Am I approaching Allah with humility and hope?"
+    },
+    {
+      id: 22,
+      title: "Muzdalifah and Stoning",
+      description: "Staying at Muzdalifah and performing the ritual stoning",
+      details: "After Wuquf at Arafah, pilgrims proceed to Muzdalifah to spend the night and collect pebbles for the ritual stoning of the Jamarat (pillars) that symbolize Shaytan (Satan).",
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/TH-NOTA%20KAH%201446H%20_%20M3.pdf",
+      checklistItems: [
+        "1- At Muzdalifah",
+        "Pray Maghrib and Isha together (shortened and combined)",
+        "Collect 70 pebbles for the stoning ritual (or at least 7 for the first day)",
+        "Rest and get some sleep if possible",
+        "Leave Muzdalifah after midnight but before Fajr (women, elderly, and the weak may leave earlier)",
+        
+        "2- Stoning the Jamarat",
+        "Understand the proper sequence and timing for stoning",
+        "Use pebbles of the appropriate size (about the size of a chickpea)",
+        "Recite 'Bismillah, Allahu Akbar' with each throw",
+        "Aim carefully at the pillar, not at people",
+        "Maintain proper behavior and patience during crowded conditions",
+        
+        "3- Stoning Schedule",
+        "10th Dhul Hijjah: Stone only Jamarat al-Aqabah (the largest pillar) with seven pebbles",
+        "11th-13th Dhul Hijjah: Stone all three Jamarat daily (7 pebbles each) in sequence",
+        "Begin with the small pillar (al-Sughra), then the middle (al-Wusta), then the large (al-Aqabah)",
+        "Follow the designated routes and times to avoid crowds",
+        "Understand the permissible timing for stoning each day"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      commonMistakes: [
+        "Collecting pebbles from inappropriate locations",
+        "Using pebbles that are too large or too small",
+        "Throwing all pebbles at once instead of one by one",
+        "Missing the target or throwing without proper intention",
+        "Not following the correct sequence for stoning the three pillars",
+        "Going at peak crowded times when alternatives are available"
+      ],
+      whatIfs: [
+        {
+          scenario: "What if I miss collecting pebbles at Muzdalifah?",
+          solution: "You can collect pebbles at Mina or other permissible locations, but not from the Jamarat area itself or from unclean places."
+        },
+        {
+          scenario: "What if I'm unable to perform the stoning due to extreme crowds or physical inability?",
+          solution: "You can appoint someone to perform the stoning on your behalf (wakil). This is permissible for those who are elderly, sick, or otherwise unable to perform the ritual safely."
+        },
+        {
+          scenario: "What if I miss a day of stoning?",
+          solution: "You should make up the missed stoning the next day before performing that day's stoning, maintaining the proper sequence. A penalty (dam) may be required. Consult with scholars for specific guidance."
+        }
+      ],
+      muhasabah: "Am I performing this ritual with understanding of its significance as rejecting Shaytan and his temptations? Am I patient and considerate of others during the crowded ritual? Am I maintaining the proper spiritual focus rather than treating this as a mechanical act?"
+    },
+    {
+      id: 23,
+      title: "Tawaf Ifadah and Final Rituals",
+      description: "The essential Tawaf and completion of Hajj",
+      details: "Tawaf Ifadah is an essential pillar of Hajj performed after returning from Arafah and Muzdalifah. It is followed by Sa'i (if not done earlier) and the shaving or trimming of hair to partially exit the state of Ihram.",
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/TH-NOTA%20KAH%201446H%20_%20M3.pdf",
+      checklistItems: [
+        "1- Tawaf Ifadah Essentials",
+        "Ensure you are in a state of ritual purity (wudu)",
+        "Perform Tawaf by circling the Kaaba seven times counterclockwise",
+        "Make dua and dhikr during the Tawaf",
+        "Pray two rakaat at Maqam Ibrahim after completion (if possible)",
+        "Drink Zamzam water after Tawaf",
+        
+        "2- Sa'i if Not Done Earlier",
+        "Perform Sa'i between Safa and Marwa (seven rounds)",
+        "Begin at Safa and end at Marwa",
+        "Make dua at each hill and during the walking",
+        "Jog lightly in the marked area (for men) if able",
+        
+        "3- Partial Release from Ihram",
+        "After Tawaf Ifadah and Sa'i, men should shave or trim their hair",
+        "Women trim a small portion of hair (about an inch)",
+        "With this, most Ihram restrictions are lifted except for marital relations",
+        "Complete release occurs after Tawaf al-Wada (Farewell Tawaf)",
+        
+        "4- Final Days and Farewell",
+        "Continue stoning the Jamarat on the 11th-13th of Dhul Hijjah",
+        "Perform Tawaf al-Wada (Farewell Tawaf) as the last act before leaving Makkah",
+        "Make final prayers and duas at the Haram",
+        "Leave with heightened spiritual awareness and commitment"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      commonMistakes: [
+        "Performing Tawaf Ifadah without proper ritual purity",
+        "Rushing through the rituals without spiritual focus",
+        "Forgetting to perform Sa'i if it wasn't done after Tawaf Qudum",
+        "Leaving Makkah without performing Tawaf al-Wada",
+        "Not understanding which restrictions are lifted at which stage",
+        "Misconceptions about when Hajj is completely concluded"
+      ],
+      whatIfs: [
+        {
+          scenario: "What if I'm unable to perform Tawaf Ifadah on the 10th of Dhul Hijjah?",
+          solution: "Tawaf Ifadah can be delayed, though it's best to perform it on the 10th. It can be done anytime before leaving Makkah, but certain Ihram restrictions remain until it's completed."
+        },
+        {
+          scenario: "What if women experience menses before performing Tawaf Ifadah?",
+          solution: "They should wait until their purification is complete before performing Tawaf. If travel arrangements make this impossible, special rulings apply and should be discussed with scholars."
+        },
+        {
+          scenario: "What if I forget to perform Tawaf al-Wada before leaving Makkah?",
+          solution: "If still nearby, return and perform it. If significant distance has been traveled, a penalty (dam) may be required. Consult scholars for guidance based on your specific situation."
+        }
+      ],
+      muhasabah: "Have I maintained the spiritual focus throughout these final rituals? Am I contemplating how to maintain the spiritual transformation of Hajj after returning home? Am I grateful to Allah for allowing me to complete these sacred rites? Will I live as a better Muslim because of this experience?"
+    }
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
-      // Auto-detect which section is in view and update accordingly
-      // This is a simplified version, you might want to enhance this
       const sections = ["preparation", "travel-arrangements", "during-umrah", "ziarah", "reflection"];
       
       for (const sectionId of sections) {
@@ -774,7 +1004,6 @@ const Index = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle scrolling to section
   const handleSectionSelect = (sectionId: string) => {
     setActiveSectionId(sectionId);
     const element = document.getElementById(sectionId);
@@ -787,14 +1016,12 @@ const Index = () => {
     }
   };
 
-  // Handle visibility change for journey items
   const handleItemVisibilityChange = (itemId: number, isVisible: boolean) => {
     if (isVisible) {
       setActiveItemId(itemId);
     }
   };
 
-  // Register refs for sections and items
   const registerRef = (sectionId: string, itemId: number, ref: HTMLDivElement) => {
     if (!sectionRefs.current[sectionId]) {
       sectionRefs.current[sectionId] = {};
@@ -802,7 +1029,6 @@ const Index = () => {
     sectionRefs.current[sectionId][itemId] = ref;
   };
 
-  // Navigate to specific section and item
   const handleNavigate = (sectionId: string, itemId: number) => {
     setActiveSectionId(sectionId);
     setActiveItemId(itemId);
@@ -833,7 +1059,7 @@ const Index = () => {
     },
     {
       id: "during-umrah",
-      title: "During Umrah",
+      title: "Manasik Umrah",
       description: "Guidance for the rituals of Umrah",
       items: duringUmrahItems,
       icon: <MapPin className="h-4 w-4" />,
@@ -857,6 +1083,15 @@ const Index = () => {
       icon: <PanelsTopLeft className="h-4 w-4" />,
       color: "green",
       lightColor: "bg-green-100"
+    },
+    {
+      id: "manasik-haji",
+      title: "Manasik Haji",
+      description: "Understanding and performing the rituals of Hajj",
+      items: manasikHajiItems,
+      icon: <BookOpen className="h-4 w-4" />,
+      color: "emerald",
+      lightColor: "bg-emerald-100"
     }
   ];
 
@@ -897,7 +1132,6 @@ const Index = () => {
       </header>
 
       <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar */}
         <div className={`${isMobile ? (showSidebar ? 'fixed inset-0 z-40 block bg-background/80 backdrop-blur-sm' : 'hidden') : 'block'} md:relative md:block`}>
           <div className={`h-full border-r bg-background transition-transform md:translate-x-0 ${isMobile && !showSidebar ? '-translate-x-full' : 'translate-x-0'}`}>
             <JourneySidebar
@@ -908,7 +1142,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Main content */}
         <main className="flex-1 overflow-auto p-3 md:p-6">
           <div className="mx-auto max-w-2xl space-y-6">
             {sections.map((section, index) => (
@@ -930,7 +1163,6 @@ const Index = () => {
           </div>
         </main>
 
-        {/* Navigation sidebar */}
         {!isMobile && (
           <div className="hidden w-64 border-l md:block">
             <div className="sticky top-16 p-4">
