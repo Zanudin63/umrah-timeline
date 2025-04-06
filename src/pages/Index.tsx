@@ -457,4 +457,246 @@ const Index = () => {
       details: "Masjid Nabawi houses the tomb of Prophet Muhammad ﷺ and his companions Abu Bakr and Umar. The mosque features the Rawdah (Garden of Paradise), an area between the Prophet's tomb and his pulpit, highly regarded for prayer.",
       audioDescription: "Enter with right foot first, reciting appropriate prayers. Pray in the Rawdah if possible, though this area gets extremely crowded. Visit the Prophet's tomb (women have specific times), offering salam and prayers in a calm, respectful manner.",
       videoLink: "https://www.youtube.com/watch?v=example16",
-      editableBy: ['traveler', 'admin']
+      editableBy: ['traveler', 'admin'] as UserRole[],
+      commonMistakes: [
+        "Rushing through the visit without proper reverence",
+        "Taking inappropriate photographs inside the mosque",
+        "Not following designated paths and times for visiting the tomb area"
+      ],
+      whatIfs: [
+        { scenario: "What if I can't access the Rawdah due to crowds?", solution: "Pray anywhere in the mosque, as prayer in any part of Masjid Nabawi carries great reward. Try visiting during less busy times like between Fajr and sunrise." },
+        { scenario: "What if I get separated from my group?", solution: "Have a predetermined meeting point. Gate numbers are clearly marked, and the distinctive green dome serves as an excellent landmark." }
+      ],
+      muhasabah: "Consider how being in the presence of the Prophet's ﷺ resting place affects your connection to the message he brought. How can you better embody his teachings in your daily life?"
+    },
+    {
+      id: 502,
+      title: "Jannat al-Baqi",
+      description: "Historic cemetery near Masjid Nabawi",
+      details: "Jannat al-Baqi is the main cemetery of Madinah where many companions and family members of the Prophet ﷺ are buried. Visitation may be restricted to certain times and gender-specific.",
+      audioDescription: "When visiting Baqi, remember it's a solemn place of reflection. Offer greetings to the deceased and make supplications for them. Follow local regulations regarding visitation as these may change.",
+      editableBy: ['traveler', 'admin'] as UserRole[],
+      commonMistakes: [
+        "Attempting to visit outside of designated hours",
+        "Not adhering to gender-specific visiting times (often men only)",
+        "Engaging in practices not aligned with Islamic teachings regarding grave visitation"
+      ],
+      whatIfs: [
+        { scenario: "What if I cannot enter Jannat al-Baqi?", solution: "You can still make supplications for the deceased from outside. The spiritual benefit comes from remembering death and the hereafter, which can be done from anywhere." }
+      ]
+    },
+    {
+      id: 503,
+      title: "Masjid Quba",
+      description: "First mosque built in Islamic history",
+      details: "Masjid Quba is the first mosque built by Prophet Muhammad ﷺ upon arriving in Madinah. There is special reward for praying in Quba, equivalent to performing an Umrah.",
+      audioDescription: "Located about 5km from Masjid Nabawi, Quba is easily accessible by taxi or bus. The Prophet ﷺ would visit this mosque every Saturday, and performing two rakahs of prayer here carries great reward.",
+      videoLink: "https://www.youtube.com/watch?v=example17",
+      editableBy: ['traveler', 'admin'] as UserRole[],
+      costs: [
+        { item: "Taxi to Quba (roundtrip)", amount: "30-50 SAR", note: "Per vehicle" },
+        { item: "Bus fare", amount: "5-10 SAR", note: "Per person each way" }
+      ],
+      whatIfs: [
+        { scenario: "What if I have limited time in Madinah?", solution: "Quba should be a priority visit after Masjid Nabawi due to its significance. Even a brief visit for a two-rakah prayer is valuable." }
+      ],
+      muhasabah: "The foundation of Quba Mosque was built on taqwa (God-consciousness). Reflect on the foundations of your own actions and intentions - are they built on sincere devotion to Allah?"
+    }
+  ];
+
+  const madinahZiarah = [
+    {
+      id: 601,
+      title: "Battlefield of Uhud",
+      description: "Historic battle site and burial place of martyrs",
+      details: "Mount Uhud was the site of the Battle of Uhud in the third year after Hijrah. Here, many companions including Hamza, the Prophet's uncle, were martyred. The site holds historical lessons about perseverance and following divine guidance.",
+      audioDescription: "Located about 5-6 km from Masjid Nabawi, Uhud is marked by the distinctive mountain where archers were stationed. Visit the martyrs' cemetery (Shuhada Uhud) and reflect on the historical events that unfolded here.",
+      videoLink: "https://www.youtube.com/watch?v=example18",
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[],
+      costs: [
+        { item: "Transportation to Uhud", amount: "40-70 SAR", note: "Roundtrip taxi fare" },
+        { item: "Guided tour (optional)", amount: "50-100 SAR", note: "For historical context" }
+      ],
+      whatIfs: [
+        { scenario: "What if I want to climb Mount Uhud?", solution: "While some travelers do climb partially up the mountain, full climbing is generally not encouraged. Stay with groups and respect any barriers or restrictions in place." }
+      ],
+      muhasabah: "The Battle of Uhud teaches us about the consequences of disobeying leadership and being tempted by worldly gains. What areas in your life might benefit from greater discipline and focus on the collective good over individual desire?"
+    },
+    {
+      id: 602,
+      title: "Masjid Qiblatain",
+      description: "Mosque of the Two Qiblahs",
+      details: "This is where the Prophet ﷺ received revelation to change the prayer direction (qiblah) from Jerusalem to the Kaaba in Makkah, during the noon prayer. The mosque uniquely has prayer niches (mihrabs) facing both directions.",
+      audioDescription: "Located about 4km from Masjid Nabawi, this mosque commemorates a pivotal moment in Islamic history. Despite having two mihrabs, prayers are only performed facing the Kaaba.",
+      videoLink: "https://www.youtube.com/watch?v=example19",
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[],
+      costs: [
+        { item: "Taxi fare", amount: "30-50 SAR", note: "Roundtrip" }
+      ],
+      whatIfs: [
+        { scenario: "What if I visit during prayer times?", solution: "Join the congregation for prayer. Outside of prayer times, the mosque is open for visitors to explore its historical significance." }
+      ],
+      muhasabah: "The changing of the qiblah demonstrates immediate obedience to divine commands. How quickly do you respond to guidance when it comes to you, even if it means changing established patterns?"
+    },
+    {
+      id: 603,
+      title: "Masjid al-Jumua",
+      description: "Site of the first Friday prayer",
+      details: "This mosque marks the location where Prophet Muhammad ﷺ led the first Friday (Jumua) prayer in Islamic history. It's located in the valley of Ranuna in Madinah.",
+      audioDescription: "A lesser-visited but historically significant mosque, usually included in organized ziyarah tours. Consider visiting on a Friday if your schedule permits for added significance.",
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
+    }
+  ];
+
+  const returnJourney = [
+    {
+      id: 701,
+      title: "Departure Preparation",
+      description: "Getting ready to return home",
+      details: "Prepare for departure by packing Zamzam water, gifts (if purchased), and ensuring all travel documents are in order. Most hotels provide luggage scales to check weight limits.",
+      audioDescription: "Airlines typically allow 5-10 liters of Zamzam water per passenger. Use specialized containers or the ones sold near the Haramain for secure transport. Don't forget to leave extra time for airport security.",
+      videoLink: "https://www.youtube.com/watch?v=example20",
+      checklistItems: ["Pack Zamzam water securely", "Ensure all gifts are properly packed", "Check luggage weight", "Confirm flight details", "Arrange airport transfer"],
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[],
+      commonMistakes: [
+        "Not properly securing Zamzam water containers, leading to leakage",
+        "Exceeding baggage weight limits with souvenirs and gifts",
+        "Not allowing enough time for airport procedures in Jeddah or Madinah"
+      ],
+      costs: [
+        { item: "Zamzam containers", amount: "20-50 SAR", note: "Depending on size and quality" },
+        { item: "Excess baggage fees", amount: "Varies by airline", note: "Can be substantial if overweight" },
+        { item: "Airport transfer", amount: "80-150 SAR", note: "Depending on city and time" }
+      ],
+      whatIfs: [
+        { scenario: "What if my Zamzam water exceeds the airline allowance?", solution: "Consider distributing it among family members traveling with you. Some travelers ship it separately, though this can be costly." },
+        { scenario: "What if my flight is delayed or canceled?", solution: "Contact your travel agent immediately. Most hotels can extend stays on short notice during non-peak seasons, though possibly at different rates." }
+      ],
+      muhasabah: "As you prepare to leave the holy lands, reflect on what spiritual provisions you're taking back with you. How will you maintain the spiritual high and implement positive changes in your regular life?"
+    },
+    {
+      id: 702,
+      title: "Return Travel",
+      description: "Journey back to Malaysia",
+      details: "The return journey often feels shorter than the outbound one. Use this time for reflection on your pilgrimage experience and setting intentions for implementing changes in your daily life.",
+      audioDescription: "During the long flight home, review the duas and practices you've learned. Many pilgrims feel a sense of sadness leaving the holy places - channel this emotion into positive resolutions.",
+      checklistItems: ["Keep travel documents accessible", "Stay hydrated during flight", "Protect Zamzam water during transport", "Set intentions for home"],
+      editableBy: ['traveler', 'airline', 'admin'] as UserRole[],
+      whatIfs: [
+        { scenario: "What if I feel spiritually downcast after returning home?", solution: "This is common and known as 'post-Umrah blues.' Stay connected with fellow pilgrims, join study circles, and gradually implement lessons learned during your journey." },
+        { scenario: "What if customs questions my religious items?", solution: "Prayer rugs, Zamzam water, and dates are common items pilgrims bring back. Most customs officials are familiar with these. Keep receipts for more expensive items." }
+      ],
+      muhasabah: "The Prophet ﷺ taught that the best deeds are those that are consistent, even if small. What small but consistent practices from your journey can you incorporate into your daily routine back home?"
+    },
+    {
+      id: 703,
+      title: "Post-Journey Integration",
+      description: "Maintaining the Umrah spirit at home",
+      details: "The real test of Umrah begins after returning home. How will you maintain the spiritual momentum and implement the lessons learned during your journey?",
+      audioDescription: "Consider creating a 30-day plan with specific actionable items: increased prayer, regular Quran reading, community service, or other commitments you made during your pilgrimage.",
+      checklistItems: ["Share experiences respectfully", "Implement new spiritual habits", "Stay connected with pilgrimage companions", "Plan for future visits"],
+      editableBy: ['traveler', 'admin'] as UserRole[],
+      commonMistakes: [
+        "Boasting about the journey rather than focusing on spiritual growth",
+        "Quickly falling back into old habits and routines",
+        "Not documenting reflections and commitments made during the journey"
+      ],
+      whatIfs: [
+        { scenario: "What if people ask about my experience?", solution: "Share genuinely but humbly. Focus on how the journey changed you rather than just describing places. Consider preparing a small gathering to share experiences and photos." },
+        { scenario: "What if I struggle to maintain new habits?", solution: "Start small and be consistent. Connect with local communities or online groups focused on spiritual growth. Remember that spiritual development is a lifelong journey." }
+      ],
+      muhasabah: "The Arabic word for 'travel' (safar) comes from a root that means 'to unveil' or 'to discover.' What has your journey unveiled about yourself, and how can you continue this discovery at home?"
+    }
+  ];
+
+  return (
+    <div className="container mx-auto py-8 px-4">
+      <h1 className="text-3xl font-bold mb-8 text-center">Umrah Journey Planner</h1>
+      
+      <Tabs defaultValue="timeline" className="mb-8">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="timeline">Timeline</TabsTrigger>
+          <TabsTrigger value="duration">Duration</TabsTrigger>
+          <TabsTrigger value="summary">Summary</TabsTrigger>
+        </TabsList>
+        <TabsContent value="timeline">
+          <Timeline locations={locations} />
+        </TabsContent>
+        <TabsContent value="duration">
+          <TravelHorizonChart segments={travelSegments} totalDuration={totalDuration} />
+        </TabsContent>
+        <TabsContent value="summary">
+          <TravelSummary locations={locations} totalDuration={totalDuration} />
+        </TabsContent>
+      </Tabs>
+      
+      <div className="space-y-6">
+        <JourneySection 
+          title="Travel Preparations" 
+          description="Essential preparations before your journey"
+          items={travelPreparations}
+          icon={<Calendar className="h-5 w-5" />}
+          currentRole={currentRole}
+          initiallyOpen={true}
+          animationDelay={0}
+        />
+        
+        <JourneySection 
+          title="Umrah Manasik" 
+          description="Rituals of Umrah"
+          items={umrahManasik}
+          icon={<Book className="h-5 w-5" />}
+          currentRole={currentRole}
+          animationDelay={1}
+        />
+        
+        <JourneySection 
+          title="Ziarah in Makkah" 
+          description="Visiting significant sites in Makkah"
+          items={makkahZiarah}
+          icon={<MapPin className="h-5 w-5" />}
+          currentRole={currentRole}
+          animationDelay={2}
+        />
+        
+        <JourneySection 
+          title="Journey to Madinah" 
+          description="Travel and stay in the City of the Prophet"
+          items={madinahJourney}
+          icon={<Route className="h-5 w-5" />}
+          currentRole={currentRole}
+          animationDelay={3}
+        />
+        
+        <JourneySection 
+          title="Madinah Rituals" 
+          description="Important sites and practices in Madinah"
+          items={madinahRituals}
+          icon={<Star className="h-5 w-5" />}
+          currentRole={currentRole}
+          animationDelay={4}
+        />
+        
+        <JourneySection 
+          title="Ziarah in Madinah" 
+          description="Visiting historical sites in and around Madinah"
+          items={madinahZiarah}
+          icon={<Flag className="h-5 w-5" />}
+          currentRole={currentRole}
+          animationDelay={5}
+        />
+        
+        <JourneySection 
+          title="Return Journey" 
+          description="Travel back and maintaining the spirit of Umrah"
+          items={returnJourney}
+          icon={<Home className="h-5 w-5" />}
+          currentRole={currentRole}
+          animationDelay={6}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Index;
