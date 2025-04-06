@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
@@ -698,3 +699,251 @@ const Index = () => {
         "Learn about the historical significance of each site",
         "Perform prayers at each mosque if possible",
         "Take respectful photos for personal remembrance"
+      ],
+      editableBy: ["guide", "admin"],
+      commonMistakes: [
+        "Rushing through visits without learning the history",
+        "Missing the spiritual significance of these sites",
+        "Treating the visit as tourism rather than worship",
+        "Taking inappropriate photos",
+        "Missing prayer times while sightseeing"
+      ],
+      whatIfs: [
+        {
+          scenario: "What if some sites are closed during my visit?",
+          solution: "Check opening times in advance. Adjust your schedule accordingly. Focus on accessible sites."
+        },
+        {
+          scenario: "What if I don't have time to visit all historical sites?",
+          solution: "Prioritize Quba Mosque and other significant sites. Quality of visit is more important than quantity."
+        }
+      ],
+      muhasabah: "Am I visiting these sites with proper reverence? Am I connecting with Islamic history during these visits? Am I praying with greater focus at these blessed sites?"
+    }
+  ];
+
+  const reflectionItems: JourneyItem[] = [
+    {
+      id: 16,
+      title: "Personal Reflection",
+      description: "Reflecting on the spiritual journey of Umrah",
+      details: "Take time to reflect on your Umrah experience and the impact it has had on your spiritual life.",
+      checklistItems: [
+        "Find a quiet place for reflection",
+        "Journal about your experiences",
+        "Identify moments of spiritual significance",
+        "Consider lessons learned during Umrah",
+        "Plan how to maintain spiritual momentum"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      whatIfs: [
+        {
+          scenario: "What if I don't feel spiritually transformed after Umrah?",
+          solution: "Spiritual growth happens gradually. Continue making dua and reflecting on your experience. The impact may become apparent over time."
+        },
+        {
+          scenario: "What if I'm struggling to maintain spiritual practices after returning home?",
+          solution: "Start with small, consistent acts of worship. Connect with a local community for support. Set realistic goals for spiritual growth."
+        }
+      ],
+      muhasabah: "Have I truly internalized the lessons of my Umrah? Am I applying these spiritual insights to my daily life? How has my relationship with Allah changed through this journey?"
+    }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Auto-detect which section is in view and update accordingly
+      // This is a simplified version, you might want to enhance this
+      const sections = ["preparation", "travel-arrangements", "during-umrah", "ziarah", "reflection"];
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+            setActiveSectionId(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Handle scrolling to section
+  const handleSectionSelect = (sectionId: string) => {
+    setActiveSectionId(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+
+    if (isMobile) {
+      setShowSidebar(false);
+    }
+  };
+
+  // Handle visibility change for journey items
+  const handleItemVisibilityChange = (itemId: number, isVisible: boolean) => {
+    if (isVisible) {
+      setActiveItemId(itemId);
+    }
+  };
+
+  // Register refs for sections and items
+  const registerRef = (sectionId: string, itemId: number, ref: HTMLDivElement) => {
+    if (!sectionRefs.current[sectionId]) {
+      sectionRefs.current[sectionId] = {};
+    }
+    sectionRefs.current[sectionId][itemId] = ref;
+  };
+
+  // Navigate to specific section and item
+  const handleNavigate = (sectionId: string, itemId: number) => {
+    setActiveSectionId(sectionId);
+    setActiveItemId(itemId);
+    
+    if (sectionRefs.current[sectionId] && sectionRefs.current[sectionId][itemId]) {
+      sectionRefs.current[sectionId][itemId].scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const sections = [
+    {
+      id: "preparation",
+      title: "Preparations",
+      description: "Essential preparation steps before Umrah",
+      items: preparationItems,
+      icon: <Luggage className="h-4 w-4" />,
+      color: "blue",
+      lightColor: "bg-blue-100"
+    },
+    {
+      id: "travel-arrangements",
+      title: "Travel Arrangements",
+      description: "Planning your journey to the Holy Land",
+      items: travelArrangementsItems,
+      icon: <Plane className="h-4 w-4" />,
+      color: "purple",
+      lightColor: "bg-purple-100"
+    },
+    {
+      id: "during-umrah",
+      title: "During Umrah",
+      description: "Guidance for the rituals of Umrah",
+      items: duringUmrahItems,
+      icon: <MapPin className="h-4 w-4" />,
+      color: "red",
+      lightColor: "bg-red-100"
+    },
+    {
+      id: "ziarah",
+      title: "Ziarah",
+      description: "Visiting significant places",
+      items: ziarahItems,
+      icon: <Book className="h-4 w-4" />,
+      color: "amber",
+      lightColor: "bg-amber-100"
+    },
+    {
+      id: "reflection",
+      title: "Reflection",
+      description: "Reflecting on your spiritual journey",
+      items: reflectionItems,
+      icon: <PanelsTopLeft className="h-4 w-4" />,
+      color: "green",
+      lightColor: "bg-green-100"
+    }
+  ];
+
+  const sidebarSections = sections.map(section => ({
+    id: section.id,
+    title: section.title,
+    color: section.color,
+    lightColor: section.lightColor,
+    icon: section.icon
+  }));
+
+  const indexSections = sections.map(section => ({
+    id: section.id,
+    title: section.title,
+    color: `bg-${section.color}-100 text-${section.color}-800 dark:bg-${section.color}-900/20 dark:text-${section.color}-300`,
+    icon: section.icon,
+    items: section.items.map(item => ({
+      id: item.id,
+      title: item.title
+    }))
+  }));
+
+  return (
+    <div className="relative flex min-h-[100dvh] flex-col">
+      <header className="sticky top-0 z-10 flex h-12 items-center justify-between border-b bg-background px-3 md:px-6">
+        <h1 className="text-lg font-bold">Umrah Journey Companion</h1>
+        <div className="flex items-center space-x-2">
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8 md:hidden"
+            onClick={() => setShowSidebar(!showSidebar)}
+          >
+            <PanelsTopLeft className="h-4 w-4" />
+          </Button>
+          <ThemeToggle />
+        </div>
+      </header>
+
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar */}
+        <div className={`${isMobile ? (showSidebar ? 'fixed inset-0 z-40 block bg-background/80 backdrop-blur-sm' : 'hidden') : 'block'} md:relative md:block`}>
+          <div className={`h-full border-r bg-background transition-transform md:translate-x-0 ${isMobile && !showSidebar ? '-translate-x-full' : 'translate-x-0'}`}>
+            <JourneySidebar
+              sections={sidebarSections}
+              activeSectionId={activeSectionId}
+              onSectionSelect={handleSectionSelect}
+            />
+          </div>
+        </div>
+
+        {/* Main content */}
+        <main className="flex-1 overflow-auto p-3 md:p-6">
+          <div className="mx-auto max-w-2xl space-y-6">
+            {sections.map((section, index) => (
+              <JourneySection
+                key={section.id}
+                id={section.id}
+                title={section.title}
+                description={section.description}
+                items={section.items}
+                icon={section.icon}
+                currentRole={currentRole}
+                initiallyOpen={activeSectionId === section.id}
+                animationDelay={index}
+                color={section.color as any}
+                onItemVisibilityChange={handleItemVisibilityChange}
+                registerRef={registerRef}
+              />
+            ))}
+          </div>
+        </main>
+
+        {/* Navigation sidebar */}
+        {!isMobile && (
+          <div className="hidden w-64 border-l md:block">
+            <div className="sticky top-16 p-4">
+              <JourneyIndex
+                sections={indexSections}
+                activeSectionId={activeSectionId}
+                activeItemId={activeItemId}
+                onNavigate={handleNavigate}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Index;
