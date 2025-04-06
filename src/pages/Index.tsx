@@ -19,16 +19,18 @@ const Index = () => {
       id: 18,
       title: "Attend Umrah Courses",
       description: "Participating in structured courses to learn Umrah rituals",
-      details: "Attend organized courses or workshops that provide comprehensive education about Umrah rituals, requirements, and etiquette from qualified scholars or experienced guides.",
+      details: "Attend organized courses or workshops that provide comprehensive education about Umrah rituals, requirements, and etiquette from qualified scholars or experienced guides. The Tabung Haji Kursus Asas Haji (KAH) is an excellent resource for Malaysian pilgrims, providing detailed guidance and preparation information.",
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/TH-NOTA%20KAH%201446H%20_%20M3.pdf",
       checklistItems: [
         "Research local mosques offering Umrah courses",
-        "Register for a structured Umrah preparation program",
+        "Register for a structured Umrah preparation program (like Tabung Haji KAH for Malaysians)",
         "Attend all sessions consistently",
         "Take detailed notes during classes",
         "Ask questions to clarify doubts",
         "Practice ritual movements (like tawaf and sa'i procedures)",
         "Participate in group discussions and learning activities",
-        "Review course materials thoroughly before travel"
+        "Review course materials thoroughly before travel",
+        "Download and study official guidance materials (e.g., Tabung Haji Nota KAH)"
       ],
       editableBy: ["imam", "guide", "admin"],
       commonMistakes: [
@@ -36,7 +38,8 @@ const Index = () => {
         "Not taking notes during important explanations",
         "Feeling shy to ask questions about unclear topics",
         "Not practicing the physical aspects of rituals",
-        "Relying only on online information without expert guidance"
+        "Relying only on online information without expert guidance",
+        "Not referring to official documents and resources from authorized organizations"
       ],
       costs: [
         {
@@ -53,19 +56,28 @@ const Index = () => {
           item: "Course Materials",
           amount: "$10 - $30",
           note: "Books, handouts, and resources"
+        },
+        {
+          item: "Official Registration (Tabung Haji)",
+          amount: "Varies",
+          note: "For Malaysian pilgrims using the official Tabung Haji system"
         }
       ],
       whatIfs: [
         {
           scenario: "What if there are no courses available in my area?",
-          solution: "Look for online courses from reputable Islamic institutions. Many organizations offer virtual classes that allow remote participation and even Q&A sessions."
+          solution: "Look for online courses from reputable Islamic institutions or official hajj/umrah management bodies like Tabung Haji. Many organizations offer virtual classes that allow remote participation and even Q&A sessions."
         },
         {
           scenario: "What if I don't understand the language used in the course?",
-          solution: "Seek courses in your preferred language or bring a translator with you. Alternatively, request translated materials or find a bilingual study partner."
+          solution: "Seek courses in your preferred language or bring a translator with you. Alternatively, request translated materials or find a bilingual study partner. Official institutions like Tabung Haji often provide materials in multiple languages."
+        },
+        {
+          scenario: "What if I need more detailed documentation?",
+          solution: "Refer to official resources like the Tabung Haji Nota KAH document available at https://www.tabunghaji.gov.my/sites/default/kah/TH-NOTA%20KAH%201446H%20_%20M3.pdf for comprehensive guidance on all aspects of the journey."
         }
       ],
-      muhasabah: "Am I approaching these courses with sincerity and dedication? Do I value the opportunity to learn from experienced teachers? Am I making the effort to apply what I learn in preparation for my journey?"
+      muhasabah: "Am I approaching these courses with sincerity and dedication? Do I value the opportunity to learn from experienced teachers? Am I making the effort to apply what I learn in preparation for my journey? Have I sought guidance from official sources and authorized institutions?"
     },
     {
       id: 1,

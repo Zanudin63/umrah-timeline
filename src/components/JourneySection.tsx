@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { MapPin, Video, Headphones, ChevronDown, CheckCircle, AlertCircle, DollarSign, HelpCircle, Heart } from "lucide-react";
+import { MapPin, Video, Headphones, ChevronDown, CheckCircle, AlertCircle, DollarSign, HelpCircle, Heart, FileText } from "lucide-react";
 import { 
   Collapsible, 
   CollapsibleContent, 
@@ -27,6 +27,7 @@ export interface JourneyItem {
   audioLink?: string;
   audioCredit?: string;
   videoLink?: string;
+  officialResourceLink?: string;
   checklistItems?: string[];
   editableBy: UserRole[];
   commonMistakes?: string[];
@@ -40,20 +41,6 @@ export interface JourneyItem {
     solution: string;
   }[];
   muhasabah?: string;
-}
-
-interface JourneySectionProps {
-  id: string;
-  title: string;
-  description: string;
-  items: JourneyItem[];
-  icon: React.ReactNode;
-  currentRole: UserRole;
-  initiallyOpen?: boolean;
-  animationDelay?: number;
-  color?: "purple" | "blue" | "red" | "green" | "amber";
-  onItemVisibilityChange?: (itemId: number, isVisible: boolean) => void;
-  registerRef?: (sectionId: string, itemId: number, ref: HTMLDivElement) => void;
 }
 
 const colorClasses = {
@@ -142,6 +129,14 @@ const JourneySection: React.FC<JourneySectionProps> = ({
     toast({
       title: "Audio Resource",
       description: credit || "Opening audio resource...",
+    });
+  };
+
+  const openOfficialResource = (link: string) => {
+    window.open(link, '_blank');
+    toast({
+      title: "Official Resource",
+      description: "Opening official documentation...",
     });
   };
 
@@ -272,6 +267,18 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                         >
                           <Video className="mr-1 h-3 w-3" />
                           Watch Video
+                        </Button>
+                      )}
+
+                      {item.officialResourceLink && (
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          onClick={() => openOfficialResource(item.officialResourceLink || "")}
+                          className="h-7 text-xs"
+                        >
+                          <FileText className="mr-1 h-3 w-3" />
+                          Official Resource
                         </Button>
                       )}
                     </div>
