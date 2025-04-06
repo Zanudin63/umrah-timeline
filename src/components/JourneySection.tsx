@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { MapPin, Video, Headphones, ChevronDown, CheckCircle, AlertCircle, DollarSign, HelpCircle, Heart, FileText } from "lucide-react";
 import { 
@@ -53,7 +52,7 @@ export interface JourneySectionProps {
   currentRole: UserRole;
   initiallyOpen?: boolean;
   animationDelay?: number;
-  color?: "purple" | "blue" | "red" | "green" | "amber" | "emerald";
+  color?: "purple" | "blue" | "red" | "green" | "amber" | "emerald" | "indigo";
   onItemVisibilityChange?: (itemId: number, isVisible: boolean) => void;
   registerRef?: (sectionId: string, itemId: number, ref: HTMLDivElement) => void;
 }
@@ -94,6 +93,12 @@ const colorClasses = {
     header: "bg-emerald-50 dark:bg-emerald-900/20",
     border: "border-emerald-200 dark:border-emerald-800/30",
     icon: "text-emerald-500 dark:text-emerald-300"
+  },
+  indigo: {
+    badge: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
+    header: "bg-indigo-50 dark:bg-indigo-900/20",
+    border: "border-indigo-200 dark:border-indigo-800/30",
+    icon: "text-indigo-500 dark:text-indigo-300"
   }
 };
 
@@ -124,7 +129,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
   const [isOpen, setIsOpen] = React.useState(initiallyOpen);
   const { toast } = useToast();
   const itemRefs = useRef<Record<number, HTMLDivElement>>({});
-  const colorStyle = colorClasses[color] || colorClasses.purple; // Provide fallback to purple if color is undefined
+  const colorStyle = colorClasses[color] || colorClasses.purple;
 
   const handleEdit = (itemId: number, role: UserRole) => {
     toast({
@@ -431,23 +436,6 @@ const JourneySection: React.FC<JourneySectionProps> = ({
       </Collapsible>
     </div>
   );
-};
-
-// Make sure to restore the playAudio and openAudioLink functions that I'm guessing were in the original file
-const playAudio = (description: string) => {
-  // ... implement or restore the function
-  if ('speechSynthesis' in window) {
-    const utterance = new SpeechSynthesisUtterance(description);
-    speechSynthesis.speak(utterance);
-  }
-};
-
-const openAudioLink = (link: string, credit: string) => {
-  window.open(link, '_blank');
-};
-
-const openOfficialResource = (link: string) => {
-  window.open(link, '_blank');
 };
 
 export default JourneySection;

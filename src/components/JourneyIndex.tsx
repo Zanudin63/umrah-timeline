@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Clipboard, Heart, Plane, Book, MapPin } from "lucide-react";
+import { Clipboard, Heart, Plane, Book, MapPin, FileText } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface IndexSection {
