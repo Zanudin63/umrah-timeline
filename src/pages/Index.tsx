@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
-import { Luggage, Heart, Book, Camel, Plane } from "lucide-react";
+import { Luggage, Heart, Book, MapPin, Plane } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import JourneySidebar from "@/components/JourneySidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -742,7 +742,7 @@ const Index = () => {
     {
       id: "ziarah",
       title: "Ziarah",
-      icon: <Camel className="h-10 w-10" strokeWidth={1.5} />,
+      icon: <MapPin className="h-10 w-10" strokeWidth={1.5} />,
       color: "bg-amber-600",
       lightColor: "bg-amber-100"
     },
@@ -780,7 +780,7 @@ const Index = () => {
     {
       id: "ziarah",
       title: "Ziarah",
-      icon: <Camel className="h-6 w-6 text-white" strokeWidth={1.5} />,
+      icon: <MapPin className="h-6 w-6 text-white" strokeWidth={1.5} />,
       color: "bg-amber-500",
       items: ziarahItems.map(item => ({ id: item.id, title: item.title }))
     },
@@ -971,7 +971,7 @@ const Index = () => {
                   title="Ziarah"
                   description="Visiting historical and significant sites in Makkah and Madinah"
                   items={ziarahItems}
-                  icon={<Camel className="h-10 w-10" strokeWidth={1.5} />}
+                  icon={<MapPin className="h-10 w-10" strokeWidth={1.5} />}
                   currentRole={currentRole}
                   initiallyOpen={activeSectionId === "ziarah"}
                   animationDelay={2.5}
