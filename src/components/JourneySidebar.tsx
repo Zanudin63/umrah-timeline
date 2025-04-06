@@ -18,15 +18,12 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
   const isPreparations = title.toLowerCase() === "preparations";
   // Special color for Travel Arrangements phase
   const isTravelArrangements = title.toLowerCase() === "travel arrangements";
-  // Special color for Manasik Umrah phase (previously "During Umrah")
-  const isManasikUmrah = title.toLowerCase() === "during umrah" || title.toLowerCase() === "manasik umrah";
+  // Special color for Manasik Umrah phase
+  const isManasikUmrah = title.toLowerCase() === "manasik umrah";
   // Special color for Ziarah phase
   const isZiarah = title.toLowerCase() === "ziarah";
   // Special color for Reflection phase
   const isReflection = title.toLowerCase() === "reflection" || title.toLowerCase().includes("reflection");
-  
-  // Transform "During Umrah" to "MANASIK UMRAH" for display
-  const displayTitle = isManasikUmrah ? "MANASIK UMRAH" : title;
   
   // Determine background color based on phase type and active state
   let bgColorClass = "";
@@ -73,14 +70,14 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
   return (
     <div 
       className={cn(
-        "flex items-center py-2 px-3 cursor-pointer transition-all rounded-l-lg mb-1 w-full border-transparent", /* Reduced py from p-3 and mb-2 to mb-1 */
+        "flex items-center py-2 px-3 cursor-pointer transition-all rounded-l-lg mb-1 w-full border-transparent",
         bgColorClass,
         textColorClass
       )}
       onClick={onClick}
     >
-      <div className="mr-2 text-current">{icon}</div> {/* Reduced mr from mr-3 */}
-      <span className={`font-medium ${isMobile ? "text-xs" : "text-sm"} uppercase ${textColorClass}`}>{displayTitle}</span>
+      <div className="mr-2 text-current">{icon}</div>
+      <span className={`font-medium ${isMobile ? "text-xs" : "text-sm"} uppercase ${textColorClass}`}>{title}</span>
       {active && (
         <div className={`absolute right-0 h-full w-1 ${
           isPreparations ? "bg-[#112eed]" : 
@@ -123,9 +120,9 @@ const JourneySidebar = ({
   const isMobile = useIsMobile();
 
   return (
-    <div className="sticky top-6 h-[calc(100vh-3rem)] flex flex-col pr-2 overflow-y-auto w-full max-w-[200px] mr-3 border-transparent"> {/* Reduced mr from mr-4 to mr-3 */}
-      <div className="mb-2 md:mb-3"> {/* Reduced mb from mb-4/md:mb-6 to mb-2/md:mb-3 */}
-        <h3 className={`font-bold uppercase mb-1 ${isMobile ? "text-base" : "text-lg"} px-3 dark:text-[#8eed11] sidebar-title`}> {/* Reduced mb from mb-2 to mb-1 */}
+    <div className="sticky top-6 h-[calc(100vh-3rem)] flex flex-col pr-2 overflow-y-auto w-full max-w-[200px] mr-3 border-transparent">
+      <div className="mb-2 md:mb-3">
+        <h3 className={`font-bold uppercase mb-1 ${isMobile ? "text-base" : "text-lg"} px-3 dark:text-[#8eed11] sidebar-title`}>
           Journey Phases
         </h3>
       </div>

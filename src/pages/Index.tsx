@@ -734,7 +734,7 @@ const Index = () => {
     },
     {
       id: "during-umrah",
-      title: "Manasik",
+      title: "Manasik Umrah",
       icon: <Heart className="h-10 w-10" strokeWidth={1.5} />,
       color: "bg-red-600",
       lightColor: "bg-red-100"
@@ -772,7 +772,7 @@ const Index = () => {
     },
     {
       id: "during-umrah",
-      title: "During Umrah",
+      title: "Manasik Umrah",
       icon: <Heart className="h-6 w-6 text-white" strokeWidth={1.5} />,
       color: "bg-red-500",
       items: duringUmrahItems.map(item => ({ id: item.id, title: item.title }))
@@ -944,7 +944,7 @@ const Index = () => {
               >
                 <JourneySection
                   id="during-umrah"
-                  title="During Umrah"
+                  title="Manasik Umrah"
                   description="Performing the rituals of Umrah in Makkah"
                   items={duringUmrahItems}
                   icon={<Heart className="h-10 w-10" strokeWidth={1.5} />}
