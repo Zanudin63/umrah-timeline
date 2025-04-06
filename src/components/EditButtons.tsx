@@ -5,7 +5,7 @@ import { Edit, Lock, AlertCircle, Plane, Users } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useToast } from "@/hooks/use-toast";
 
-export type UserRole = 'traveler' | 'agent' | 'airline' | 'airport' | 'admin';
+export type UserRole = 'traveler' | 'agent' | 'airline' | 'airport' | 'admin' | 'pilgrim' | 'guide' | 'doctor' | 'imam';
 
 interface EditButtonsProps {
   itemId: number;
@@ -29,7 +29,11 @@ export const EditButtons: React.FC<EditButtonsProps> = ({
     agent: <Edit className="h-4 w-4" />,
     airline: <Plane className="h-4 w-4" />,
     airport: <AlertCircle className="h-4 w-4" />,
-    admin: <Edit className="h-4 w-4" />
+    admin: <Edit className="h-4 w-4" />,
+    pilgrim: <Users className="h-4 w-4" />,
+    guide: <Edit className="h-4 w-4" />,
+    doctor: <AlertCircle className="h-4 w-4" />,
+    imam: <Edit className="h-4 w-4" />
   };
   
   const handleEditClick = () => {
