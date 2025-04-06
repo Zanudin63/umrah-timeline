@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
-import { Luggage, Book, MapPin, Plane, PanelTopLeft } from "lucide-react";
+import { Luggage, Book, MapPin, Plane, PanelsTopLeft } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import JourneySidebar from "@/components/JourneySidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -264,6 +264,58 @@ const Index = () => {
         }
       ],
       muhasabah: "Have I put in sufficient effort to learn the rituals properly? Am I taking this worship seriously by preparing with knowledge? Am I balancing between fear of mistakes and trust in Allah's mercy? Have I asked questions about aspects I don't understand?"
+    },
+    {
+      id: 18,
+      title: "Attend Umrah Courses",
+      description: "Participating in structured courses to learn Umrah rituals",
+      details: "Attend organized courses or workshops that provide comprehensive education about Umrah rituals, requirements, and etiquette from qualified scholars or experienced guides.",
+      checklistItems: [
+        "Research local mosques offering Umrah courses",
+        "Register for a structured Umrah preparation program",
+        "Attend all sessions consistently",
+        "Take detailed notes during classes",
+        "Ask questions to clarify doubts",
+        "Practice ritual movements (like tawaf and sa'i procedures)",
+        "Participate in group discussions and learning activities",
+        "Review course materials thoroughly before travel"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      commonMistakes: [
+        "Skipping sessions or arriving late to classes",
+        "Not taking notes during important explanations",
+        "Feeling shy to ask questions about unclear topics",
+        "Not practicing the physical aspects of rituals",
+        "Relying only on online information without expert guidance"
+      ],
+      costs: [
+        {
+          item: "Basic Umrah Course",
+          amount: "$0 - $50",
+          note: "Many mosques offer free or low-cost programs"
+        },
+        {
+          item: "Intensive Preparation Program",
+          amount: "$50 - $200",
+          note: "For multi-week courses with materials included"
+        },
+        {
+          item: "Course Materials",
+          amount: "$10 - $30",
+          note: "Books, handouts, and resources"
+        }
+      ],
+      whatIfs: [
+        {
+          scenario: "What if there are no courses available in my area?",
+          solution: "Look for online courses from reputable Islamic institutions. Many organizations offer virtual classes that allow remote participation and even Q&A sessions."
+        },
+        {
+          scenario: "What if I don't understand the language used in the course?",
+          solution: "Seek courses in your preferred language or bring a translator with you. Alternatively, request translated materials or find a bilingual study partner."
+        }
+      ],
+      muhasabah: "Am I approaching these courses with sincerity and dedication? Do I value the opportunity to learn from experienced teachers? Am I making the effort to apply what I learn in preparation for my journey?"
     }
   ];
 
@@ -735,7 +787,7 @@ const Index = () => {
     {
       id: "during-umrah",
       title: "Manasik Umrah",
-      icon: <PanelTopLeft className="h-10 w-10" strokeWidth={1.5} />,
+      icon: <PanelsTopLeft className="h-10 w-10" strokeWidth={1.5} />,
       color: "bg-red-600",
       lightColor: "bg-red-100"
     },
@@ -773,7 +825,7 @@ const Index = () => {
     {
       id: "during-umrah",
       title: "Manasik Umrah",
-      icon: <PanelTopLeft className="h-6 w-6 text-white" strokeWidth={1.5} />,
+      icon: <PanelsTopLeft className="h-6 w-6 text-white" strokeWidth={1.5} />,
       color: "bg-red-500",
       items: duringUmrahItems.map(item => ({ id: item.id, title: item.title }))
     },
@@ -947,7 +999,7 @@ const Index = () => {
                   title="Manasik Umrah"
                   description="Performing the rituals of Umrah in Makkah"
                   items={duringUmrahItems}
-                  icon={<PanelTopLeft className="h-10 w-10" strokeWidth={1.5} />}
+                  icon={<PanelsTopLeft className="h-10 w-10" strokeWidth={1.5} />}
                   currentRole={currentRole}
                   initiallyOpen={activeSectionId === "during-umrah"}
                   animationDelay={2}

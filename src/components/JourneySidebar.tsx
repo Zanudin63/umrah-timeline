@@ -1,8 +1,7 @@
-
 import React from "react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Luggage, Book, MapPin, Heart, PanelTopLeft } from "lucide-react";
+import { Luggage, Book, MapPin, Heart, PanelsTopLeft } from "lucide-react";
 
 interface SidebarTabProps {
   title: string;
@@ -14,18 +13,12 @@ interface SidebarTabProps {
 }
 
 const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: SidebarTabProps) => {
-  // Special color for Preparations phase
   const isPreparations = title.toLowerCase() === "preparations";
-  // Special color for Travel Arrangements phase
   const isTravelArrangements = title.toLowerCase() === "travel arrangements";
-  // Special color for Manasik Umrah phase
   const isManasikUmrah = title.toLowerCase() === "manasik umrah";
-  // Special color for Ziarah phase
   const isZiarah = title.toLowerCase() === "ziarah";
-  // Special color for Reflection phase
   const isReflection = title.toLowerCase() === "reflection" || title.toLowerCase().includes("reflection");
   
-  // Determine background color based on phase type and active state
   let bgColorClass = "";
   if (active) {
     if (isPreparations) {
@@ -55,7 +48,6 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
     bgColorClass = "hover:bg-muted dark:hover:bg-gray-700";
   }
   
-  // Determine text color for different phases
   let textColorClass = "";
   if (active) {
     textColorClass = "text-white";
@@ -109,7 +101,6 @@ const JourneySidebar = ({
   activeSectionId, 
   onSectionSelect 
 }: JourneySidebarProps) => {
-  // Update section titles to reflect the new naming
   const updatedSections = sections.map(section => {
     if (section.title.toLowerCase() === "during umrah") {
       return { ...section, title: "Manasik Umrah" };
