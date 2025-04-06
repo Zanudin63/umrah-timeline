@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
-import { MapPin, Heart, Book, User, Clipboard, Calendar, Plane, Home } from "lucide-react";
+import { MapPin, Heart, Book, User, Clipboard, Calendar, Plane, Home, Landmark } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import JourneySidebar from "@/components/JourneySidebar";
 
@@ -512,6 +512,108 @@ const Index = () => {
     }
   ];
 
+  const ziarahItems: JourneyItem[] = [
+    {
+      id: 15,
+      title: "Visits to Historical Mosques",
+      description: "Visiting sacred mosques of historical significance",
+      details: "Visit historical mosques like Quba Mosque, the first mosque in Islam, and Masjid Qiblatain, where the qibla direction was changed.",
+      checklistItems: [
+        "Visit Quba Mosque and pray two rakahs",
+        "Visit Masjid Qiblatain and learn its history",
+        "Visit the Seven Mosques (Sab'ah Masajid)",
+        "Learn about the historical significance of each site",
+        "Perform prayers at each mosque if possible",
+        "Take respectful photos for personal remembrance"
+      ],
+      editableBy: ["guide", "imam", "admin"],
+      commonMistakes: [
+        "Rushing through visits without understanding significance",
+        "Missing the opportunity to pray at Quba Mosque",
+        "Visiting only popular sites and missing other significant locations",
+        "Taking disrespectful photos or disturbing worshippers",
+        "Not planning visits according to prayer times"
+      ],
+      whatIfs: [
+        {
+          scenario: "What if the mosques are closed when I visit?",
+          solution: "Check opening times beforehand. Most historical mosques follow prayer times. Plan your visit accordingly."
+        },
+        {
+          scenario: "What if it's too crowded during my visit?",
+          solution: "Visit during off-peak hours early morning or late evening. Weekdays are generally less crowded than weekends."
+        }
+      ],
+      muhasabah: "Am I visiting these sacred sites with proper reverence and intention? Am I taking the time to understand their historical significance in Islam? How can I apply the lessons from these places in my daily life?"
+    },
+    {
+      id: 16,
+      title: "Visit to Madinah",
+      description: "Visiting the Prophet's Mosque and significant sites in Madinah",
+      details: "Visit Masjid Nabawi, the Prophet's Mosque, and pay respect at the Rawdah and the Prophet's (PBUH) grave. Visit Jannat Al-Baqi cemetery and Mount Uhud.",
+      checklistItems: [
+        "Visit Masjid Nabawi and offer prayers",
+        "Visit Rawdah (the Garden of Paradise)",
+        "Send peace and blessings upon the Prophet (PBUH) at his grave",
+        "Visit graves of companions at Jannat Al-Baqi",
+        "Visit Mount Uhud and learn about the Battle of Uhud",
+        "Visit Quba Mosque on Saturday (if possible)"
+      ],
+      editableBy: ["guide", "imam", "admin"],
+      commonMistakes: [
+        "Pushing or crowding near the Prophet's (PBUH) grave",
+        "Taking photos in restricted areas",
+        "Touching or kissing walls, grilles, or structures",
+        "Making loud supplications disturbing others",
+        "Insisting on visiting Rawdah during peak times"
+      ],
+      whatIfs: [
+        {
+          scenario: "What if I cannot enter Rawdah due to crowds?",
+          solution: "Try during less busy times such as late night or early morning. Women have special times allocated. Remember, praying anywhere in Masjid Nabawi carries great reward."
+        },
+        {
+          scenario: "What if I become separated from my group?",
+          solution: "Establish meeting points before entering crowded areas. Carry your hotel information and group leader's contact. Stay calm and ask security for assistance."
+        }
+      ],
+      muhasabah: "Am I following the Prophet's (PBUH) example in my behavior while visiting his city? Am I maintaining proper adab (etiquette) during my visit? How can I carry the spiritual connection I feel here back to my daily life?"
+    },
+    {
+      id: 17,
+      title: "Visit to Battlefield Sites",
+      description: "Visiting significant battle sites in Islamic history",
+      details: "Visit sites of important battles in Islamic history, such as Badr, Uhud, and Khandaq, to learn about their historical significance and the lessons they teach.",
+      checklistItems: [
+        "Visit Mount Uhud and learn about the Battle of Uhud",
+        "Visit the site of Battle of Badr (if accessible)",
+        "Visit the site of Battle of Khandaq (Trench)",
+        "Learn about the strategies employed during these battles",
+        "Reflect on the sacrifices made by the companions",
+        "Understand how these battles shaped Islamic history"
+      ],
+      editableBy: ["guide", "imam", "admin"],
+      commonMistakes: [
+        "Treating battlefield sites as mere tourist attractions",
+        "Not learning about the historical context before visiting",
+        "Taking inappropriate photos or selfies at sacred sites",
+        "Collecting stones or soil from the sites as souvenirs",
+        "Not reflecting on the spiritual lessons from these events"
+      ],
+      whatIfs: [
+        {
+          scenario: "What if some battlefield sites are restricted or inaccessible?",
+          solution: "Some sites may have restricted access or be difficult to reach. Join organized tours by reputable agencies that have necessary permissions."
+        },
+        {
+          scenario: "What if I want to learn more about the battles than what guides provide?",
+          solution: "Read books about the Seerah and Islamic history before your trip. Many educational apps offer detailed information about these sites with historical context."
+        }
+      ],
+      muhasabah: "What lessons can I draw from the struggles and sacrifices of early Muslims? How can I apply the strategies of patience, perseverance, and trust in Allah that were demonstrated in these battles to my own challenges? Am I honoring the memory of those who sacrificed for Islam through my own actions?"
+    }
+  ];
+
   const reflectionAndImprovementItems: JourneyItem[] = [
     {
       id: 12,
@@ -605,6 +707,13 @@ const Index = () => {
       lightColor: "bg-red-100"
     },
     {
+      id: "ziarah",
+      title: "Ziarah",
+      icon: <Landmark className="h-5 w-5" />,
+      color: "bg-amber-600",
+      lightColor: "bg-amber-100"
+    },
+    {
       id: "reflection",
       title: "Reflection",
       icon: <Book className="h-5 w-5" />,
@@ -636,6 +745,13 @@ const Index = () => {
       items: duringUmrahItems.map(item => ({ id: item.id, title: item.title }))
     },
     {
+      id: "ziarah",
+      title: "Ziarah",
+      icon: <Landmark className="h-3 w-3 text-white" />,
+      color: "bg-amber-500",
+      items: ziarahItems.map(item => ({ id: item.id, title: item.title }))
+    },
+    {
       id: "reflection",
       title: "Reflection",
       icon: <Book className="h-3 w-3 text-white" />,
@@ -649,12 +765,35 @@ const Index = () => {
     return sectionConfig ? sectionConfig.lightColor : "";
   };
 
+  const getSectionLabelClass = (sectionId: string) => {
+    return `phase-label ${sectionId}`;
+  };
+
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">
       <div className="container mx-auto px-0 md:px-4">
         <div className="flex items-center justify-between p-4 border-b">
           <h1 className="text-2xl md:text-3xl font-bold">Umrah Journey Map</h1>
           <ThemeToggle />
+        </div>
+        
+        <div aria-hidden="true">
+          {sidebarSections.map((section) => (
+            <div 
+              key={section.id}
+              className={getSectionLabelClass(section.id)}
+              onClick={() => {
+                setActiveSectionId(section.id);
+                const firstItemId = section.id === "preparation" ? 1 :
+                                  section.id === "travel-arrangements" ? 6 :
+                                  section.id === "during-umrah" ? 9 :
+                                  section.id === "ziarah" ? 15 : 12;
+                handleNavigate(section.id, firstItemId);
+              }}
+            >
+              {section.title}
+            </div>
+          ))}
         </div>
         
         <div className="flex">
@@ -666,13 +805,14 @@ const Index = () => {
                 setActiveSectionId(sectionId);
                 const firstItemId = sectionId === "preparation" ? 1 :
                                     sectionId === "travel-arrangements" ? 6 :
-                                    sectionId === "during-umrah" ? 9 : 12;
+                                    sectionId === "during-umrah" ? 9 :
+                                    sectionId === "ziarah" ? 15 : 12;
                 handleNavigate(sectionId, firstItemId);
               }}
             />
           </div>
           
-          <div className="flex-1 p-4 md:p-6 lg:pr-8">
+          <div className="flex-1 p-4 md:p-6 lg:pr-14">
             <div className="space-y-8 max-w-3xl mx-auto">
               <div 
                 id="preparation" 
@@ -739,6 +879,30 @@ const Index = () => {
                   onItemVisibilityChange={(itemId, isVisible) => {
                     if (isVisible) {
                       setActiveSectionId("during-umrah");
+                      setActiveItemId(itemId);
+                    }
+                  }}
+                  registerRef={registerSectionRef}
+                />
+              </div>
+              
+              <div 
+                id="ziarah" 
+                className={`p-4 rounded-lg ${getSectionClassName("ziarah")}`}
+              >
+                <JourneySection
+                  id="ziarah"
+                  title="Ziarah"
+                  description="Visiting historical and significant sites in Makkah and Madinah"
+                  items={ziarahItems}
+                  icon={<Landmark />}
+                  currentRole={currentRole}
+                  initiallyOpen={activeSectionId === "ziarah"}
+                  animationDelay={2.5}
+                  color="amber"
+                  onItemVisibilityChange={(itemId, isVisible) => {
+                    if (isVisible) {
+                      setActiveSectionId("ziarah");
                       setActiveItemId(itemId);
                     }
                   }}

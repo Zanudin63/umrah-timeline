@@ -34,6 +34,8 @@
     --ring: 262 83% 58%;
  
     --radius: 0.5rem;
+
+    --description-accent: 60 100% 81.2%;
   }
  
   .dark {
@@ -64,6 +66,8 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 262 83% 58%;
+    
+    --description-accent: 60 100% 81.2%;
   }
 }
  
@@ -85,6 +89,61 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
+  
+  /* Description accent color in dark mode */
+  .dark .section-description {
+    color: hsl(var(--description-accent));
+  }
+}
+
+/* Phase label styling */
+.phase-label {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  position: fixed;
+  height: auto;
+  padding: 1rem 0.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: white;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.phase-label.preparation {
+  background-color: #8b5cf6;
+  top: 20%;
+  left: 0;
+}
+
+.phase-label.travel {
+  background-color: #3b82f6;
+  top: 35%;
+  left: 0;
+}
+
+.phase-label.manasik {
+  background-color: #ef4444;
+  top: 50%;
+  left: 0;
+}
+
+.phase-label.reflection {
+  background-color: #10b981;
+  top: 65%;
+  left: 0;
+}
+
+.phase-label.ziarah {
+  background-color: #f59e0b;
+  top: 80%;
+  left: 0;
 }
 
 /* Timeline styling */

@@ -203,7 +203,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
               </div>
               <div className="text-left">
                 <h3 className="text-lg font-semibold">{title}</h3>
-                <p className="text-sm text-muted-foreground">{description}</p>
+                <p className="text-sm text-muted-foreground section-description">{description}</p>
               </div>
             </div>
             <ChevronDown className={`h-5 w-5 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
@@ -234,7 +234,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           {title}
                         </Badge>
                       </CardTitle>
-                      <CardDescription>{item.description}</CardDescription>
+                      <CardDescription className="section-description">{item.description}</CardDescription>
                     </div>
                     <EditButtons 
                       itemId={item.id} 
@@ -368,7 +368,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                         </AccordionItem>
                       )}
 
-                      {/* Self Reflection Section (Changed from Muhasabah) */}
+                      {/* Self Reflection Section */}
                       {item.muhasabah && (
                         <AccordionItem value={`muhasabah-${item.id}`} className="border rounded-md">
                           <AccordionTrigger className="px-4 py-2">
