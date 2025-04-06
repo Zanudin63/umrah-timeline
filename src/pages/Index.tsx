@@ -5,6 +5,7 @@ import TravelHorizonChart from '@/components/TravelHorizonChart';
 import TravelSummary from '@/components/TravelSummary';
 import { Location } from '@/components/TravelInfo';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { UserRole } from '@/components/EditButtons';
 
 const Index = () => {
   const locations: Location[] = [
@@ -14,7 +15,8 @@ const Index = () => {
       description: "Departure from home in Kuala Lumpur",
       time: "08:00 AM",
       icon: "start",
-      notes: "Remember to double-check all travel documents before leaving."
+      notes: "Remember to double-check all travel documents before leaving.",
+      editableBy: ['traveler', 'admin'] as UserRole[]
     },
     {
       id: 2,
@@ -23,7 +25,8 @@ const Index = () => {
       time: "11:00 AM",
       duration: "3 hours before flight",
       icon: "transit",
-      notes: "Check-in closes 60 minutes before departure."
+      notes: "Check-in closes 60 minutes before departure.",
+      editableBy: ['airport', 'airline', 'admin'] as UserRole[]
     },
     {
       id: 3,
@@ -31,7 +34,8 @@ const Index = () => {
       description: "Direct flight from KLIA to King Abdulaziz International Airport",
       time: "02:00 PM - 06:00 PM",
       duration: "10 hours",
-      icon: "transit"
+      icon: "transit",
+      editableBy: ['airline', 'admin'] as UserRole[]
     },
     {
       id: 4,
@@ -40,7 +44,8 @@ const Index = () => {
       time: "06:00 PM",
       duration: "2 hours",
       icon: "transit",
-      notes: "Be prepared for potentially long immigration queues."
+      notes: "Be prepared for potentially long immigration queues.",
+      editableBy: ['airport', 'admin'] as UserRole[]
     },
     {
       id: 5,
@@ -48,7 +53,8 @@ const Index = () => {
       description: "Road journey from Jeddah to Makkah",
       time: "08:00 PM - 09:30 PM",
       duration: "1.5 hours",
-      icon: "transit"
+      icon: "transit",
+      editableBy: ['agent', 'admin'] as UserRole[]
     },
     {
       id: 6,
@@ -56,7 +62,8 @@ const Index = () => {
       description: "Arrival at accommodation in Makkah",
       time: "09:30 PM",
       icon: "end",
-      notes: "Check-in at hotel and prepare for Umrah."
+      notes: "Check-in at hotel and prepare for Umrah.",
+      editableBy: ['traveler', 'agent', 'admin'] as UserRole[]
     }
   ];
 

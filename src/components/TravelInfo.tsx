@@ -1,8 +1,9 @@
-
 import React from "react";
 import { MapPin, Plane, Clock, Route } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { EditButtons, UserRole } from "./EditButtons";
+import { useToast } from "@/hooks/use-toast";
 
 export interface Location {
   id: number;
@@ -12,14 +13,22 @@ export interface Location {
   duration?: string;
   icon: 'start' | 'transit' | 'end';
   notes?: string;
+  editableBy?: UserRole[];
 }
 
 interface TravelInfoProps {
   location: Location;
   animationDelay: number;
+  currentRole?: UserRole;
 }
 
-const TravelInfo: React.FC<TravelInfoProps> = ({ location, animationDelay }) => {
+const TravelInfo: React.FC<TravelInfoProps> = ({ 
+  location, 
+  animationDelay,
+  currentRole = 'traveler'
+}) => {
+  const { toast } = useToast();
+  
   const getIcon = () => {
     switch (location.icon) {
       case 'start':
@@ -33,6 +42,17 @@ const TravelInfo: React.FC<TravelInfoProps> = ({ location, animationDelay }) => 
     }
   };
 
+  const handleEdit = (itemId: number, role: UserRole) => {
+    toast({
+      title: "Edit Mode",
+      description: `Editing item ${location.name} as ${role}`,
+    });
+    // In a real app, this would open an edit modal or navigate to an edit page
+  };
+
+  // Define which roles can edit this item based on location type
+  const editableRoles = location.editableBy || determineEditableRoles(location);
+
   return (
     <div 
       className="timeline-animation travel-card"
@@ -43,10 +63,16 @@ const TravelInfo: React.FC<TravelInfoProps> = ({ location, animationDelay }) => 
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
             {getIcon()}
           </div>
-          <div>
+          <div className="flex-1">
             <CardTitle className="text-lg">{location.name}</CardTitle>
             <CardDescription>{location.time}</CardDescription>
           </div>
+          <EditButtons 
+            itemId={location.id} 
+            currentRole={currentRole} 
+            editableBy={editableRoles} 
+            onEdit={handleEdit} 
+          />
         </CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground">{location.description}</p>
@@ -66,5 +92,26 @@ const TravelInfo: React.FC<TravelInfoProps> = ({ location, animationDelay }) => 
     </div>
   );
 };
+
+// Helper function to determine which roles can edit a location based on its type
+function determineEditableRoles(location: Location): UserRole[] {
+  // Default permissions based on location type
+  if (location.icon === 'start') {
+    // Home location - editable by traveler and admin
+    return ['traveler', 'admin'];
+  } else if (location.name.includes('Airport')) {
+    // Airport locations - editable by airport staff, airline, and admin
+    return ['airport', 'airline', 'admin'];
+  } else if (location.name.includes('Flight')) {
+    // Flight information - editable by airline and admin
+    return ['airline', 'admin'];
+  } else if (location.name.includes('Ground Transfer')) {
+    // Ground transfers - editable by travel agent and admin
+    return ['agent', 'admin'];
+  } else {
+    // Other locations - editable only by admin
+    return ['admin'];
+  }
+}
 
 export default TravelInfo;
