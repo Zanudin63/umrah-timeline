@@ -18,6 +18,10 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
   const isTravelArrangements = title.toLowerCase() === "travel arrangements";
   // Special color for Manasik Umrah phase (previously "During Umrah")
   const isManasikUmrah = title.toLowerCase() === "during umrah" || title.toLowerCase() === "manasik umrah";
+  // Special color for Ziarah phase
+  const isZiarah = title.toLowerCase() === "ziarah";
+  // Special color for Reflection phase
+  const isReflection = title.toLowerCase() === "reflection" || title.toLowerCase().includes("reflection");
   
   // Transform "During Umrah" to "MANASIK UMRAH" for display
   const displayTitle = isManasikUmrah ? "MANASIK UMRAH" : title;
@@ -30,14 +34,24 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
     } else if (isTravelArrangements) {
       bgColorClass = "bg-[#410e69]";
     } else if (isManasikUmrah) {
-      bgColorClass = "bg-[#410e69]";
+      bgColorClass = "bg-[#800a1a]";
+    } else if (isZiarah) {
+      bgColorClass = "bg-[#8f6a1f]";
+    } else if (isReflection) {
+      bgColorClass = "bg-[#30850f]";
     } else {
       bgColorClass = color;
     }
   } else if (isPreparations) {
     bgColorClass = "hover:bg-[#112eed]/80 dark:hover:bg-[#112eed]/80";
-  } else if (isTravelArrangements || isManasikUmrah) {
+  } else if (isTravelArrangements) {
     bgColorClass = "hover:bg-[#410e69]/80 dark:hover:bg-[#410e69]/80";
+  } else if (isManasikUmrah) {
+    bgColorClass = "hover:bg-[#800a1a]/80 dark:hover:bg-[#800a1a]/80";
+  } else if (isZiarah) {
+    bgColorClass = "hover:bg-[#8f6a1f]/80 dark:hover:bg-[#8f6a1f]/80";
+  } else if (isReflection) {
+    bgColorClass = "hover:bg-[#30850f]/80 dark:hover:bg-[#30850f]/80";
   } else {
     bgColorClass = "hover:bg-muted dark:hover:bg-gray-700";
   }
@@ -46,9 +60,7 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
   let textColorClass = "";
   if (active) {
     textColorClass = "text-white";
-  } else if (isPreparations && !active) {
-    textColorClass = "dark:text-[#8eed11]";
-  } else if ((isTravelArrangements || isManasikUmrah) && !active) {
+  } else if ((isPreparations || isTravelArrangements || isManasikUmrah || isZiarah || isReflection) && !active) {
     textColorClass = "dark:text-[#8eed11]";
   } else {
     textColorClass = "sidebar-title";
@@ -68,7 +80,10 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
       {active && (
         <div className={`absolute right-0 h-full w-1 ${
           isPreparations ? "bg-[#112eed]" : 
-          (isTravelArrangements || isManasikUmrah) ? "bg-[#410e69]" : 
+          isTravelArrangements ? "bg-[#410e69]" : 
+          isManasikUmrah ? "bg-[#800a1a]" :
+          isZiarah ? "bg-[#8f6a1f]" :
+          isReflection ? "bg-[#30850f]" :
           color
         }`} />
       )}
@@ -114,8 +129,10 @@ const JourneySidebar = ({
             active={activeSectionId === section.id}
             color={
               section.title.toLowerCase() === "preparations" ? "bg-[#112eed]" : 
-              (section.title.toLowerCase() === "travel arrangements" || 
-               section.title.toLowerCase() === "manasik umrah") ? "bg-[#410e69]" : 
+              section.title.toLowerCase() === "travel arrangements" ? "bg-[#410e69]" :
+              section.title.toLowerCase() === "manasik umrah" ? "bg-[#800a1a]" :
+              section.title.toLowerCase() === "ziarah" ? "bg-[#8f6a1f]" :
+              section.title.toLowerCase() === "reflection" ? "bg-[#30850f]" :
               section.color
             }
             lightColor={section.lightColor}

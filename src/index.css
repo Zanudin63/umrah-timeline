@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -118,12 +119,32 @@
   /* Special styling for Manasik Umrah phase (previously During Umrah) */
   .dark #during-umrah,
   .dark #manasik-umrah {
-    background-color: #410e69;
+    background-color: #800a1a;
   }
   
   .dark .during-umrah-header,
   .dark .manasik-umrah-header {
-    background-color: #410e69;
+    background-color: #800a1a;
+    color: #8eed11;
+  }
+
+  /* Special styling for Ziarah phase */
+  .dark #ziarah {
+    background-color: #8f6a1f;
+  }
+  
+  .dark .ziarah-header {
+    background-color: #8f6a1f;
+    color: #8eed11;
+  }
+
+  /* Special styling for Reflection phase */
+  .dark #reflection {
+    background-color: #30850f;
+  }
+  
+  .dark .reflection-header {
+    background-color: #30850f;
     color: #8eed11;
   }
 
@@ -144,6 +165,18 @@
   .dark [id="during-umrah"] .section-title,
   .dark [id="manasik-umrah"] h2,
   .dark [id="manasik-umrah"] .section-title {
+    color: #8eed11 !important;
+  }
+
+  /* Make Ziarah text always #8eed11 in dark mode */
+  .dark [id="ziarah"] h2,
+  .dark [id="ziarah"] .section-title {
+    color: #8eed11 !important;
+  }
+
+  /* Make Reflection text always #8eed11 in dark mode */
+  .dark [id="reflection"] h2,
+  .dark [id="reflection"] .section-title {
     color: #8eed11 !important;
   }
 

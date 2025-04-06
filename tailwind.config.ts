@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -66,12 +67,19 @@ export default {
 					green: '#8eed11',
 					blue: '#112eed',
 					purple: '#410e69',
+					red: '#800a1a',
+					amber: '#8f6a1f',
+					reflectionGreen: '#30850f',
 					preparationsText: '#8eed11',
 					preparationsBackground: '#112eed',
 					travelArrangementsText: '#8eed11',
 					travelArrangementsBackground: '#410e69',
 					manasikUmrahText: '#8eed11',
-					manasikUmrahBackground: '#410e69'
+					manasikUmrahBackground: '#800a1a',
+					ziarahText: '#8eed11',
+					ziarahBackground: '#8f6a1f',
+					reflectionText: '#8eed11',
+					reflectionBackground: '#30850f'
 				}
 			},
 			borderRadius: {
