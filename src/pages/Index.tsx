@@ -438,7 +438,11 @@ const Index = () => {
         "Walk at moderate pace, neither rushing nor dawdling",
         
         "4- During Tawaf",
-        "Avoid pushing or causing harm to others",
+        "Do not touch any part of The Kaabah namely the Hajarul Aswad, the black shroud, the Shazarwan, the Hijr Ismail and the short wall around Hijr Ismail",
+        "Avoid pushing or causing harm to others especially around the Hajarul Aswad",
+        "Be very careful to maintain focus on this Ibadah solely for Allah - please refrain from taking selfies, going online, or calling up family & friends",
+        "Dedicating forward running in order to catch up with your companion is very high risk of spoiling this Ibadah",
+        "Maintain your left shoulder all the time while circumbulating towards the Kaabah counterclockwise",
         "Maintain focus on Allah and avoid idle talk",
         "Keep track of your rounds (use counter if needed)",
         "Remain respectful of other worshippers",
