@@ -141,7 +141,9 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                   />
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <p className="text-sm text-muted-foreground">{formatTextWithBullets(item.details)}</p>
+                  <div className="text-sm text-muted-foreground">
+                    {formatTextWithBullets(item.details)}
+                  </div>
                   
                   <div className="flex flex-wrap gap-2">
                     {item.audioDescription && (
