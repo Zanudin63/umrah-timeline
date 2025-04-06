@@ -188,7 +188,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
   return (
     <div 
       id={id}
-      className="journey-section-animation rounded-lg shadow-sm border dark:border-gray-700" 
+      className="journey-section-animation rounded-lg shadow-sm border dark:border-gray-700 max-w-[calc(100%-1.5rem)]" 
       style={{ animationDelay: `${animationDelay * 0.1}s` }}
     >
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
@@ -202,7 +202,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                 {icon}
               </div>
               <div className="text-left">
-                <h3 className="text-lg font-semibold">{title}</h3>
+                <h3 className="text-lg font-bold uppercase">{title}</h3>
                 <p className="text-sm text-muted-foreground section-description">{description}</p>
               </div>
             </div>
@@ -227,12 +227,6 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                     <div>
                       <CardTitle className="flex items-center text-md">
                         {item.title}
-                        <Badge 
-                          variant="outline" 
-                          className={`ml-2 text-xs ${colorStyle.badge}`}
-                        >
-                          {title}
-                        </Badge>
                       </CardTitle>
                       <CardDescription className="section-description">{item.description}</CardDescription>
                     </div>

@@ -96,56 +96,6 @@
   }
 }
 
-/* Phase label styling */
-.phase-label {
-  writing-mode: vertical-lr;
-  transform: rotate(180deg);
-  position: fixed;
-  height: auto;
-  padding: 1rem 0.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 40;
-  border-radius: 0 0.5rem 0.5rem 0;
-  color: white;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.phase-label.preparation {
-  background-color: #8b5cf6;
-  top: 20%;
-  left: 0;
-}
-
-.phase-label.travel {
-  background-color: #3b82f6;
-  top: 35%;
-  left: 0;
-}
-
-.phase-label.manasik {
-  background-color: #ef4444;
-  top: 50%;
-  left: 0;
-}
-
-.phase-label.reflection {
-  background-color: #10b981;
-  top: 65%;
-  left: 0;
-}
-
-.phase-label.ziarah {
-  background-color: #f59e0b;
-  top: 80%;
-  left: 0;
-}
-
 /* Timeline styling */
 .timeline-connector {
   @apply absolute top-0 left-0 h-full w-0.5 bg-primary/50;

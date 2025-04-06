@@ -15,13 +15,13 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
   return (
     <div 
       className={cn(
-        "flex items-center p-3 cursor-pointer transition-all rounded-l-lg mb-2 max-w-[180px]",
+        "flex items-center p-3 cursor-pointer transition-all rounded-l-lg mb-2 w-full",
         active ? `${color} text-white` : "hover:bg-muted"
       )}
       onClick={onClick}
     >
       <div className="mr-3">{icon}</div>
-      <span className="font-medium text-sm">{title}</span>
+      <span className="font-medium text-sm uppercase">{title}</span>
       {active && <div className={`absolute right-0 h-full w-1 ${color}`} />}
     </div>
   );
@@ -45,11 +45,11 @@ const JourneySidebar = ({
   onSectionSelect 
 }: JourneySidebarProps) => {
   return (
-    <div className="sticky top-6 h-[calc(100vh-3rem)] flex flex-col pr-2 overflow-y-auto w-[200px]">
+    <div className="sticky top-6 h-[calc(100vh-3rem)] flex flex-col pr-2 overflow-y-auto w-[200px] mr-4">
       <div className="mb-6">
-        <h3 className="font-semibold mb-2 text-lg px-3">Journey Phases</h3>
+        <h3 className="font-bold uppercase mb-2 text-lg px-3">Journey Phases</h3>
       </div>
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col w-full">
         {sections.map((section) => (
           <SidebarTab
             key={section.id}
