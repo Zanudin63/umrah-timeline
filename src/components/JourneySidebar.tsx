@@ -69,7 +69,7 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
   return (
     <div 
       className={cn(
-        "flex items-center p-3 cursor-pointer transition-all rounded-l-lg mb-2 w-full",
+        "flex items-center p-3 cursor-pointer transition-all rounded-l-lg mb-2 w-full border-transparent",
         bgColorClass,
         textColorClass
       )}
@@ -117,7 +117,7 @@ const JourneySidebar = ({
   });
 
   return (
-    <div className="sticky top-6 h-[calc(100vh-3rem)] flex flex-col pr-2 overflow-y-auto w-[200px] mr-4">
+    <div className="sticky top-6 h-[calc(100vh-3rem)] flex flex-col pr-2 overflow-y-auto w-[200px] mr-4 border-transparent">
       <div className="mb-6">
         <h3 className="font-bold uppercase mb-2 text-lg px-3 dark:text-[#8eed11] sidebar-title">Journey Phases</h3>
       </div>

@@ -20,7 +20,7 @@ export default {
 		},
 		extend: {
 			colors: {
-				border: 'hsl(var(--border))',
+				border: 'transparent',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
@@ -60,7 +60,7 @@ export default {
 					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
 					accent: 'hsl(var(--sidebar-accent))',
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
+					border: 'transparent',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				phaseHeader: {
