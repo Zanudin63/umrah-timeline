@@ -6,6 +6,8 @@ import { Luggage, Book, MapPin, Plane, PanelsTopLeft } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import JourneySidebar from "@/components/JourneySidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Button } from "@/components/ui/button";
+import JourneyIndex from "@/components/JourneyIndex";
 
 const Index = () => {
   const [currentRole] = useState<UserRole>("pilgrim");
