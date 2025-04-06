@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
@@ -15,7 +16,7 @@ import {
   Star,
   Info,
   Clock,
-  Mosque 
+  Building 
 } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import JourneySidebar from "@/components/JourneySidebar";
