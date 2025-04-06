@@ -201,6 +201,19 @@
     stroke: currentColor;
     stroke-width: 0;
   }
+  
+  /* Mobile optimizations for content width */
+  p, h1, h2, h3, h4, h5, h6, li, span {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Ensure content fits on mobile screens */
+  .section-content {
+    @apply max-w-full;
+  }
 }
 
 /* Timeline styling */
@@ -273,6 +286,34 @@
 /* Mobile optimizations */
 @media (max-width: 768px) {
   .journey-content {
-    padding-right: 1.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  /* Ensure content fits on small screens */
+  .text-block, .title-block, .description-block {
+    max-width: calc(100vw - 2rem);
+  }
+  
+  /* Adjust spacing for mobile */
+  .p-4 {
+    padding: 0.75rem;
+  }
+  
+  /* Make sure checkboxes and inputs stay within bounds */
+  input, select, textarea {
+    max-width: 100%;
+  }
+  
+  /* Improve table responsiveness */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 }

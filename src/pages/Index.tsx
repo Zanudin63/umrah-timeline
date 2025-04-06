@@ -4,12 +4,15 @@ import { UserRole } from "@/components/EditButtons";
 import { MapPin, Heart, Book, User, Clipboard, Calendar, Plane, Home, Landmark } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import JourneySidebar from "@/components/JourneySidebar";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
   const [currentRole] = useState<UserRole>("pilgrim");
   const [activeSectionId, setActiveSectionId] = useState<string | null>("preparation");
   const [activeItemId, setActiveItemId] = useState<number | null>(1);
+  const [showSidebar, setShowSidebar] = useState(false);
   const sectionRefs = useRef<Record<string, Record<number, HTMLDivElement>>>({});
+  const isMobile = useIsMobile();
 
   const preparationItems: JourneyItem[] = [
     {
@@ -769,12 +772,47 @@ const Index = () => {
     return `phase-label ${sectionId}`;
   };
 
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (isMobile && showSidebar) {
+        const sidebarElement = document.getElementById('journey-sidebar');
+        if (sidebarElement && !sidebarElement.contains(e.target as Node)) {
+          setShowSidebar(false);
+        }
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [isMobile, showSidebar]);
+
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">
-      <div className="container mx-auto px-0 md:px-4">
+      <div className="container mx-auto px-2 md:px-4">
         <div className="flex items-center justify-between p-4 border-b">
-          <h1 className="text-2xl md:text-3xl font-bold">Umrah Journey Map</h1>
-          <ThemeToggle />
+          <h1 className="text-xl md:text-3xl font-bold">Umrah Journey Map</h1>
+          <div className="flex items-center gap-2">
+            {isMobile && (
+              <button 
+                onClick={toggleSidebar} 
+                className="p-2 rounded-md bg-primary/10 text-primary"
+              >
+                <span className="sr-only">Toggle Sidebar</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+              </button>
+            )}
+            <ThemeToggle />
+          </div>
         </div>
         
         <div aria-hidden="true">
@@ -796,8 +834,16 @@ const Index = () => {
           ))}
         </div>
         
-        <div className="flex">
-          <div className="hidden md:block w-64 border-r">
+        <div className="flex relative">
+          {isMobile && showSidebar && (
+            <div className="fixed inset-0 bg-black/50 z-20" onClick={() => setShowSidebar(false)}></div>
+          )}
+          
+          <div 
+            id="journey-sidebar"
+            className={`${isMobile ? 'fixed z-30 left-0 top-0 bottom-0 bg-background' : 'hidden md:block'} w-64 border-r`}
+            style={{ display: isMobile ? (showSidebar ? 'block' : 'none') : '' }}
+          >
             <JourneySidebar 
               sections={sidebarSections}
               activeSectionId={activeSectionId}
@@ -812,8 +858,8 @@ const Index = () => {
             />
           </div>
           
-          <div className="flex-1 p-4 md:p-6 lg:pr-14">
-            <div className="space-y-8 max-w-3xl mx-auto">
+          <div className="flex-1 p-2 md:p-6 lg:pr-14">
+            <div className="space-y-8 mx-auto">
               <div 
                 id="preparation" 
                 className={`p-4 rounded-lg ${getSectionClassName("preparation")}`}
