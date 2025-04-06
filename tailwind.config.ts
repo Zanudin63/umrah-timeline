@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,7 +65,9 @@ export default {
 				},
 				phaseHeader: {
 					green: '#8eed11',
-					blue: '#112eed'
+					blue: '#112eed',
+					preparationsText: '#8eed11',
+					preparationsBackground: '#112eed'
 				}
 			},
 			borderRadius: {

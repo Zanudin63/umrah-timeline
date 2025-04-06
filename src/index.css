@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -93,6 +94,22 @@
   .dark .sidebar-title,
   .dark .section-description {
     color: #8eed11;
+  }
+
+  /* Special styling for Preparations phase */
+  .dark #preparation {
+    background-color: #112eed;
+  }
+  
+  .dark .preparation-header {
+    background-color: #112eed;
+    color: #8eed11;
+  }
+
+  /* Make Preparations text always #8eed11 in dark mode */
+  .dark [id="preparation"] h2,
+  .dark [id="preparation"] .section-title {
+    color: #8eed11 !important;
   }
 
   /* Improve dark mode card contrast */
