@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
@@ -302,7 +301,7 @@ const Index = () => {
                 items={section.items}
                 icon={section.icon}
                 currentRole={currentRole}
-                initiallyOpen={activeSectionId === section.id}
+                initiallyOpen={true} // Changed to true for all sections
                 animationDelay={index}
                 color={section.color as any}
                 onItemVisibilityChange={handleItemVisibilityChange}
