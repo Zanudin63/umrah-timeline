@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from "react";
 import { MapPin, Video, Headphones, ChevronDown, CheckCircle, AlertCircle, DollarSign, HelpCircle, Heart, FileText } from "lucide-react";
 import { 
@@ -120,7 +121,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
   items,
   icon,
   currentRole,
-  initiallyOpen = false,
+  initiallyOpen = true, // Changed to true as default
   animationDelay = 0,
   color = "purple",
   onItemVisibilityChange,
