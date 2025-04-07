@@ -166,6 +166,10 @@ const JourneySection: React.FC<JourneySectionProps> = ({
     });
   };
 
+  React.useEffect(() => {
+    setIsOpen(initiallyOpen);
+  }, [initiallyOpen]);
+
   useEffect(() => {
     if (!onItemVisibilityChange) return;
 
