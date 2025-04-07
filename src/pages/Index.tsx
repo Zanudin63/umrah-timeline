@@ -301,7 +301,7 @@ const Index = () => {
                 items={section.items}
                 icon={section.icon}
                 currentRole={currentRole}
-                initiallyOpen={true} 
+                initiallyOpen={false}
                 animationDelay={index}
                 color={section.color as any}
                 onItemVisibilityChange={handleItemVisibilityChange}
