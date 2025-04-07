@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { MapPin, Video, Headphones, ChevronDown, CheckCircle, AlertCircle, DollarSign, HelpCircle, Heart, FileText } from "lucide-react";
 import { 
@@ -167,7 +166,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
     });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setIsOpen(initiallyOpen);
   }, [initiallyOpen]);
 
@@ -314,13 +313,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                       )}
                     </div>
                     
-                    <Accordion type="multiple" className="w-full space-y-1" defaultValue={[
-                      item.checklistItems && item.checklistItems.length > 0 ? `checklist-${item.id}` : '',
-                      item.commonMistakes && item.commonMistakes.length > 0 ? `mistakes-${item.id}` : '',
-                      item.costs && item.costs.length > 0 ? `costs-${item.id}` : '',
-                      item.whatIfs && item.whatIfs.length > 0 ? `whatifs-${item.id}` : '',
-                      item.muhasabah ? `muhasabah-${item.id}` : ''
-                    ].filter(Boolean)}>
+                    <Accordion type="multiple" className="w-full space-y-1">
                       {item.checklistItems && item.checklistItems.length > 0 && (
                         <AccordionItem value={`checklist-${item.id}`} className="border rounded-md">
                           <AccordionTrigger className="px-3 py-1">
