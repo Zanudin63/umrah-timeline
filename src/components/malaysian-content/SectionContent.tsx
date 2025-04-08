@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RitualAccordion } from '@/components/RitualAccordion';
@@ -57,10 +58,10 @@ export function SectionContent({
 
                 {tabSection.id === "during" && (
                   <Card className="mt-4">
-                    <CardHeader>
+                    <CardHeader className="px-2 py-2">
                       <CardTitle className="text-base">Cara Tawaf</CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="px-2 py-2">
                       <Tabs defaultValue="123" className="w-full mb-4">
                         <TabsList className="grid w-full grid-cols-5">
                           <TabsTrigger value="123">123</TabsTrigger>
@@ -71,7 +72,7 @@ export function SectionContent({
                         </TabsList>
                         
                         <TabsContent value="123" className="mt-2">
-                          <div className="bg-muted p-3 rounded-md">
+                          <div className="bg-muted p-2 rounded-md">
                             <h4 className="font-medium mb-2">Langkah-langkah Tawaf:</h4>
                             <ol className="list-decimal list-inside text-sm mt-2 space-y-1">
                               <li>Mulakan dari Hajarul Aswad (batu hitam)</li>
@@ -84,7 +85,7 @@ export function SectionContent({
                         </TabsContent>
                         
                         <TabsContent value="syaratsah" className="mt-2">
-                          <div className="bg-muted p-3 rounded-md">
+                          <div className="bg-muted p-2 rounded-md">
                             <h4 className="font-medium mb-2">Syarat Sah Tawaf:</h4>
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
                               <li>Berniat Tawaf</li>
@@ -100,7 +101,7 @@ export function SectionContent({
                         </TabsContent>
                         
                         <TabsContent value="membatalkan" className="mt-2">
-                          <div className="bg-muted p-3 rounded-md">
+                          <div className="bg-muted p-2 rounded-md">
                             <h4 className="font-medium mb-2">Perkara Yang Membatalkan Tawaf:</h4>
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
                               <li>Terbatal wudhu</li>
@@ -113,7 +114,7 @@ export function SectionContent({
                         </TabsContent>
                         
                         <TabsContent value="sunat" className="mt-2">
-                          <div className="bg-muted p-3 rounded-md">
+                          <div className="bg-muted p-2 rounded-md">
                             <h4 className="font-medium mb-2">Sunat Semasa Tawaf:</h4>
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
                               <li>Istilam (menyentuh atau mengucup) Hajar Aswad jika mampu</li>
@@ -127,7 +128,7 @@ export function SectionContent({
                         </TabsContent>
                         
                         <TabsContent value="patuhi" className="mt-2">
-                          <div className="bg-muted p-3 rounded-md">
+                          <div className="bg-muted p-2 rounded-md">
                             <h4 className="font-medium mb-2">Patuhi Semasa Tawaf:</h4>
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
                               <li>Jangan menolak atau menyakiti jemaah lain</li>
@@ -150,7 +151,7 @@ export function SectionContent({
                         </TabsList>
                         
                         <TabsContent value="sekiranya" className="mt-2">
-                          <div className="bg-muted p-3 rounded-md">
+                          <div className="bg-muted p-2 rounded-md">
                             <h4 className="font-medium mb-2">Sekiranya Anda:</h4>
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
                               <li>Terlupa bilangan pusingan tawaf</li>
@@ -163,7 +164,7 @@ export function SectionContent({
                         </TabsContent>
                         
                         <TabsContent value="impak" className="mt-2">
-                          <div className="bg-muted p-3 rounded-md">
+                          <div className="bg-muted p-2 rounded-md">
                             <h4 className="font-medium mb-2">Impak Terhadap Ibadah:</h4>
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
                               <li>Terlupa bilangan: <span className="ml-1 underline decoration-2 decoration-red-500 dark:decoration-red-400">Tidak sah Tawaf jika tidak yakin dengan 7 pusingan Tawaf dengan sempurna</span></li>
@@ -176,7 +177,7 @@ export function SectionContent({
                         </TabsContent>
                         
                         <TabsContent value="maka" className="mt-2">
-                          <div className="bg-muted p-3 rounded-md">
+                          <div className="bg-muted p-2 rounded-md">
                             <h4 className="font-medium mb-2">Maka Anda Perlu:</h4>
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
                               <li>Terlupa bilangan: <span className="underline decoration-1 decoration-gray-500 dark:decoration-gray-400">Beritahu Mutawif</span>. Lengkapkan 7 pusingan Tawaf sehingga yakin sempurna.</li>
