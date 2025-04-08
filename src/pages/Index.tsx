@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
@@ -975,9 +976,10 @@ const Index = () => {
             <JourneySection
               id="preparation"
               title="Preparation"
+              description="Steps to prepare for Umrah"
               icon={<Book />}
               items={preparationItems}
-              registerRef={(itemId, ref) => registerRef("preparation", itemId, ref)}
+              registerRef={registerRef}
               currentRole={currentRole}
               initiallyOpen={true}
             />
@@ -985,9 +987,10 @@ const Index = () => {
             <JourneySection
               id="travel"
               title="Travel Arrangements"
+              description="Planning your journey to the Holy Land"
               icon={<Luggage />}
               items={travelArrangementsItems}
-              registerRef={(itemId, ref) => registerRef("travel", itemId, ref)}
+              registerRef={registerRef}
               currentRole={currentRole}
               initiallyOpen={true}
             />

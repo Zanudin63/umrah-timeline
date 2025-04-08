@@ -121,7 +121,7 @@ const JourneySidebar = ({
   onClose
 }: JourneySidebarProps) => {
   // Add a default empty array to avoid undefined errors
-  const updatedSections = Array.isArray(sections) ? sections.map(section => {
+  const updatedSections = sections ? sections.map(section => {
     if (section.title.toLowerCase() === "during umrah") {
       return { ...section, title: "Manasik Umrah" };
     }
