@@ -8,7 +8,17 @@ import {
 } from "@/components/ui/popover";
 import { MoreHorizontal, Edit, Check } from "lucide-react";
 
-export type UserRole = "pilgrim" | "guide" | "imam" | "agent" | "admin" | "doctor";
+export type UserRole = 
+  | "pilgrim" 
+  | "guide" 
+  | "imam" 
+  | "agent" 
+  | "admin" 
+  | "doctor" 
+  | "traveler" 
+  | "teacher" 
+  | "airline" 
+  | "airport";
 
 interface EditButtonsProps {
   itemId: number;

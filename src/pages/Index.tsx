@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
 import { 
@@ -17,7 +17,6 @@ import {
   Clock,
   Building,
   Footprints,
-  Female,
   AlertTriangle,
   FileQuestion
 } from "lucide-react";
@@ -338,7 +337,7 @@ const Index = () => {
         "Carry a phrasebook",
         "Be patient and respectful"
       ],
-      editableBy: ["teacher", "admin"],
+      editableBy: ["guide", "admin"],
       commonMistakes: [
         "Not learning any Arabic phrases",
         "Being afraid to speak Arabic",
@@ -727,7 +726,7 @@ const Index = () => {
         "Check baggage allowance",
         "Confirm flight details"
       ],
-      editableBy: ["agent", "airline", "admin"],
+      editableBy: ["agent", "admin", "airline"],
       commonMistakes: [
         "Not researching airlines",
         "Not booking flights in advance",

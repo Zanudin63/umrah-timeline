@@ -35,6 +35,11 @@ const Timeline: React.FC<TimelineProps> = ({ locations }) => {
               <SelectItem value="airline">Airline Staff</SelectItem>
               <SelectItem value="airport">Airport Staff</SelectItem>
               <SelectItem value="admin">Administrator</SelectItem>
+              <SelectItem value="pilgrim">Pilgrim</SelectItem>
+              <SelectItem value="guide">Guide</SelectItem>
+              <SelectItem value="imam">Imam</SelectItem>
+              <SelectItem value="doctor">Doctor</SelectItem>
+              <SelectItem value="teacher">Teacher</SelectItem>
             </SelectContent>
           </Select>
         </Card>
