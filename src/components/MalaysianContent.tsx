@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { RitualAccordion } from '@/components/RitualAccordion';
@@ -166,6 +165,7 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
         </TabsContent>
         
         <TabsContent value="hadas" className="p-2 text-sm">
+          <p className="mb-2">Untuk pesakit-pesakit Najis Berkekalan (Da-imul Hadas) lelaki dan perempuan</p>
           <p className="mb-2">30 minit sebelum turun ke MasjidilHaram, selepas mensucikan najis haid atau tahi atau kencing, pakailah pampers untuk mengelakkan pencemaran najis di lantai masjid nanti.</p>
         </TabsContent>
       </Tabs>
