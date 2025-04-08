@@ -53,12 +53,12 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
 
   const renderHotelChecklist = () => {
     const items = [
-      { id: 'pakaian', label: 'Pakaian' },
-      { id: 'pengenalan', label: 'Pengenalan' },
-      { id: 'alatan', label: 'Alatan' },
-      { id: 'wang', label: 'Wang' },
-      { id: 'sediaminda', label: 'SediaMinda' },
-      { id: 'larangan', label: 'Larangan' },
+      { id: 'pakaian', label: 'Pakaian', description: 'Untuk lelaki 2 keping kain ihram dipakai supaya kemas dan menututp' },
+      { id: 'pengenalan', label: 'Pengenalan', description: 'Dokumen pengenalan diri dan visa yang diperlukan' },
+      { id: 'alatan', label: 'Alatan', description: 'Alatan penting seperti sejadah, ubat-ubatan dan keperluan peribadi' },
+      { id: 'wang', label: 'Wang', description: 'Wang yang mencukupi dalam bentuk Riyal dan tambahan untuk kecemasan' },
+      { id: 'sediaminda', label: 'SediaMinda', description: 'Bersedia secara mental dan spiritual untuk beribadah' },
+      { id: 'larangan', label: 'Larangan', description: 'Memahami larangan semasa dalam ihram dan di tanah suci' },
     ];
 
     return (
@@ -77,14 +77,19 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
         
         <div className="space-y-2">
           {items.map((item) => (
-            <div key={item.id} className="flex items-center space-x-2">
-              <Checkbox id={item.id} />
-              <label
-                htmlFor={item.id}
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                {item.label}
-              </label>
+            <div key={item.id} className="flex flex-col space-y-1 mb-3">
+              <div className="flex items-center space-x-2">
+                <Checkbox id={item.id} />
+                <label
+                  htmlFor={item.id}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  {item.label}
+                </label>
+              </div>
+              <div className="ml-6 text-xs text-muted-foreground">
+                {item.description}
+              </div>
             </div>
           ))}
         </div>
