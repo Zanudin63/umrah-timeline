@@ -86,10 +86,10 @@ export function SectionContent({
                           <div className="bg-muted p-3 rounded-md">
                             <h4 className="font-medium mb-2">Impak Terhadap Ibadah:</h4>
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
-                              <li>Terlupa bilangan: <Badge className="ml-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">Ambil jumlah yang pasti</Badge></li>
-                              <li>Terbatal wudhu: <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Wajib berwudhu semula</Badge></li>
-                              <li>Kita menyentuh Hajarul Aswad atau Kelambu Kaabah: <Badge className="ml-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">Masih sah (sunat sahaja)</Badge></li>
-                              <li>Terputus solat fardhu: <Badge className="ml-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Boleh sambung selepas</Badge></li>
+                              <li>Terlupa bilangan: <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Tidak sah Tawaf jika tidak yakin dengan 7 pusingan Tawaf dengan sempurna</Badge></li>
+                              <li>Terbatal wudhu: <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Pusingan Tawaf semasa batal wudhu itu turut terbatal</Badge></li>
+                              <li>Kita menyentuh Hajarul Aswad atau Kelambu Kaabah: <Badge className="ml-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">Bermakna kita telah memasuki ruangan Kaabah dan juga melanggar Larangan Ihram dengan menyentuh objek yang sememangnya sentiasa diwangikan</Badge></li>
+                              <li>Terputus solat fardhu: <Badge className="ml-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Boleh berhenti Tawaf</Badge></li>
                               <li>Tidak cukup 7 pusingan: <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Tawaf tidak sah</Badge></li>
                             </ul>
                           </div>
