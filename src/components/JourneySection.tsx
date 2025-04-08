@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from "react";
 import { MapPin, Video, Headphones, ChevronDown, CheckCircle, AlertCircle, DollarSign, HelpCircle, Heart, FileText } from "lucide-react";
 import { 
@@ -17,6 +18,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export interface JourneyItem {
   id: number;
@@ -130,18 +132,19 @@ const JourneySection: React.FC<JourneySectionProps> = ({
   const { toast } = useToast();
   const itemRefs = useRef<Record<number, HTMLDivElement>>({});
   const colorStyle = colorClasses[color] || colorClasses.purple;
+  const { language } = useLanguage();
 
   const handleEdit = (itemId: number, role: UserRole) => {
     toast({
-      title: "Edit Mode",
-      description: `Editing ${items.find(item => item.id === itemId)?.title} as ${role}`,
+      title: "Mod Sunting",
+      description: `Menyunting ${items.find(item => item.id === itemId)?.title} sebagai ${role}`,
     });
   };
 
   const playAudio = (description: string) => {
     toast({
-      title: "Audio Description",
-      description: "Playing audio description...",
+      title: "Penerangan Audio",
+      description: "Memainkan penerangan audio...",
     });
 
     if ('speechSynthesis' in window) {
@@ -153,16 +156,16 @@ const JourneySection: React.FC<JourneySectionProps> = ({
   const openAudioLink = (link: string, credit: string) => {
     window.open(link, '_blank');
     toast({
-      title: "Audio Resource",
-      description: credit || "Opening audio resource...",
+      title: "Sumber Audio",
+      description: credit || "Membuka sumber audio...",
     });
   };
 
   const openOfficialResource = (link: string) => {
     window.open(link, '_blank');
     toast({
-      title: "Official Resource",
-      description: "Opening official documentation...",
+      title: "Sumber Rasmi",
+      description: "Membuka dokumentasi rasmi...",
     });
   };
 
@@ -207,6 +210,25 @@ const JourneySection: React.FC<JourneySectionProps> = ({
       }
     });
   }, [items, id, registerRef]);
+
+  // Get localized labels based on current language
+  const getLocalizedLabel = (englishText: string) => {
+    if (language !== 'ms') return englishText;
+    
+    const translations: Record<string, string> = {
+      "Checklist": "Senarai Semak",
+      "Common Mistakes": "Kesilapan Biasa",
+      "Estimated Costs": "Anggaran Kos",
+      "What If Scenarios": "Senario 'Bagaimana Jika'",
+      "Self Reflection": "Muhasabah Diri",
+      "Listen (TTS)": "Dengar (TTS)",
+      "Listen": "Dengar",
+      "Watch Video": "Tonton Video",
+      "Official Resource": "Sumber Rasmi"
+    };
+    
+    return translations[englishText] || englishText;
+  };
 
   return (
     <div 
@@ -272,7 +294,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           className="h-7 text-xs"
                         >
                           <Headphones className="mr-1 h-3 w-3" />
-                          Listen (TTS)
+                          {getLocalizedLabel("Listen (TTS)")}
                         </Button>
                       )}
 
@@ -284,7 +306,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           className="h-7 text-xs"
                         >
                           <Headphones className="mr-1 h-3 w-3" />
-                          Listen
+                          {getLocalizedLabel("Listen")}
                         </Button>
                       )}
                       
@@ -296,7 +318,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           className="h-7 text-xs"
                         >
                           <Video className="mr-1 h-3 w-3" />
-                          Watch Video
+                          {getLocalizedLabel("Watch Video")}
                         </Button>
                       )}
 
@@ -308,7 +330,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           className="h-7 text-xs"
                         >
                           <FileText className="mr-1 h-3 w-3" />
-                          Official Resource
+                          {getLocalizedLabel("Official Resource")}
                         </Button>
                       )}
                     </div>
@@ -329,7 +351,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           <AccordionTrigger className="px-3 py-1">
                             <div className="flex items-center text-xs font-medium">
                               <CheckCircle className="mr-1 h-3 w-3 text-green-500" />
-                              Checklist
+                              {getLocalizedLabel("Checklist")}
                             </div>
                           </AccordionTrigger>
                           <AccordionContent className="px-3 pb-1 accordion-content">
@@ -359,7 +381,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           <AccordionTrigger className="px-3 py-1">
                             <div className="flex items-center text-xs font-medium">
                               <AlertCircle className="mr-1 h-3 w-3 text-amber-500" />
-                              Common Mistakes
+                              {getLocalizedLabel("Common Mistakes")}
                             </div>
                           </AccordionTrigger>
                           <AccordionContent className="px-3 pb-1">
@@ -380,7 +402,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           <AccordionTrigger className="px-3 py-1">
                             <div className="flex items-center text-xs font-medium">
                               <DollarSign className="mr-1 h-3 w-3 text-blue-500" />
-                              Estimated Costs
+                              {getLocalizedLabel("Estimated Costs")}
                             </div>
                           </AccordionTrigger>
                           <AccordionContent className="px-3 pb-1">
@@ -409,7 +431,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           <AccordionTrigger className="px-3 py-1">
                             <div className="flex items-center text-xs font-medium">
                               <HelpCircle className="mr-1 h-3 w-3 text-purple-500" />
-                              What If Scenarios
+                              {getLocalizedLabel("What If Scenarios")}
                             </div>
                           </AccordionTrigger>
                           <AccordionContent className="px-3 pb-1">
@@ -430,7 +452,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({
                           <AccordionTrigger className="px-3 py-1">
                             <div className="flex items-center text-xs font-medium">
                               <Heart className="mr-1 h-3 w-3 text-red-500" />
-                              Self Reflection
+                              {getLocalizedLabel("Self Reflection")}
                             </div>
                           </AccordionTrigger>
                           <AccordionContent className="px-3 pb-1">

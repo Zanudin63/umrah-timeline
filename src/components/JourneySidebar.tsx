@@ -14,14 +14,14 @@ interface SidebarTabProps {
 }
 
 const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: SidebarTabProps) => {
-  const isPreparations = title.toLowerCase() === "preparations";
-  const isTravelArrangements = title.toLowerCase() === "travel arrangements";
+  const isPreparations = title.toLowerCase() === "persediaan";
+  const isTravelArrangements = title.toLowerCase() === "logistik";
   const isManasikUmrah = title.toLowerCase() === "manasik umrah";
-  const isUmrahStepByStep = title.toLowerCase() === "umrah step by step";
+  const isUmrahStepByStep = title.toLowerCase() === "langkah-langkah umrah";
   const isZiarah = title.toLowerCase() === "ziarah";
-  const isReflection = title.toLowerCase() === "reflection" || title.toLowerCase().includes("reflection");
+  const isReflection = title.toLowerCase() === "refleksi" || title.toLowerCase().includes("refleksi");
   const isManasikHaji = title.toLowerCase() === "manasik haji";
-  const isAppendices = title.toLowerCase() === "appendices";
+  const isAppendices = title.toLowerCase() === "lampiran";
   
   let bgColorClass = "";
   if (active) {
@@ -128,8 +128,23 @@ const JourneySidebar = ({
 }: JourneySidebarProps) => {
   // Add a default empty array to avoid undefined errors
   const updatedSections = sections ? sections.map(section => {
-    if (section.title.toLowerCase() === "during umrah") {
+    // Translate section titles to Bahasa Malaysia
+    if (section.title.toLowerCase() === "preparations") {
+      return { ...section, title: "Persediaan" };
+    } else if (section.title.toLowerCase() === "travel arrangements") {
+      return { ...section, title: "Logistik" };
+    } else if (section.title.toLowerCase() === "during umrah" || section.title.toLowerCase() === "manasik umrah") {
       return { ...section, title: "Manasik Umrah" };
+    } else if (section.title.toLowerCase() === "umrah step by step") {
+      return { ...section, title: "Langkah-Langkah Umrah" };
+    } else if (section.title.toLowerCase() === "ziarah") {
+      return { ...section, title: "Ziarah" };
+    } else if (section.title.toLowerCase() === "reflection") {
+      return { ...section, title: "Refleksi" };
+    } else if (section.title.toLowerCase() === "manasik haji") {
+      return { ...section, title: "Manasik Haji" };
+    } else if (section.title.toLowerCase() === "appendices") {
+      return { ...section, title: "Lampiran" };
     }
     return section;
   }) : [];
@@ -160,7 +175,7 @@ const JourneySidebar = ({
     <div className="sticky top-6 h-[calc(100vh-3rem)] flex flex-col pr-2 overflow-y-auto w-full max-w-[200px] mr-3 border-transparent">
       <div className="mb-2 md:mb-3">
         <h3 className={`font-bold uppercase mb-1 ${isMobile ? "text-base" : "text-lg"} px-3 dark:text-[#8eed11] sidebar-title`}>
-          Journey Phases
+          Fasa Perjalanan
         </h3>
       </div>
       <div className="flex-1 flex flex-col w-full">
@@ -170,14 +185,14 @@ const JourneySidebar = ({
             title={section.title}
             active={activeSectionId === section.id}
             color={
-              section.title.toLowerCase() === "preparations" ? "bg-[#112eed]" : 
-              section.title.toLowerCase() === "travel arrangements" ? "bg-[#410e69]" :
+              section.title.toLowerCase() === "persediaan" ? "bg-[#112eed]" : 
+              section.title.toLowerCase() === "logistik" ? "bg-[#410e69]" :
               section.title.toLowerCase() === "manasik umrah" ? "bg-[#800a1a]" :
-              section.title.toLowerCase() === "umrah step by step" ? "bg-[#ff6b00]" : // Color for Umrah Step by Step
+              section.title.toLowerCase() === "langkah-langkah umrah" ? "bg-[#ff6b00]" : // Color for Umrah Step by Step
               section.title.toLowerCase() === "ziarah" ? "bg-[#8f6a1f]" :
-              section.title.toLowerCase() === "reflection" ? "bg-[#30850f]" :
+              section.title.toLowerCase() === "refleksi" ? "bg-[#30850f]" :
               section.title.toLowerCase() === "manasik haji" ? "bg-[#0d6354]" :
-              section.title.toLowerCase() === "appendices" ? "bg-[#4f46e5]" :
+              section.title.toLowerCase() === "lampiran" ? "bg-[#4f46e5]" :
               section.color
             }
             lightColor={section.lightColor}
