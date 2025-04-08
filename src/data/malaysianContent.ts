@@ -12,7 +12,7 @@ export const umrahStepByStepMS = [
         content: [
           {
             id: "101-m-1",
-            text: "Tiada pergerakan fizikal khusus dalam pengenalan, tetapi persediaan mental dan fizikal diperlukan sebelum memulakan perjalanan",
+            text: "Bersenamlah setiap hari kerana sepanjang ibadat Umrah kita perlu berjalan kaki sekurang-kurangnya sejauh 4 km.",
             exceptions: []
           }
         ]
