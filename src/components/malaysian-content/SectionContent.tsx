@@ -75,7 +75,7 @@ export function SectionContent({
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
                               <li>Terlupa bilangan pusingan tawaf</li>
                               <li>Terbatal wudhu ketika tawaf</li>
-                              <li>Tidak mampu menyentuh Hajar Aswad</li>
+                              <li>Kita menyentuh Hajarul Aswad atau Kelambu Kaabah</li>
                               <li>Terputus tawaf kerana solat fardhu</li>
                               <li>Tawaf tidak cukup 7 pusingan</li>
                             </ul>
@@ -88,7 +88,7 @@ export function SectionContent({
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
                               <li>Terlupa bilangan: <Badge className="ml-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">Ambil jumlah yang pasti</Badge></li>
                               <li>Terbatal wudhu: <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Wajib berwudhu semula</Badge></li>
-                              <li>Tidak sentuh Hajar Aswad: <Badge className="ml-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">Masih sah (sunat sahaja)</Badge></li>
+                              <li>Kita menyentuh Hajarul Aswad atau Kelambu Kaabah: <Badge className="ml-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">Masih sah (sunat sahaja)</Badge></li>
                               <li>Terputus solat fardhu: <Badge className="ml-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Boleh sambung selepas</Badge></li>
                               <li>Tidak cukup 7 pusingan: <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Tawaf tidak sah</Badge></li>
                             </ul>
@@ -101,7 +101,7 @@ export function SectionContent({
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
                               <li>Terlupa bilangan: Ambil jumlah yang pasti atau paling minimum. <Badge className="ml-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">Tiada Damm</Badge></li>
                               <li>Terbatal wudhu: Keluar ambil wudhu semula, sambung dari tempat terakhir. <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Wajib Damm jika tidak</Badge></li>
-                              <li>Tidak sentuh Hajar Aswad: Cukup berisyarat dari jauh jika sesak. <Badge className="ml-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">Tiada Damm</Badge></li>
+                              <li>Kita menyentuh Hajarul Aswad atau Kelambu Kaabah: Cukup berisyarat dari jauh jika sesak. <Badge className="ml-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">Tiada Damm</Badge></li>
                               <li>Terputus solat fardhu: Sambung tawaf selepas solat. <Badge className="ml-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Tiada Damm</Badge></li>
                               <li>Tidak cukup 7 pusingan: Lengkapkan 7 pusingan atau ulang semula tawaf. <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Wajib Damm jika tidak</Badge></li>
                             </ul>
