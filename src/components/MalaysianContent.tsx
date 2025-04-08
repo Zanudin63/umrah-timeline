@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { RitualAccordion } from '@/components/RitualAccordion';
@@ -96,7 +97,7 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
             fullText += "Untuk lelaki: Pakailah 2 kain ihram dengan kemas agar tidak mendedahkan Aurat di antara pusat dan lutut, walaupun ketika melangkah kaki. Pakailah talipinggang jika perlu. Pakailah selipar yang patuh-ihram. ";
             fullText += "Untuk wanita: Pastikan Pakaian menututp Aurat dengan sempurna tanpa menututp muka. Pakailah tali yg menahan pangkal lengan baju daripada menggelongsor ke bawah jika tangan di angkat. Pakai setokin yg cukup tebal lagi tidak mudah tanggal sekalipun dipijak orang. Dilarang memakai sunglass yang terlalu besar. Pastikan tiada seutas rambut sekalipun yang terlepas keluar. ";
             fullText += "Untuk OKU: Panduan pakaian khusus untuk Orang Kurang Upaya semasa menunaikan ibadah. ";
-            fullText += "Untuk pesakit-pesakit Najis Berkekalan (Da-imul Hadas) lelaki dan perempuan: 30 minit sebelum turun ke MasjidilHaram, selepas mensucikan najis haid atau tahi atau kencing, pakailah pampers untuk mengelakkan pencemaran najis di lantai masjid nanti. ";
+            fullText += "Untuk pesakit-pesakit Najis Berkekalan (Da-imul Hadas) lelaki dan perempuan: (1) 30 minit sebelum turun ke MasjidilHaram, selepas mensucikan najis haid atau tahi atau kencing, pakailah pampers untuk mengelakkan pencemaran najis di lantai masjid nanti. (2) Bawalah beberapa helai pampers yang baru sebagai gantian. ";
           }
           
           if (item.id === 'pengenalandiri' && item.hasTabs) {
