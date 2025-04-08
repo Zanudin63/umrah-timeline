@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { UserPlus, Wheelchair, Thermometer, Video, FileText, Info, AlertTriangle, BookOpen, Book } from 'lucide-react';
+import { UserPlus, Heart, Thermometer, Video, FileText, Info, AlertTriangle, BookOpen, Book } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -50,7 +50,7 @@ export function ExceptionIcon({ type, tooltipText }: ExceptionIconProps) {
   
   const iconMap = {
     female: <UserPlus className="h-4 w-4 text-pink-500" />,
-    handicapped: <Wheelchair className="h-4 w-4 text-blue-500" />,
+    handicapped: <Heart className="h-4 w-4 text-blue-500" />,
     sick: <Thermometer className="h-4 w-4 text-red-500" />,
     video: <Video className="h-4 w-4 text-green-500" />,
     nas: <FileText className="h-4 w-4 text-amber-500" />,

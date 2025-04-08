@@ -34,7 +34,7 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
               {section.ritualSections?.map((ritualSection) => (
                 <RitualAccordion 
                   key={ritualSection.id} 
-                  section={ritualSection} 
+                  section={ritualSection as any} 
                 />
               ))}
               
