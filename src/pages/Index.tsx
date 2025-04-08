@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import JourneySection, { JourneyItem } from "@/components/JourneySection";
 import { UserRole } from "@/components/EditButtons";
@@ -16,7 +15,11 @@ import {
   Star,
   Info,
   Clock,
-  Building 
+  Building,
+  Footprints,
+  Female,
+  AlertTriangle,
+  FileQuestion
 } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import JourneySidebar from "@/components/JourneySidebar";
@@ -872,6 +875,217 @@ const Index = () => {
     }
   ];
 
+  const umrahStepByStepItems: JourneyItem[] = [
+    {
+      id: 101,
+      title: "Introduction to Umrah",
+      description: "Understanding the essence and significance of Umrah",
+      details: "Umrah is often referred to as the 'minor pilgrimage' or 'lesser pilgrimage' in contrast to Hajj, the 'major pilgrimage'. Unlike Hajj, which has specific dates according to the Islamic lunar calendar, Umrah can be performed at any time during the year. The word 'Umrah' in Arabic means 'to visit a populated place.' It consists of four essential rituals: Ihram, Tawaf, Sa'i, and Halq or Taqsir. The reward for performing Umrah is expiation of sins committed between it and the previous Umrah.",
+      checklistItems: [
+        "Understand the meaning and significance of Umrah",
+        "Learn the difference between Umrah and Hajj",
+        "Recognize the four main rituals of Umrah",
+        "Prepare spiritually for the journey"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      whatIfs: [
+        {
+          scenario: "What if I don't understand the significance of Umrah?",
+          solution: "Study the Quran and Hadith related to Umrah, attend pre-Umrah courses, or consult with knowledgeable scholars who can explain its spiritual importance and historical context."
+        }
+      ],
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/NOTA%20KAH%201446H%20_%20M10%20(1)_0.pdf"
+    },
+    {
+      id: 102,
+      title: "Entering Ihram State",
+      description: "The first ritual of Umrah - purification and intention",
+      details: "Ihram is the sacred state a Muslim must enter before performing Umrah or Hajj. Before entering the state of Ihram, men should trim their nails, remove unwanted hair, perform ghusl (full body ritual purification), apply perfume (before Ihram only), and wear two pieces of unstitched white cloth - one wrapped around the waist (izar) and the other draped over the shoulders (rida). Women can wear any modest, preferably white, clean clothes that cover the entire body except the face and hands, avoiding any display of adornment. At the Miqat (designated boundary points), the pilgrim makes the intention (niyyah) for Umrah and recites the Talbiyah.",
+      checklistItems: [
+        "Perform ghusl (full body ritual purification)",
+        "Men: Wear two pieces of unstitched white cloth",
+        "Women: Wear modest clothing",
+        "Make the intention (niyyah) for Umrah",
+        "Recite the Talbiyah"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      whatIfs: [
+        {
+          scenario: "What if I unintentionally violate the rules of Ihram?",
+          solution: "If you unintentionally violate the rules of Ihram, you should seek forgiveness from Allah and, depending on the violation, may need to offer a fidyah (compensation) which may be fasting, feeding the poor, or sacrificing an animal."
+        },
+        {
+          scenario: "What if I cannot find proper Ihram garments?",
+          solution: "If proper Ihram garments are not available, any clean, white, unstitched pieces of cloth can be used. In an extreme emergency, whatever is available that covers the required parts of the body would suffice."
+        }
+      ],
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/NOTA%20KAH%201446H%20_%20M10%20(1)_0.pdf"
+    },
+    {
+      id: 103,
+      title: "Entering Masjid al-Haram",
+      description: "Proper etiquette for entering the Sacred Mosque",
+      details: "When entering Masjid al-Haram, it is recommended to enter with the right foot first while reciting the dua for entering a mosque: 'Allahummaf-tahli abwaba rahmatik' (O Allah, open the doors of Your mercy for me). Men should ensure their right shoulder is exposed (idhtiba) when performing Tawaf. Upon first seeing the Ka'bah, raise your hands in supplication as prayers are accepted at this moment. It's a time of intense emotion and spiritual connection, so take a moment to make personal duas before proceeding with Tawaf.",
+      checklistItems: [
+        "Enter with right foot first",
+        "Recite the dua for entering a mosque",
+        "Men: Ensure right shoulder is exposed (idhtiba)",
+        "Raise hands in supplication upon first seeing the Ka'bah",
+        "Make personal duas"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      whatIfs: [
+        {
+          scenario: "What if the crowd is too dense to maintain idhtiba?",
+          solution: "Safety comes first. If maintaining idhtiba (exposing the right shoulder) is difficult due to dense crowds, it's permissible to cover both shoulders to avoid harm. The idhtiba is a Sunnah, not an obligation."
+        }
+      ],
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/NOTA%20KAH%201446H%20_%20M10%20(1)_0.pdf"
+    },
+    {
+      id: 104,
+      title: "Performing Tawaf",
+      description: "Circumambulating the Ka'bah seven times",
+      details: "Tawaf involves circling the Ka'bah seven times in a counter-clockwise direction, starting from and ending at the Black Stone (Hajar al-Aswad). Begin by facing the Black Stone with the Ka'bah on your left. If possible, kiss the Black Stone or touch it with your right hand and then kiss your hand. If this isn't possible due to crowds, simply point to it with your right hand and say 'Bismillah, Allahu Akbar'. Men are encouraged to perform ramal (brisk walking with shoulders thrust forward) during the first three rounds, followed by normal walking for the remaining four. Throughout Tawaf, recite personal duas or recommended prayers. After completing seven rounds, perform two rak'ahs prayer behind Maqam Ibrahim if possible, or anywhere in the mosque.",
+      checklistItems: [
+        "Begin at the Black Stone",
+        "Circle counterclockwise with Ka'bah on your left",
+        "Kiss or touch the Black Stone if possible, or point to it",
+        "Men: Perform ramal for first three rounds",
+        "Complete seven full rounds",
+        "Recite prayers throughout",
+        "Pray two rak'ahs behind Maqam Ibrahim after completion"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      whatIfs: [
+        {
+          scenario: "What if I lose count during Tawaf?",
+          solution: "If you're unsure about the number of rounds completed during Tawaf, act upon the lesser number you're certain of. For example, if you're unsure whether you've completed 3 or 4 rounds, assume you've completed 3 and continue with the remaining 4 rounds."
+        },
+        {
+          scenario: "What if I need to break my Tawaf for bathroom or wudu?",
+          solution: "If you need to break your Tawaf for a valid reason like using the bathroom or renewing wudu, you may continue from where you left off when you return. However, it's best to try to maintain wudu throughout if possible."
+        }
+      ],
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/NOTA%20KAH%201446H%20_%20M10%20(1)_0.pdf"
+    },
+    {
+      id: 105,
+      title: "Drinking Zamzam Water",
+      description: "Partaking in the blessed water after Tawaf",
+      details: "After completing Tawaf and the two rak'ahs prayer, it is recommended to drink Zamzam water. The Prophet Muhammad (peace be upon him) said, 'Zamzam water is for whatever it is drunk for.' When drinking, face the Ka'bah, say 'Bismillah', drink in three breaths, and make dua for healing, beneficial knowledge, or whatever good you seek. It's also Sunnah to pour some water on your head and body.",
+      checklistItems: [
+        "Locate Zamzam water coolers after Tawaf and prayer",
+        "Face the Ka'bah if possible",
+        "Say Bismillah before drinking",
+        "Drink in three breaths",
+        "Make dua for what you seek",
+        "Pour some water on your head if possible"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      whatIfs: [
+        {
+          scenario: "What if Zamzam water stations are very crowded?",
+          solution: "If Zamzam water stations are very crowded, be patient and wait your turn. If necessary, proceed to Sa'i and drink Zamzam water later, as there are usually Zamzam coolers available throughout the Haram."
+        }
+      ],
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/NOTA%20KAH%201446H%20_%20M10%20(1)_0.pdf"
+    },
+    {
+      id: 106,
+      title: "Performing Sa'i",
+      description: "Walking between Safa and Marwah seven times",
+      details: "Sa'i commemorates Hajar's (Hagar's) search for water for her son Ismail. Begin at Safa by facing the Ka'bah, raising your hands, and making dua. Then walk to Marwah at a normal pace, except between the green lights where men are encouraged to hasten their pace (women walk normally). Upon reaching Marwah, face the Ka'bah, raise your hands, and make dua again. This counts as one leg. Continue until you complete seven legs, ending at Marwah. Throughout Sa'i, recite personal duas or recommended prayers.",
+      checklistItems: [
+        "Begin at Safa with dua facing Ka'bah",
+        "Walk to Marwah",
+        "Men: Hasten pace between green lights",
+        "Make dua at Marwah facing Ka'bah",
+        "Complete seven legs (Safa→Marwah = 1, Marwah→Safa = 2, etc.)",
+        "End at Marwah",
+        "Recite prayers throughout"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      whatIfs: [
+        {
+          scenario: "What if I lose count during Sa'i?",
+          solution: "If you lose count during Sa'i, act upon the lesser number you're certain of. For example, if you're unsure whether you've completed 3 or 4 legs, assume you've completed 3 and continue with the remaining 4 legs."
+        },
+        {
+          scenario: "What if I'm physically unable to complete Sa'i by walking?",
+          solution: "If you're physically unable to complete Sa'i by walking, you may use a wheelchair or be carried. The Sa'i area now has multiple levels, with wheelchairs available on each level. There are also electric carts available for those who need them."
+        }
+      ],
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/NOTA%20KAH%201446H%20_%20M10%20(1)_0.pdf"
+    },
+    {
+      id: 107,
+      title: "Halq or Taqsir (Shaving or Trimming)",
+      description: "The final ritual to exit Ihram state",
+      details: "After completing Sa'i, the final ritual of Umrah is either Halq (completely shaving the head) or Taqsir (trimming at least an inch of hair from all parts of the head). Men have the choice between the two, with Halq being more virtuous, while women only perform Taqsir, cutting a fingertip's length from their hair. This ritual symbolizes humility and detachment from worldly vanities. After Halq or Taqsir, all restrictions of Ihram are lifted, and the Umrah is complete.",
+      checklistItems: [
+        "Men: Choose between Halq (shaving) or Taqsir (trimming)",
+        "Women: Perform Taqsir only (trim fingertip's length)",
+        "Use clean instruments",
+        "Recite the recommended dua",
+        "Exit the state of Ihram"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      whatIfs: [
+        {
+          scenario: "What if I'm completely bald?",
+          solution: "If you're completely bald, it's still recommended to pass a razor over your head symbolically to fulfill the ritual. This shows your willingness to comply with all aspects of the pilgrimage."
+        }
+      ],
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/NOTA%20KAH%201446H%20_%20M10%20(1)_0.pdf"
+    },
+    {
+      id: 108,
+      title: "Special Guidelines for Women",
+      description: "Gender-specific considerations for female pilgrims",
+      details: "Women follow the same rituals as men for Umrah with a few differences: they don't have to wear specific Ihram garments but should wear modest, preferably white clothes; they should keep their faces and hands uncovered while in Ihram; they walk at a normal pace during all rounds of Tawaf and Sa'i; they only trim their hair (Taqsir) rather than shaving; and they maintain a safe distance from men, especially during crowded rituals. If a woman experiences menstruation before entering the state of Ihram, she should delay her Ihram until she is pure. If menstruation begins after entering Ihram, she should perform all rituals except Tawaf and its two rak'ahs, which must be delayed until she is pure.",
+      checklistItems: [
+        "Wear modest clothing, keeping face and hands uncovered",
+        "Maintain normal walking pace during Tawaf and Sa'i",
+        "Perform only Taqsir (trimming), not Halq (shaving)",
+        "Keep safe distance from men during rituals",
+        "Understand menstruation-related exceptions"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      whatIfs: [
+        {
+          scenario: "What if menstruation begins during Umrah rituals?",
+          solution: "If menstruation begins after entering Ihram but before completing Tawaf, delay Tawaf and its two rak'ahs until purification. If it begins after Tawaf but before Sa'i, you may complete Sa'i as it doesn't require ritual purity. If your travel group must leave before you can become pure, consult a scholar about options like performing Tawaf in a state of necessity."
+        }
+      ],
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/NOTA%20KAH%201446H%20_%20M10%20(1)_0.pdf"
+    },
+    {
+      id: 109,
+      title: "Common Mistakes to Avoid",
+      description: "Errors that can affect the validity of Umrah",
+      details: "Common mistakes during Umrah include: not making the intention at the Miqat; not covering the awrah properly; performing rituals out of sequence; shortcuts in Tawaf such as cutting corners or not completing full rounds; beginning Tawaf from the wrong place; performing Sa'i without prior Tawaf; and exiting Ihram without proper Halq or Taqsir. Other errors involve prohibited actions during Ihram like using perfume, cutting nails, removing hair, or covering the head (for men) or face (for women). Always seek knowledge before performing rituals and ask scholars when in doubt.",
+      checklistItems: [
+        "Make proper intention at the correct Miqat",
+        "Cover awrah correctly throughout",
+        "Perform rituals in correct sequence",
+        "Complete full seven rounds of Tawaf without shortcuts",
+        "Begin Tawaf from the Black Stone corner",
+        "Only perform Sa'i after Tawaf",
+        "Exit Ihram with proper Halq or Taqsir",
+        "Avoid prohibited actions during Ihram"
+      ],
+      editableBy: ["imam", "guide", "admin"],
+      whatIfs: [
+        {
+          scenario: "What if I realize I made a mistake after completing Umrah?",
+          solution: "If you realize you made a mistake that affects the validity of your Umrah after completing it (like missing a necessary component), consult a scholar immediately. Depending on the error, you might need to offer a fidyah (compensation) or repeat certain rituals or even the entire Umrah."
+        }
+      ],
+      officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/NOTA%20KAH%201446H%20_%20M10%20(1)_0.pdf"
+    }
+  ];
+
   const registerRef = (
     sectionId: string,
     itemId: number,
@@ -912,6 +1126,14 @@ const Index = () => {
       color: "bg-green-500",
       lightColor: "bg-green-200",
       items: travelArrangementsItems.map(item => ({ id: item.id, title: item.title }))
+    },
+    {
+      id: "umrahStepByStep",
+      title: "Umrah Step By Step",
+      icon: <Footprints className="h-4 w-4 text-white" />,
+      color: "bg-[#ff6b00]",
+      lightColor: "bg-orange-200",
+      items: umrahStepByStepItems.map(item => ({ id: item.id, title: item.title }))
     }
   ];
 
@@ -993,6 +1215,18 @@ const Index = () => {
               registerRef={registerRef}
               currentRole={currentRole}
               initiallyOpen={true}
+            />
+            
+            <JourneySection
+              id="umrahStepByStep"
+              title="Umrah Step By Step"
+              description="Detailed instructions for performing Umrah rituals"
+              icon={<Footprints />}
+              items={umrahStepByStepItems}
+              registerRef={registerRef}
+              currentRole={currentRole}
+              initiallyOpen={true}
+              color="amber"
             />
           </div>
         </div>

@@ -1,11 +1,14 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Edit, Lock, AlertCircle, Plane, Users } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { useToast } from "@/hooks/use-toast";
+import { 
+  Popover, 
+  PopoverContent, 
+  PopoverTrigger 
+} from "@/components/ui/popover";
+import { MoreHorizontal, Edit, Check } from "lucide-react";
 
-export type UserRole = 'traveler' | 'agent' | 'airline' | 'airport' | 'admin' | 'pilgrim' | 'guide' | 'doctor' | 'imam';
+export type UserRole = "pilgrim" | "guide" | "imam" | "agent" | "admin" | "doctor";
 
 interface EditButtonsProps {
   itemId: number;
@@ -14,69 +17,56 @@ interface EditButtonsProps {
   onEdit: (itemId: number, role: UserRole) => void;
 }
 
-export const EditButtons: React.FC<EditButtonsProps> = ({
-  itemId,
-  currentRole,
+export const EditButtons = ({ 
+  itemId, 
+  currentRole, 
   editableBy,
-  onEdit,
-}) => {
-  const { toast } = useToast();
-  
+  onEdit 
+}: EditButtonsProps) => {
   const canEdit = editableBy.includes(currentRole);
-  
-  const roleToIcon: Record<UserRole, React.ReactNode> = {
-    traveler: <Users className="h-4 w-4" />,
-    agent: <Edit className="h-4 w-4" />,
-    airline: <Plane className="h-4 w-4" />,
-    airport: <AlertCircle className="h-4 w-4" />,
-    admin: <Edit className="h-4 w-4" />,
-    pilgrim: <Users className="h-4 w-4" />,
-    guide: <Edit className="h-4 w-4" />,
-    doctor: <AlertCircle className="h-4 w-4" />,
-    imam: <Edit className="h-4 w-4" />
-  };
-  
-  const handleEditClick = () => {
-    if (canEdit) {
-      onEdit(itemId, currentRole);
-    } else {
-      toast({
-        title: "Access Restricted",
-        description: `You don't have permission to edit this item as ${currentRole}.`,
-        variant: "destructive"
-      });
-    }
-  };
 
-  return (
-    <div className="flex justify-end gap-2">
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={handleEditClick}
-            className={`h-8 px-2 ${!canEdit ? 'opacity-50 cursor-not-allowed' : ''}`}
+  if (canEdit) {
+    return (
+      <Button
+        variant="ghost"
+        size="sm"
+        className="h-7 w-7 p-0"
+        onClick={() => onEdit(itemId, currentRole)}
+      >
+        <Edit className="h-4 w-4" />
+      </Button>
+    );
+  }
+
+  if (editableBy.length > 0) {
+    return (
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="h-7 w-7 p-0"
           >
-            {canEdit ? (
-              <>
-                {roleToIcon[currentRole]}
-                <span className="ml-1">Edit</span>
-              </>
-            ) : (
-              <>
-                <Lock className="h-4 w-4" />
-                <span className="ml-1">Locked</span>
-              </>
-            )}
+            <MoreHorizontal className="h-4 w-4" />
           </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          {canEdit 
-            ? `Edit as ${currentRole}` 
-            : `Only ${editableBy.join(", ")} can edit this item`}
-        </TooltipContent>
-      </Tooltip>
-    </div>
-  );
+        </PopoverTrigger>
+        <PopoverContent className="w-48 p-1">
+          <div className="text-xs text-muted-foreground px-2 py-1">
+            Editable by:
+          </div>
+          {editableBy.map((role) => (
+            <div 
+              key={role}
+              className="flex items-center gap-2 px-2 py-1 rounded-sm text-sm hover:bg-accent"
+            >
+              <Check className="h-3 w-3 text-green-500" />
+              <span>{role}</span>
+            </div>
+          ))}
+        </PopoverContent>
+      </Popover>
+    );
+  }
+
+  return null;
 };

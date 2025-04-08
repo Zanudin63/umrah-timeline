@@ -2,7 +2,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Luggage, Book, MapPin, Heart, PanelsTopLeft, FileText, BookOpen } from "lucide-react";
+import { Luggage, Book, MapPin, Heart, PanelsTopLeft, FileText, BookOpen, Footprints } from "lucide-react";
 
 interface SidebarTabProps {
   title: string;
@@ -17,6 +17,7 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
   const isPreparations = title.toLowerCase() === "preparations";
   const isTravelArrangements = title.toLowerCase() === "travel arrangements";
   const isManasikUmrah = title.toLowerCase() === "manasik umrah";
+  const isUmrahStepByStep = title.toLowerCase() === "umrah step by step";
   const isZiarah = title.toLowerCase() === "ziarah";
   const isReflection = title.toLowerCase() === "reflection" || title.toLowerCase().includes("reflection");
   const isManasikHaji = title.toLowerCase() === "manasik haji";
@@ -30,6 +31,8 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
       bgColorClass = "bg-[#410e69]";
     } else if (isManasikUmrah) {
       bgColorClass = "bg-[#800a1a]";
+    } else if (isUmrahStepByStep) {
+      bgColorClass = "bg-[#ff6b00]"; // Orange color for Umrah Step by Step
     } else if (isZiarah) {
       bgColorClass = "bg-[#8f6a1f]";
     } else if (isReflection) {
@@ -47,6 +50,8 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
     bgColorClass = "hover:bg-[#410e69]/80 dark:hover:bg-[#410e69]/80";
   } else if (isManasikUmrah) {
     bgColorClass = "hover:bg-[#800a1a]/80 dark:hover:bg-[#800a1a]/80";
+  } else if (isUmrahStepByStep) {
+    bgColorClass = "hover:bg-[#ff6b00]/80 dark:hover:bg-[#ff6b00]/80"; // Hover color for Umrah Step by Step
   } else if (isZiarah) {
     bgColorClass = "hover:bg-[#8f6a1f]/80 dark:hover:bg-[#8f6a1f]/80";
   } else if (isReflection) {
@@ -62,7 +67,7 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
   let textColorClass = "";
   if (active) {
     textColorClass = "text-white";
-  } else if ((isPreparations || isTravelArrangements || isManasikUmrah || isZiarah || isReflection || isManasikHaji || isAppendices) && !active) {
+  } else if ((isPreparations || isTravelArrangements || isManasikUmrah || isUmrahStepByStep || isZiarah || isReflection || isManasikHaji || isAppendices) && !active) {
     textColorClass = "dark:text-[#8eed11]";
   } else {
     textColorClass = "sidebar-title";
@@ -86,6 +91,7 @@ const SidebarTab = ({ title, active, color, lightColor, onClick, icon }: Sidebar
           isPreparations ? "bg-[#112eed]" : 
           isTravelArrangements ? "bg-[#410e69]" : 
           isManasikUmrah ? "bg-[#800a1a]" :
+          isUmrahStepByStep ? "bg-[#ff6b00]" : // Active indicator for Umrah Step by Step
           isZiarah ? "bg-[#8f6a1f]" :
           isReflection ? "bg-[#30850f]" :
           isManasikHaji ? "bg-[#0d6354]" :
@@ -167,6 +173,7 @@ const JourneySidebar = ({
               section.title.toLowerCase() === "preparations" ? "bg-[#112eed]" : 
               section.title.toLowerCase() === "travel arrangements" ? "bg-[#410e69]" :
               section.title.toLowerCase() === "manasik umrah" ? "bg-[#800a1a]" :
+              section.title.toLowerCase() === "umrah step by step" ? "bg-[#ff6b00]" : // Color for Umrah Step by Step
               section.title.toLowerCase() === "ziarah" ? "bg-[#8f6a1f]" :
               section.title.toLowerCase() === "reflection" ? "bg-[#30850f]" :
               section.title.toLowerCase() === "manasik haji" ? "bg-[#0d6354]" :
