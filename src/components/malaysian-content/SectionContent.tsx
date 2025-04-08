@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RitualAccordion } from '@/components/RitualAccordion';
@@ -65,9 +64,9 @@ export function SectionContent({
                       <Tabs defaultValue="123" className="w-full mb-4">
                         <TabsList className="grid w-full grid-cols-5">
                           <TabsTrigger value="123">123</TabsTrigger>
-                          <TabsTrigger value="syaratsah">Syarat Sah</TabsTrigger>
-                          <TabsTrigger value="membatalkan">Membatalkan</TabsTrigger>
-                          <TabsTrigger value="sunat">Sunat</TabsTrigger>
+                          <TabsTrigger value="syaratsah">SAH</TabsTrigger>
+                          <TabsTrigger value="membatalkan">BATAL</TabsTrigger>
+                          <TabsTrigger value="sunat">SUNAT</TabsTrigger>
                           <TabsTrigger value="patuhi">Patuhi</TabsTrigger>
                         </TabsList>
                         
