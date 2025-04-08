@@ -6,17 +6,66 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, Speaker, Clock } from 'lucide-react';
+import { ChevronDown, Speaker, Clock, List, ListChecks, ListOrdered, AlignLeft } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { umrahStepByStepMS } from '@/data/malaysianContent';
+import { Separator } from '@/components/ui/separator';
 
 interface MalaysianContentProps {
   sectionId: string;
 }
 
+// Types for different item formats
+type ChecklistItem = {
+  id: string;
+  label: string;
+  description: string;
+  type: 'regular' | 'numbered' | 'bullet' | 'heading';
+  checked?: boolean;
+};
+
 export function MalaysianContent({ sectionId }: MalaysianContentProps) {
   const { language } = useLanguage();
   const [isCountdownPlaying, setIsCountdownPlaying] = useState(false);
+  const [activeFormat, setActiveFormat] = useState<'regular' | 'numbered' | 'bullet' | 'heading'>('regular');
+  const [checklistItems, setChecklistItems] = useState<ChecklistItem[]>([
+    { 
+      id: 'pakaian', 
+      label: 'Pakaian', 
+      description: 'Untuk lelaki pakailah 2 keping kain ihram dengan kemas agar tidak mendedahkan Aurat di antara pusat dan lutut, walaupun ketika melangkah kaki, pakailah talipinggang jika perlu. Untuk Wanita, pastikan menututup Aurat dengan sempurna tanpa menututp muka tapi pakailah tali yg menahan pangkal lengan baju daripada menggelongsor ke bawah jika tangan di angkat, dan setokin yg cukup tebal lagi tidak mudah tanggal sekalipun dipijak orang. Dilarang memakai sunglass yang terlalu besar dan pastikan tiada rambut yang terlepas keluar.',
+      type: 'regular'
+    },
+    { 
+      id: 'pengenalan', 
+      label: 'Pengenalan', 
+      description: 'Dokumen pengenalan diri dan visa yang diperlukan', 
+      type: 'regular'
+    },
+    { 
+      id: 'alatan', 
+      label: 'Alatan', 
+      description: 'Alatan penting seperti sejadah, ubat-ubatan dan keperluan peribadi', 
+      type: 'regular'
+    },
+    { 
+      id: 'wang', 
+      label: 'Wang', 
+      description: 'Wang yang mencukupi dalam bentuk Riyal dan tambahan untuk kecemasan', 
+      type: 'regular'
+    },
+    { 
+      id: 'sediaminda', 
+      label: 'SediaMinda', 
+      description: 'Bersedia secara mental dan spiritual untuk beribadah', 
+      type: 'regular'
+    },
+    { 
+      id: 'larangan', 
+      label: 'Larangan', 
+      description: 'Memahami larangan semasa dalam ihram dan di tanah suci', 
+      type: 'regular'
+    },
+  ]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
   // Show component for Malaysian language
@@ -37,7 +86,7 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
       // This would be implemented with actual audio in a production app
       // For now, we'll simulate with speech synthesis
       if ('speechSynthesis' in window) {
-        const items = ['Pakaian', 'Pengenalan', 'Alatan', 'Wang', 'SediaMinda', 'Larangan'];
+        const items = checklistItems.map(item => item.label);
         const utterance = new SpeechSynthesisUtterance(items.join(', '));
         utterance.lang = 'ms-MY';
         speechSynthesis.speak(utterance);
@@ -51,47 +100,239 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
     }
   };
 
-  const renderHotelChecklist = () => {
-    const items = [
-      { id: 'pakaian', label: 'Pakaian', description: 'Untuk lelaki pakailah 2 keping kain ihram dengan kemas agar tidak mendedahkan Aurat di antara pusat dan lutut, walaupun ketika melangkah kaki, pakailah talipinggang jika perlu. Untuk Wanita, pastikan menututup Aurat dengan sempurna tanpa menututp muka tapi pakailah tali yg menahan pangkal lengan baju daripada menggelongsor ke bawah jika tangan di angkat, dan setokin yg cukup tebal lagi tidak mudah tanggal sekalipun dipijak orang. Dilarang memakai sunglass yang terlalu besar dan pastikan tiada rambut yang terlepas keluar.' },
-      { id: 'pengenalan', label: 'Pengenalan', description: 'Dokumen pengenalan diri dan visa yang diperlukan' },
-      { id: 'alatan', label: 'Alatan', description: 'Alatan penting seperti sejadah, ubat-ubatan dan keperluan peribadi' },
-      { id: 'wang', label: 'Wang', description: 'Wang yang mencukupi dalam bentuk Riyal dan tambahan untuk kecemasan' },
-      { id: 'sediaminda', label: 'SediaMinda', description: 'Bersedia secara mental dan spiritual untuk beribadah' },
-      { id: 'larangan', label: 'Larangan', description: 'Memahami larangan semasa dalam ihram dan di tanah suci' },
-    ];
+  const handleFormatChange = (format: 'regular' | 'numbered' | 'bullet' | 'heading') => {
+    setActiveFormat(format);
+  };
 
+  const addNewItem = () => {
+    const newItem: ChecklistItem = {
+      id: `item-${Date.now()}`,
+      label: 'Item Baru',
+      description: 'Keterangan item baru',
+      type: activeFormat
+    };
+    setChecklistItems([...checklistItems, newItem]);
+  };
+
+  const toggleItemType = (id: string, newType: 'regular' | 'numbered' | 'bullet' | 'heading') => {
+    setChecklistItems(
+      checklistItems.map(item => 
+        item.id === id ? { ...item, type: newType } : item
+      )
+    );
+  };
+
+  const toggleItemChecked = (id: string) => {
+    setChecklistItems(
+      checklistItems.map(item => 
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  };
+
+  const renderHotelChecklist = () => {
     return (
       <div className="space-y-4">
-        <div className="flex items-center space-x-2 mb-4">
-          <Button 
-            variant={isCountdownPlaying ? "destructive" : "outline"} 
-            size="sm" 
-            onClick={handleStartCountdown}
-            className="flex items-center space-x-1"
-          >
-            {isCountdownPlaying ? <Clock className="h-4 w-4" /> : <Speaker className="h-4 w-4" />}
-            <span>{isCountdownPlaying ? "Berhenti Audio" : "Main Audio"}</span>
-          </Button>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-2">
+            <Button 
+              variant={isCountdownPlaying ? "destructive" : "outline"} 
+              size="sm" 
+              onClick={handleStartCountdown}
+              className="flex items-center space-x-1"
+            >
+              {isCountdownPlaying ? <Clock className="h-4 w-4" /> : <Speaker className="h-4 w-4" />}
+              <span>{isCountdownPlaying ? "Berhenti Audio" : "Main Audio"}</span>
+            </Button>
+          </div>
+
+          <div className="flex items-center space-x-1">
+            <Button 
+              variant={activeFormat === 'regular' ? "default" : "outline"} 
+              size="sm" 
+              onClick={() => handleFormatChange('regular')}
+              className="h-8 w-8 p-0"
+            >
+              <AlignLeft className="h-4 w-4" />
+            </Button>
+            <Button 
+              variant={activeFormat === 'numbered' ? "default" : "outline"} 
+              size="sm" 
+              onClick={() => handleFormatChange('numbered')}
+              className="h-8 w-8 p-0"
+            >
+              <ListOrdered className="h-4 w-4" />
+            </Button>
+            <Button 
+              variant={activeFormat === 'bullet' ? "default" : "outline"} 
+              size="sm" 
+              onClick={() => handleFormatChange('bullet')}
+              className="h-8 w-8 p-0"
+            >
+              <List className="h-4 w-4" />
+            </Button>
+            <Button 
+              variant={activeFormat === 'heading' ? "default" : "outline"} 
+              size="sm" 
+              onClick={() => handleFormatChange('heading')}
+              className="h-8 w-8 p-0 font-bold"
+            >
+              H
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={addNewItem}
+              className="ml-2"
+            >
+              + Tambah
+            </Button>
+          </div>
         </div>
         
         <div className="space-y-2">
-          {items.map((item) => (
-            <div key={item.id} className="flex flex-col space-y-1 mb-3">
-              <div className="flex items-center space-x-2">
-                <Checkbox id={item.id} />
-                <label
-                  htmlFor={item.id}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  {item.label}
-                </label>
+          {checklistItems.map((item) => {
+            // Different rendering based on item type
+            if (item.type === 'heading') {
+              return (
+                <div key={item.id} className="mt-4 mb-2">
+                  <h3 className="text-lg font-bold">{item.label}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                  <Separator className="mt-2" />
+                </div>
+              );
+            }
+            
+            if (item.type === 'numbered') {
+              return (
+                <div key={item.id} className="flex items-start space-x-2 mb-3">
+                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-white text-xs">
+                    {checklistItems.findIndex(i => i.id === item.id) + 1}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox 
+                        id={item.id} 
+                        checked={item.checked} 
+                        onCheckedChange={() => toggleItemChecked(item.id)}
+                      />
+                      <label
+                        htmlFor={item.id}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        {item.label}
+                      </label>
+                      <div className="flex ml-auto space-x-1">
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="h-6 w-6 p-0"
+                          onClick={() => toggleItemType(item.id, 'regular')}
+                        >
+                          <AlignLeft className="h-3 w-3" />
+                        </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="h-6 w-6 p-0"
+                          onClick={() => toggleItemType(item.id, 'bullet')}
+                        >
+                          <List className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="ml-6 text-xs text-muted-foreground mt-1">
+                      {item.description}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            
+            if (item.type === 'bullet') {
+              return (
+                <div key={item.id} className="flex items-start space-x-2 mb-3">
+                  <div className="mt-1 h-2 w-2 rounded-full bg-primary flex-shrink-0"></div>
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox 
+                        id={item.id} 
+                        checked={item.checked} 
+                        onCheckedChange={() => toggleItemChecked(item.id)}
+                      />
+                      <label
+                        htmlFor={item.id}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        {item.label}
+                      </label>
+                      <div className="flex ml-auto space-x-1">
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="h-6 w-6 p-0"
+                          onClick={() => toggleItemType(item.id, 'regular')}
+                        >
+                          <AlignLeft className="h-3 w-3" />
+                        </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="h-6 w-6 p-0"
+                          onClick={() => toggleItemType(item.id, 'numbered')}
+                        >
+                          <ListOrdered className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="ml-6 text-xs text-muted-foreground mt-1">
+                      {item.description}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            
+            // Regular item (default)
+            return (
+              <div key={item.id} className="flex flex-col space-y-1 mb-3">
+                <div className="flex items-center space-x-2">
+                  <Checkbox 
+                    id={item.id} 
+                    checked={item.checked} 
+                    onCheckedChange={() => toggleItemChecked(item.id)}
+                  />
+                  <label
+                    htmlFor={item.id}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    {item.label}
+                  </label>
+                  <div className="flex ml-auto space-x-1">
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="h-6 w-6 p-0"
+                      onClick={() => toggleItemType(item.id, 'numbered')}
+                    >
+                      <ListOrdered className="h-3 w-3" />
+                    </Button>
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="h-6 w-6 p-0"
+                      onClick={() => toggleItemType(item.id, 'bullet')}
+                    >
+                      <List className="h-3 w-3" />
+                    </Button>
+                  </div>
+                </div>
+                <div className="ml-6 text-xs text-muted-foreground">
+                  {item.description}
+                </div>
               </div>
-              <div className="ml-6 text-xs text-muted-foreground">
-                {item.description}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     );
