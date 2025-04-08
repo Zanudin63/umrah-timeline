@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { RitualAccordion } from '@/components/RitualAccordion';
@@ -143,7 +142,11 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
         </TabsList>
         
         <TabsContent value="lelaki" className="p-2 text-sm">
-          <p>Pakailah 2 kain ihram dengan kemas agar tidak mendedahkan Aurat di antara pusat dan lutut, walaupun ketika melangkah kaki, pakailah talipinggang jika perlu.</p>
+          <ol className="list-decimal pl-5 space-y-1">
+            <li>Pakailah 2 kain ihram dengan kemas agar tidak mendedahkan Aurat di antara pusat dan lutut, walaupun ketika melangkah kaki.</li>
+            <li>Pakailah talipinggang jika perlu.</li>
+            <li>Pakailah selipar yang patuh-ihram.</li>
+          </ol>
         </TabsContent>
         
         <TabsContent value="wanita" className="p-2 text-sm">
@@ -229,7 +232,6 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
         
         <div className="space-y-2">
           {checklistItems.map((item) => {
-            // Different rendering based on item type
             if (item.type === 'heading') {
               return (
                 <div key={item.id} className="mt-4 mb-2">
@@ -333,7 +335,6 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
               );
             }
             
-            // Regular item (default)
             return (
               <div key={item.id} className="flex flex-col space-y-1 mb-3">
                 <div className="flex items-center space-x-2">
@@ -452,7 +453,6 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
   };
 
   const renderSectionContent = (section: any) => {
-    // Check if this is the Tawaf Umrah section that needs tabs
     if (section.title === "Tawaf Umrah") {
       return (
         <Tabs defaultValue="before" className="w-full">
@@ -467,7 +467,6 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
               <div className="mb-4">
                 <p className="text-sm text-muted-foreground mb-4">{tabSection.details}</p>
                 
-                {/* Add the nested tabs for the "before" tab */}
                 {tabSection.id === "before" && renderTawafPreparationTabs()}
                 
                 {tabSection.ritualSections?.map((ritualSection: any) => (
@@ -483,7 +482,6 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
       );
     }
     
-    // For regular sections without tabs
     return (
       <>
         <div className="mb-4">
