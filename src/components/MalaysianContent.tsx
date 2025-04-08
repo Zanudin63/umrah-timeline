@@ -12,7 +12,7 @@ interface MalaysianContentProps {
 export function MalaysianContent({ sectionId }: MalaysianContentProps) {
   const { language } = useLanguage();
   
-  // Only show this component when language is set to Malaysian
+  // Show component for Malaysian language
   if (language !== 'ms') return null;
   
   const sections = umrahStepByStepMS.filter(
