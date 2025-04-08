@@ -901,6 +901,7 @@ const Index = () => {
       title: "Preparation",
       icon: <BookOpen className="h-4 w-4 text-white" />,
       color: "bg-indigo-500", 
+      lightColor: "bg-indigo-200",
       items: preparationItems.map(item => ({ id: item.id, title: item.title }))
     },
     {
@@ -908,6 +909,7 @@ const Index = () => {
       title: "Travel Arrangements",
       icon: <Plane className="h-4 w-4 text-white" />,
       color: "bg-green-500",
+      lightColor: "bg-green-200",
       items: travelArrangementsItems.map(item => ({ id: item.id, title: item.title }))
     }
   ];
@@ -947,7 +949,13 @@ const Index = () => {
         )}
 
         {isMobile && (
-          <JourneySidebar show={showSidebar} onClose={() => setShowSidebar(false)}>
+          <JourneySidebar 
+            show={showSidebar} 
+            onClose={() => setShowSidebar(false)}
+            sections={[]}
+            activeSectionId={null}
+            onSectionSelect={() => {}}
+          >
             <div className="p-4">
               <JourneyIndex 
                 sections={journeySections}
@@ -967,7 +975,6 @@ const Index = () => {
             <JourneySection
               id="preparation"
               title="Preparation"
-              subtitle="Steps to prepare yourself for the Umrah journey"
               icon={<Book />}
               items={preparationItems}
               registerRef={(itemId, ref) => registerRef("preparation", itemId, ref)}
@@ -978,7 +985,6 @@ const Index = () => {
             <JourneySection
               id="travel"
               title="Travel Arrangements"
-              subtitle="Planning your journey to the Holy Land"
               icon={<Luggage />}
               items={travelArrangementsItems}
               registerRef={(itemId, ref) => registerRef("travel", itemId, ref)}

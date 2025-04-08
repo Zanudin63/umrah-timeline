@@ -107,22 +107,49 @@ interface JourneySidebarProps {
   }[];
   activeSectionId: string | null;
   onSectionSelect: (sectionId: string) => void;
+  children?: React.ReactNode;
+  show?: boolean;
+  onClose?: () => void;
 }
 
 const JourneySidebar = ({ 
-  sections, 
+  sections = [], 
   activeSectionId, 
-  onSectionSelect 
+  onSectionSelect,
+  children,
+  show,
+  onClose
 }: JourneySidebarProps) => {
-  const updatedSections = sections.map(section => {
+  // Add a default empty array to avoid undefined errors
+  const updatedSections = Array.isArray(sections) ? sections.map(section => {
     if (section.title.toLowerCase() === "during umrah") {
       return { ...section, title: "Manasik Umrah" };
     }
     return section;
-  });
+  }) : [];
 
   const isMobile = useIsMobile();
 
+  // If show and onClose are provided, render a mobile sidebar with children
+  if (children && typeof show !== 'undefined' && onClose) {
+    return (
+      <div className={`fixed inset-0 z-50 bg-black/50 transition-opacity ${show ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`absolute right-0 top-0 h-full w-64 transform bg-background transition-transform ${show ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className="h-full overflow-auto p-4">
+            <button 
+              onClick={onClose}
+              className="absolute top-2 right-2 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800"
+            >
+              <PanelsTopLeft className="h-5 w-5" />
+            </button>
+            {children}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Original sidebar rendering
   return (
     <div className="sticky top-6 h-[calc(100vh-3rem)] flex flex-col pr-2 overflow-y-auto w-full max-w-[200px] mr-3 border-transparent">
       <div className="mb-2 md:mb-3">
