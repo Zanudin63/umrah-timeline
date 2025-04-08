@@ -22,6 +22,7 @@ type ChecklistItem = {
   description: string;
   type: 'regular' | 'numbered' | 'bullet' | 'heading';
   checked?: boolean;
+  hasTabs?: boolean;
 };
 
 export function MalaysianContent({ sectionId }: MalaysianContentProps) {
@@ -32,8 +33,9 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
     { 
       id: 'pakaian', 
       label: 'Pakaian', 
-      description: 'Untuk lelaki pakailah 2 keping kain ihram dengan kemas agar tidak mendedahkan Aurat di antara pusat dan lutut, walaupun ketika melangkah kaki, pakailah talipinggang jika perlu. Untuk Wanita, pastikan menututup Aurat dengan sempurna tanpa menututp muka tapi pakailah tali yg menahan pangkal lengan baju daripada menggelongsor ke bawah jika tangan di angkat, dan setokin yg cukup tebal lagi tidak mudah tanggal sekalipun dipijak orang. Dilarang memakai sunglass yang terlalu besar dan pastikan tiada rambut yang terlepas keluar.',
-      type: 'regular'
+      description: 'Pakaian yang sesuai untuk lelaki dan wanita semasa menunaikan ibadah.',
+      type: 'regular',
+      hasTabs: true
     },
     { 
       id: 'pengenalan', 
@@ -130,6 +132,41 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
     );
   };
 
+  const renderPakaianTabs = () => {
+    return (
+      <Tabs defaultValue="lelaki" className="w-full mt-2">
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="lelaki">Lelaki</TabsTrigger>
+          <TabsTrigger value="wanita">Wanita</TabsTrigger>
+          <TabsTrigger value="oku">OKU</TabsTrigger>
+          <TabsTrigger value="hadas">Hadas</TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="lelaki" className="p-2 text-sm">
+          <p>Pakailah 2 kain ihram dengan kemas agar tidak mendedahkan Aurat di antara pusat dan lutut, walaupun ketika melangkah kaki, pakailah talipinggang jika perlu.</p>
+        </TabsContent>
+        
+        <TabsContent value="wanita" className="p-2 text-sm">
+          <ol className="list-decimal pl-5 space-y-1">
+            <li>Pastikan Pakaian menututup Aurat dengan sempurna tanpa menututp muka</li>
+            <li>Pakailah tali yg menahan pangkal lengan baju daripada menggelongsor ke bawah jika tangan di angkat</li>
+            <li>Pakai setokin yg cukup tebal lagi tidak mudah tanggal sekalipun dipijak orang</li>
+            <li>Dilarang memakai sunglass yang terlalu besar</li>
+            <li>Pastikan tiada seutas rambut sekalipun yang terlepas keluar</li>
+          </ol>
+        </TabsContent>
+        
+        <TabsContent value="oku" className="p-2 text-sm">
+          <p>Panduan pakaian khusus untuk Orang Kurang Upaya (OKU) semasa menunaikan ibadah.</p>
+        </TabsContent>
+        
+        <TabsContent value="hadas" className="p-2 text-sm">
+          <p className="mb-2">30 minit sebelum turun ke MasjidilHaram, selepas mensucikan najis haid atau tahi atau kencing, pakailah pampers untuk mengelakkan pencemaran najis di lantai masjid nanti.</p>
+        </TabsContent>
+      </Tabs>
+    );
+  };
+
   const renderHotelChecklist = () => {
     return (
       <div className="space-y-4">
@@ -198,6 +235,7 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
                 <div key={item.id} className="mt-4 mb-2">
                   <h3 className="text-lg font-bold">{item.label}</h3>
                   <p className="text-sm text-muted-foreground">{item.description}</p>
+                  {item.hasTabs && renderPakaianTabs()}
                   <Separator className="mt-2" />
                 </div>
               );
@@ -243,6 +281,7 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
                     </div>
                     <div className="ml-6 text-xs text-muted-foreground mt-1">
                       {item.description}
+                      {item.hasTabs && renderPakaianTabs()}
                     </div>
                   </div>
                 </div>
@@ -287,6 +326,7 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
                     </div>
                     <div className="ml-6 text-xs text-muted-foreground mt-1">
                       {item.description}
+                      {item.hasTabs && renderPakaianTabs()}
                     </div>
                   </div>
                 </div>
@@ -330,6 +370,7 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
                 <div className="ml-6 text-xs text-muted-foreground">
                   {item.description}
                 </div>
+                {item.hasTabs && renderPakaianTabs()}
               </div>
             );
           })}
