@@ -53,7 +53,7 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
 
   const renderHotelChecklist = () => {
     const items = [
-      { id: 'pakaian', label: 'Pakaian', description: 'Untuk lelaki 2 keping kain ihram dipakai supaya kemas dan menututp' },
+      { id: 'pakaian', label: 'Pakaian', description: 'Untuk lelaki pakailah 2 keping kain ihram dengan kemas agar tidak mendedahkan Aurat di antara pusat dan lutut, walaupun ketika melangkah kaki, pakailah talipinggang jika perlu. Untuk Wanita, pastikan menututup Aurat dengan sempurna tanpa menututp muka tapi pakailah tali yg menahan pangkal lengan baju daripada menggelongsor ke bawah jika tangan di angkat, dan setokin yg cukup tebal lagi tidak mudah tanggal sekalipun dipijak orang. Dilarang memakai sunglass yang terlalu besar dan pastikan tiada rambut yang terlepas keluar.' },
       { id: 'pengenalan', label: 'Pengenalan', description: 'Dokumen pengenalan diri dan visa yang diperlukan' },
       { id: 'alatan', label: 'Alatan', description: 'Alatan penting seperti sejadah, ubat-ubatan dan keperluan peribadi' },
       { id: 'wang', label: 'Wang', description: 'Wang yang mencukupi dalam bentuk Riyal dan tambahan untuk kecemasan' },
