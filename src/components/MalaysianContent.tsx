@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { RitualAccordion } from '@/components/RitualAccordion';
@@ -37,10 +38,11 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
       hasTabs: true
     },
     { 
-      id: 'pengenalan', 
-      label: 'Pengenalan', 
+      id: 'pengenalandiri', 
+      label: 'Pengenalan Diri', 
       description: 'Dokumen pengenalan diri dan visa yang diperlukan', 
-      type: 'regular'
+      type: 'regular',
+      hasTabs: true
     },
     { 
       id: 'alatan', 
@@ -170,6 +172,35 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
     );
   };
 
+  const renderPengenalanDiriTabs = () => {
+    return (
+      <Tabs defaultValue="identiti" className="w-full mt-2">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="identiti">Identiti</TabsTrigger>
+          <TabsTrigger value="sekiranya">Sekiranya</TabsTrigger>
+          <TabsTrigger value="nota">Nota</TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="identiti" className="p-2 text-sm">
+          <ol className="list-decimal pl-5 space-y-1">
+            <li>Salinan Passport termasuk Salinan Visa.</li>
+            <li>Lanyard Kad Jemaah.</li>
+            <li>Beg Travel</li>
+            <li>Kad Hotel.</li>
+          </ol>
+        </TabsContent>
+        
+        <TabsContent value="sekiranya" className="p-2 text-sm">
+          <p>Panduan tambahan sekiranya dokumen hilang atau terdapat masalah dengan pengenalan diri.</p>
+        </TabsContent>
+        
+        <TabsContent value="nota" className="p-2 text-sm">
+          <p className="mb-2">Catatan penting berkaitan pengenalan diri semasa menunaikan ibadah.</p>
+        </TabsContent>
+      </Tabs>
+    );
+  };
+
   const renderHotelChecklist = () => {
     return (
       <div className="space-y-4">
@@ -237,7 +268,8 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
                 <div key={item.id} className="mt-4 mb-2">
                   <h3 className="text-lg font-bold">{item.label}</h3>
                   <p className="text-sm text-muted-foreground">{item.description}</p>
-                  {item.hasTabs && renderPakaianTabs()}
+                  {item.hasTabs && item.id === 'pakaian' && renderPakaianTabs()}
+                  {item.hasTabs && item.id === 'pengenalandiri' && renderPengenalanDiriTabs()}
                   <Separator className="mt-2" />
                 </div>
               );
@@ -283,7 +315,8 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
                     </div>
                     <div className="ml-6 text-xs text-muted-foreground mt-1">
                       {item.description}
-                      {item.hasTabs && renderPakaianTabs()}
+                      {item.hasTabs && item.id === 'pakaian' && renderPakaianTabs()}
+                      {item.hasTabs && item.id === 'pengenalandiri' && renderPengenalanDiriTabs()}
                     </div>
                   </div>
                 </div>
@@ -328,7 +361,8 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
                     </div>
                     <div className="ml-6 text-xs text-muted-foreground mt-1">
                       {item.description}
-                      {item.hasTabs && renderPakaianTabs()}
+                      {item.hasTabs && item.id === 'pakaian' && renderPakaianTabs()}
+                      {item.hasTabs && item.id === 'pengenalandiri' && renderPengenalanDiriTabs()}
                     </div>
                   </div>
                 </div>
@@ -371,7 +405,8 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
                 <div className="ml-6 text-xs text-muted-foreground">
                   {item.description}
                 </div>
-                {item.hasTabs && renderPakaianTabs()}
+                {item.hasTabs && item.id === 'pakaian' && renderPakaianTabs()}
+                {item.hasTabs && item.id === 'pengenalandiri' && renderPengenalanDiriTabs()}
               </div>
             );
           })}
