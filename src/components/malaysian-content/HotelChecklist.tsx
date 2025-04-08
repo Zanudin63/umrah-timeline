@@ -328,7 +328,7 @@ function PengenalanDiriTabs() {
           <li>Salinan Passport termasuk Salinan Visa.</li>
           <li>Lanyard Kad Jemaah.</li>
           <li>Beg Travel</li>
-          <li>Kad Hotel.</li>
+          <li>Kad hotel yang lengkap dengan nama penuh hotel, alamat bangunan, alamat website dan nombor talipon hotel.</li>
           <li>Nombor Talipon Hotel.</li>
           <li>Nombor Talipon Mutawif.</li>
           <li>Nombor Talipon Waris.</li>
