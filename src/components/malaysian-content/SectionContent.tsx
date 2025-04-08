@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RitualAccordion } from '@/components/RitualAccordion';
@@ -62,6 +61,87 @@ export function SectionContent({
                       <CardTitle className="text-base">Cara Tawaf</CardTitle>
                     </CardHeader>
                     <CardContent>
+                      <Tabs defaultValue="123" className="w-full mb-4">
+                        <TabsList className="grid w-full grid-cols-5">
+                          <TabsTrigger value="123">123</TabsTrigger>
+                          <TabsTrigger value="syaratsah">Syarat Sah</TabsTrigger>
+                          <TabsTrigger value="membatalkan">Membatalkan</TabsTrigger>
+                          <TabsTrigger value="sunat">Sunat</TabsTrigger>
+                          <TabsTrigger value="patuhi">Patuhi</TabsTrigger>
+                        </TabsList>
+                        
+                        <TabsContent value="123" className="mt-2">
+                          <div className="bg-muted p-3 rounded-md">
+                            <h4 className="font-medium mb-2">Langkah-langkah Tawaf:</h4>
+                            <ol className="list-decimal list-inside text-sm mt-2 space-y-1">
+                              <li>Mulakan dari Hajarul Aswad (batu hitam)</li>
+                              <li>Berjalan 7 pusingan mengelilingi Kaabah arah berlawanan jam</li>
+                              <li>Lelaki: Berjalan pantas 3 pusingan pertama, berjalan biasa 4 pusingan terakhir</li>
+                              <li>Berdoa sepanjang tawaf</li>
+                              <li>Selesai 7 pusingan, lakukan solat 2 rakaat di belakang Maqam Ibrahim</li>
+                            </ol>
+                          </div>
+                        </TabsContent>
+                        
+                        <TabsContent value="syaratsah" className="mt-2">
+                          <div className="bg-muted p-3 rounded-md">
+                            <h4 className="font-medium mb-2">Syarat Sah Tawaf:</h4>
+                            <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                              <li>Berniat Tawaf</li>
+                              <li>Suci daripada hadas besar dan kecil</li>
+                              <li>Menutup aurat</li>
+                              <li>Bermula dari Hajar Aswad</li>
+                              <li>Kaabah berada di sebelah kiri</li>
+                              <li>Berada dalam kawasan Masjidil Haram</li>
+                              <li>Cukup 7 pusingan</li>
+                              <li>Tawaf berterusan (tanpa henti yang lama)</li>
+                            </ul>
+                          </div>
+                        </TabsContent>
+                        
+                        <TabsContent value="membatalkan" className="mt-2">
+                          <div className="bg-muted p-3 rounded-md">
+                            <h4 className="font-medium mb-2">Perkara Yang Membatalkan Tawaf:</h4>
+                            <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                              <li>Terbatal wudhu</li>
+                              <li>Tidak cukup 7 pusingan</li>
+                              <li>Tidak menutup aurat dengan sempurna</li>
+                              <li>Keluar dari kawasan Masjidil Haram</li>
+                              <li>Tawaf berlawanan arah (ikut arah jam)</li>
+                            </ul>
+                          </div>
+                        </TabsContent>
+                        
+                        <TabsContent value="sunat" className="mt-2">
+                          <div className="bg-muted p-3 rounded-md">
+                            <h4 className="font-medium mb-2">Sunat Semasa Tawaf:</h4>
+                            <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                              <li>Istilam (menyentuh atau mengucup) Hajar Aswad jika mampu</li>
+                              <li>Ramal (berlari-lari kecil) pada 3 pusingan pertama bagi lelaki</li>
+                              <li>Berdoa sepanjang Tawaf</li>
+                              <li>Menyentuh Rukun Yamani</li>
+                              <li>Solat 2 rakaat di belakang Maqam Ibrahim selepas Tawaf</li>
+                              <li>Minum air Zam-zam selepas Tawaf</li>
+                            </ul>
+                          </div>
+                        </TabsContent>
+                        
+                        <TabsContent value="patuhi" className="mt-2">
+                          <div className="bg-muted p-3 rounded-md">
+                            <h4 className="font-medium mb-2">Patuhi Semasa Tawaf:</h4>
+                            <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                              <li>Jangan menolak atau menyakiti jemaah lain</li>
+                              <li>Jangan berhenti terlalu lama semasa Tawaf</li>
+                              <li>Jaga adab di dalam Masjidil Haram</li>
+                              <li>Ikut arahan petugas (mutawif)</li>
+                              <li>Sentiasa bersama kumpulan jika dalam rombongan</li>
+                              <li>Bawa botol air untuk mengelakkan dehidrasi</li>
+                              <li>Tidak meninggikan suara sewaktu berdoa</li>
+                            </ul>
+                          </div>
+                        </TabsContent>
+                      </Tabs>
+                      
                       <Tabs defaultValue="sekiranya" className="w-full">
                         <TabsList className="grid w-full grid-cols-3">
                           <TabsTrigger value="sekiranya">Sekiranya</TabsTrigger>
