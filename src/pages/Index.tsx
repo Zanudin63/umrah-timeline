@@ -740,4 +740,256 @@ const Index = () => {
       ],
       whatIfs: [
         {
-          scenario: "What if my flight is
+          scenario: "What if my flight is canceled?",
+          solution: "Contact the airline immediately. Request a refund or rebooking. Check your travel insurance policy. Inform your travel companions and accommodation providers about the change."
+        },
+        {
+          scenario: "What if I miss my flight?",
+          solution: "Contact the airline and explain your situation. Ask for the next available flight or a partial refund. Check your travel insurance policy for coverage of missed flights."
+        }
+      ],
+      muhasabah: "Am I planning my travel responsibly and efficiently? Am I considering the comfort and convenience of my journey? Am I being mindful of my budget and resources?"
+    },
+    {
+      id: 16,
+      title: "Booking Accommodation",
+      description: "Arranging accommodation in Saudi Arabia",
+      details: "Research different hotels and hostels in Saudi Arabia. Compare prices and amenities. Book accommodation in advance to secure a good deal. Check the cancellation policy and any restrictions on booking. Confirm the booking details and print the reservation confirmation.",
+      checklistItems: [
+        "Research hotels and hostels",
+        "Compare prices and amenities",
+        "Book accommodation in advance",
+        "Check cancellation policy",
+        "Confirm booking details"
+      ],
+      editableBy: ["agent", "admin"],
+      commonMistakes: [
+        "Not researching hotels and hostels",
+        "Not comparing prices and amenities",
+        "Not booking accommodation in advance",
+        "Not checking cancellation policy",
+        "Not confirming booking details"
+      ],
+      costs: [
+        {
+          item: "Accommodation",
+          amount: "$30 - $200 per night",
+          note: "Varies depending on hotel class and location"
+        }
+      ],
+      whatIfs: [
+        {
+          scenario: "What if my accommodation is canceled?",
+          solution: "Contact the hotel or hostel immediately. Request a refund or rebooking. Check your travel insurance policy. Inform your travel companions and accommodation providers about the change."
+        },
+        {
+          scenario: "What if I miss my accommodation?",
+          solution: "Contact the hotel or hostel and explain your situation. Ask for the next available room or a partial refund. Check your travel insurance policy for coverage of missed accommodation."
+        }
+      ],
+      muhasabah: "Am I planning my accommodation responsibly and efficiently? Am I considering the comfort and convenience of my accommodation? Am I being mindful of my budget and resources?"
+    },
+    {
+      id: 17,
+      title: "Booking Transportation",
+      description: "Arranging transportation to and from Saudi Arabia",
+      details: "Research different transportation options, such as taxis, buses, and rental cars. Book transportation in advance to get better deals. Check the availability and schedules. Confirm the booking details and print the reservation confirmation.",
+      checklistItems: [
+        "Research transportation options",
+        "Book transportation in advance",
+        "Check availability and schedules",
+        "Confirm booking details"
+      ],
+      editableBy: ["agent", "admin"],
+      commonMistakes: [
+        "Not researching transportation options",
+        "Not booking transportation in advance",
+        "Not checking availability and schedules",
+        "Not confirming booking details"
+      ],
+      costs: [
+        {
+          item: "Transportation",
+          amount: "$50 - $200",
+          note: "For local travel in Saudi Arabia"
+        }
+      ],
+      whatIfs: [
+        {
+          scenario: "What if my transportation is canceled?",
+          solution: "Contact the transportation provider immediately. Request a refund or rebooking. Check your travel insurance policy. Inform your travel companions and accommodation providers about the change."
+        },
+        {
+          scenario: "What if I miss my transportation?",
+          solution: "Contact the transportation provider and explain your situation. Ask for the next available service or a partial refund. Check your travel insurance policy for coverage of missed transportation."
+        }
+      ],
+      muhasabah: "Am I planning my transportation responsibly and efficiently? Am I considering the comfort and convenience of my transportation? Am I being mindful of my budget and resources?"
+    },
+    {
+      id: 18,
+      title: "Booking Visa",
+      description: "Applying for an Umrah visa",
+      details: "Check the visa requirements for your nationality. Gather the required documents, such as passport, photos, and proof of accommodation. Apply for the visa through an authorized travel agent or the Saudi embassy or consulate. Pay the visa fees and track the application status.",
+      checklistItems: [
+        "Check visa requirements",
+        "Gather required documents",
+        "Apply through authorized agent",
+        "Pay visa fees",
+        "Track application status"
+      ],
+      editableBy: ["agent", "admin"],
+      commonMistakes: [
+        "Not checking visa requirements",
+        "Submitting incomplete documents",
+        "Applying through unauthorized agents",
+        "Not tracking application status"
+      ],
+      costs: [
+        {
+          item: "Visa Fees",
+          amount: "$0 - $150",
+          note: "Varies depending on nationality"
+        },
+        {
+          item: "Travel Agent Fees",
+          amount: "$50 - $200",
+          note: "If applying through an agent"
+        }
+      ],
+      whatIfs: [
+        {
+          scenario: "What if my visa is rejected?",
+          solution: "Check the reason for rejection and reapply with the necessary corrections. Contact the Saudi embassy or consulate for clarification. Seek assistance from a travel agent."
+        },
+        {
+          scenario: "What if my visa is delayed?",
+          solution: "Contact the travel agent or the Saudi embassy or consulate to inquire about the status. Be patient and allow sufficient time for processing."
+        }
+      ],
+      muhasabah: "Am I being truthful and transparent in my visa application? Am I following the rules and regulations set by the authorities? Am I trusting in Allah to grant me a visa?"
+    }
+  ];
+
+  const registerRef = (
+    sectionId: string,
+    itemId: number,
+    ref: HTMLDivElement | null
+  ) => {
+    if (ref && sectionId) {
+      sectionRefs.current[sectionId] = sectionRefs.current[sectionId] || {};
+      sectionRefs.current[sectionId][itemId] = ref;
+    }
+  };
+
+  const scrollToItem = (sectionId: string, itemId: number) => {
+    if (
+      sectionRefs.current[sectionId] &&
+      sectionRefs.current[sectionId][itemId]
+    ) {
+      const sectionRef = sectionRefs.current[sectionId][itemId];
+      sectionRef.scrollIntoView({ behavior: "smooth", block: "start" });
+      
+      setActiveSectionId(sectionId);
+      setActiveItemId(itemId);
+    }
+  };
+
+  const journeySections = [
+    {
+      id: "preparation",
+      title: "Preparation",
+      icon: <BookOpen className="h-4 w-4 text-white" />,
+      color: "bg-indigo-500", 
+      items: preparationItems.map(item => ({ id: item.id, title: item.title }))
+    },
+    {
+      id: "travel",
+      title: "Travel Arrangements",
+      icon: <Plane className="h-4 w-4 text-white" />,
+      color: "bg-green-500",
+      items: travelArrangementsItems.map(item => ({ id: item.id, title: item.title }))
+    }
+  ];
+
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+  };
+
+  return (
+    <div className="flex min-h-screen flex-col bg-background">
+      <header className="sticky top-0 z-30 flex h-16 items-center border-b bg-background px-4 sm:px-6">
+        <div className="w-full flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            {isMobile && (
+              <Button variant="ghost" size="icon" onClick={toggleSidebar}>
+                <PanelsTopLeft className="h-5 w-5" />
+              </Button>
+            )}
+            <h1 className="text-2xl font-semibold tracking-tight">Umrah Journey Planner</h1>
+          </div>
+          <ThemeToggle />
+        </div>
+      </header>
+
+      <div className="flex flex-1 overflow-hidden">
+        {!isMobile && (
+          <aside className="hidden md:block w-64 shrink-0 border-r">
+            <div className="sticky top-16 overflow-y-auto p-4 h-[calc(100vh-4rem)]">
+              <JourneyIndex 
+                sections={journeySections}
+                activeSectionId={activeSectionId}
+                activeItemId={activeItemId}
+                onNavigate={scrollToItem}
+              />
+            </div>
+          </aside>
+        )}
+
+        {isMobile && (
+          <JourneySidebar show={showSidebar} onClose={() => setShowSidebar(false)}>
+            <div className="p-4">
+              <JourneyIndex 
+                sections={journeySections}
+                activeSectionId={activeSectionId}
+                activeItemId={activeItemId}
+                onNavigate={(sectionId, itemId) => {
+                  scrollToItem(sectionId, itemId);
+                  setShowSidebar(false);
+                }}
+              />
+            </div>
+          </JourneySidebar>
+        )}
+
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <JourneySection
+              id="preparation"
+              title="Preparation"
+              subtitle="Steps to prepare yourself for the Umrah journey"
+              icon={<Book />}
+              items={preparationItems}
+              registerRef={(itemId, ref) => registerRef("preparation", itemId, ref)}
+              currentRole={currentRole}
+              initiallyOpen={true}
+            />
+
+            <JourneySection
+              id="travel"
+              title="Travel Arrangements"
+              subtitle="Planning your journey to the Holy Land"
+              icon={<Luggage />}
+              items={travelArrangementsItems}
+              registerRef={(itemId, ref) => registerRef("travel", itemId, ref)}
+              currentRole={currentRole}
+              initiallyOpen={true}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Index;
