@@ -1,10 +1,9 @@
-
 export const umrahStepByStepMS = [
   {
     id: 101,
     title: "Pengenalan kepada Umrah",
-    description: "Memahami esensi dan kepentingan Umrah",
-    details: "(1) Rukun Umrah adalah Niat, Tawaf, Sa'i, dan Tahallul. (2) Umrah menghapuskan dosa yang dilakukan antara Umrah tersebut dengan Umrah sebelumnya.",
+    description: "",
+    details: "(1) Rukun Umrah adalah Niat, Tawaf, Sa'i dan Tahalul.\n(2) Umrah menghapuskan dosa yang dilakukan antara Umrah tersebut dengan Umrah sebelumnya.",
     ritualSections: [
       {
         id: "101-movement",
@@ -863,76 +862,4 @@ export const umrahStepByStepEN = [
           },
           {
             id: "102-r-2",
-            text: "Reciting the Talbiyah: 'Labbayk Allahumma labbayk, labbayk la sharika laka labbayk, innal-hamda wan-ni'mata laka wal-mulk, la sharika lak'",
-            exceptions: [
-              {
-                type: "video",
-                description: "Watch a video on how to correctly pronounce the Talbiyah"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        id: "102-mind",
-        title: "Mind & Intentions",
-        type: "mind",
-        content: [
-          {
-            id: "102-mind-1",
-            text: "Sincerely intending to enter the state of ihram solely for the sake of Allah",
-            exceptions: []
-          },
-          {
-            id: "102-mind-2",
-            text: "Committing to observe the restrictions of ihram",
-            exceptions: []
-          }
-        ]
-      },
-      {
-        id: "102-adab",
-        title: "Etiquette & Rules",
-        type: "adab",
-        content: [
-          {
-            id: "102-adab-1",
-            text: "Not wearing stitched clothing (for men)",
-            exceptions: [
-              {
-                type: "female",
-                description: "Women may wear regular modest clothing but should not cover their faces"
-              }
-            ]
-          },
-          {
-            id: "102-adab-2",
-            text: "Not applying perfume after entering ihram",
-            exceptions: [
-              {
-                type: "taksengaja",
-                description: "If accidentally exposed to perfume, clean it immediately"
-              }
-            ]
-          },
-          {
-            id: "102-adab-3",
-            text: "Not cutting nails or removing hair",
-            exceptions: []
-          },
-          {
-            id: "102-adab-4",
-            text: "Not covering the head (for men)",
-            exceptions: [
-              {
-                type: "female",
-                description: "Women should not cover their faces but must cover their heads"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    officialResourceLink: "https://www.tabunghaji.gov.my/sites/default/kah/NOTA%20KAH%201446H%20_%20M10%20(1)_0.pdf"
-  }
-]
+            text: "Reciting the Talbiyah: 'Labbayk Allahumma labbayk, labbayk la sharika laka labbayk, innal-hamda wan-ni'
