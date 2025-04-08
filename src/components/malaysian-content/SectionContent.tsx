@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RitualAccordion } from '@/components/RitualAccordion';
@@ -120,9 +119,8 @@ export function SectionContent({
                               <li>Istilam (menyentuh atau mengucup) Hajar Aswad jika mampu</li>
                               <li>Ramal (berlari-lari kecil) pada 3 pusingan pertama bagi lelaki</li>
                               <li>Berdoa sepanjang Tawaf</li>
-                              <li>Menyentuh Rukun Yamani</li>
-                              <li>Solat 2 rakaat di belakang Maqam Ibrahim selepas Tawaf</li>
-                              <li>Minum air Zam-zam selepas Tawaf</li>
+                              <li>Berdoa antara Rukun Yamani: <span className="text-[#f2e941] block mt-1 mb-1">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</span><span className="text-xs italic block">Rabbana atina fid-dunya hasanah, wa fil-akhirati hasanah, wa qina 'adhaban-nar</span><span className="text-xs block">Ya Allah! Berilah kami kebaikan di dunia dan kebaikan di akhirat dan peliharalah kami dari azab neraka</span></li>
+                              <li>Doa di Hajarul Aswad: <span className="text-[#f2e941] block mt-1 mb-1">بِسْمِ اللهِ اللهُ أَكْبَرُ، اللَّهُمَّ إِيمَانًا بِكَ وَتَصْدِيقًا بِكِتَابِكَ وَوَفَاءً بِعَهْدِكَ وَاتِّبَاعًا لِسُنَّةِ نَبِيِّكَ مُحَمَّدٍ</span><span className="text-xs italic block">Bismillahi Allahu Akbar, Allahumma imanan bika, wa tasdiqan bikitabika, wa wafa'an bi'ahdika, wattiba'an lisunnati nabiyyika Muhammad</span><span className="text-xs block">Dengan nama Allah, Allah Maha Besar. Ya Allah, dengan beriman kepada-Mu, membenarkan kitab-Mu, memenuhi janji-Mu dan mengikuti sunnah Nabi-Mu Muhammad</span></li>
                             </ul>
                           </div>
                         </TabsContent>
