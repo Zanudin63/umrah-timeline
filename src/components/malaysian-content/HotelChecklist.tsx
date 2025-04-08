@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Separator } from '@/components/ui/separator';
-import { AlignLeft, List, ListOrdered, Clock, Speaker } from 'lucide-react';
+import { AlignLeft, List, ListOrdered, Clock, Speaker, Camera } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export type ChecklistItem = {
@@ -279,9 +279,15 @@ function PakaianTabs() {
       
       <TabsContent value="lelaki" className="p-2 text-sm">
         <ol className="list-decimal pl-5 space-y-1">
-          <li>Pakailah 2 kain ihram dengan kemas agar tidak mendedahkan Aurat di antara pusat dan lutut, walaupun ketika melangkah kaki.</li>
+          <li>
+            Pakailah 2 kain ihram dengan kemas agar tidak mendedahkan Aurat di antara pusat dan lutut, walaupun ketika melangkah kaki. Pakailah secara ittibak.
+            <Camera className="inline-block ml-1 h-3 w-3 text-blue-500" />
+          </li>
           <li>Pakailah talipinggang jika perlu.</li>
-          <li>Pakailah selipar yang patuh-ihram.</li>
+          <li>
+            Pakailah selipar yang patuh-ihram.
+            <Camera className="inline-block ml-1 h-3 w-3 text-blue-500" />
+          </li>
         </ol>
       </TabsContent>
       
