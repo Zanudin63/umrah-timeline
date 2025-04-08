@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
+import { useTheme } from '@/hooks/use-theme';
 
 interface MosqueChecklistProps {}
 
@@ -12,6 +13,9 @@ export function MosqueChecklist({}: MosqueChecklistProps) {
     'rak-selipar': 0,
     'doa': 0,
   });
+  
+  const { theme } = useTheme();
+  const isDarkMode = theme === 'dark';
 
   const items = [
     { id: 'nombor-pintu', label: 'Nombor Pintu' },
@@ -93,10 +97,30 @@ export function MosqueChecklist({}: MosqueChecklistProps) {
           {item.expanded && item.id === 'doa' && (
             <div className="ml-6 mt-2 space-y-3 text-sm">
               {doaContent.map(doa => (
-                <div key={doa.id} className="space-y-1 p-2 bg-gray-50 rounded-md">
+                <div 
+                  key={doa.id} 
+                  className={cn(
+                    "space-y-1 p-2 rounded-md",
+                    isDarkMode ? "bg-transparent border border-gray-700" : "bg-gray-50"
+                  )}
+                >
                   <div className="font-semibold">{doa.title}</div>
-                  <div className="text-right font-arabic">{doa.arabic}</div>
-                  <div className="text-gray-600 italic">{doa.translation}</div>
+                  <div 
+                    className={cn(
+                      "text-right font-arabic text-lg", 
+                      isDarkMode ? "text-[#f2ebbf]" : ""
+                    )}
+                  >
+                    {doa.arabic}
+                  </div>
+                  <div 
+                    className={cn(
+                      "italic",
+                      isDarkMode ? "text-gray-300" : "text-gray-600"
+                    )}
+                  >
+                    {doa.translation}
+                  </div>
                 </div>
               ))}
             </div>
