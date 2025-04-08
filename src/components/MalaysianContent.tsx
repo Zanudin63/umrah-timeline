@@ -187,6 +187,9 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
             <li>Lanyard Kad Jemaah.</li>
             <li>Beg Travel</li>
             <li>Kad Hotel.</li>
+            <li>Nombor Talipon Hotel.</li>
+            <li>Nombor Talipon Mutawif.</li>
+            <li>Nombor Talipon Waris.</li>
           </ol>
         </TabsContent>
         
