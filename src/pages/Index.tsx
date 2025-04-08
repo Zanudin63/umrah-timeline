@@ -4,12 +4,10 @@ import { UserRole } from "@/components/EditButtons";
 import { 
   Luggage, 
   Book, 
-  MapPin, 
   Plane, 
   PanelsTopLeft, 
   BookOpen, 
   FileText, 
-  Landmark, 
   User, 
   Users, 
   Star,
@@ -25,6 +23,8 @@ import JourneySidebar from "@/components/JourneySidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import JourneyIndex from "@/components/JourneyIndex";
+import { MalaysianContent } from "@/components/MalaysianContent";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
   const [currentRole] = useState<UserRole>("pilgrim");
@@ -33,6 +33,7 @@ const Index = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const sectionRefs = useRef<Record<string, Record<number, HTMLDivElement>>>({});
   const isMobile = useIsMobile();
+  const { language } = useLanguage();
 
   const preparationItems: JourneyItem[] = [
     {
@@ -1112,7 +1113,7 @@ const Index = () => {
   const journeySections = [
     {
       id: "preparation",
-      title: "Preparation",
+      title: language === 'en' ? "Preparation" : "Persediaan",
       icon: <BookOpen className="h-4 w-4 text-white" />,
       color: "bg-indigo-500", 
       lightColor: "bg-indigo-200",
@@ -1120,7 +1121,7 @@ const Index = () => {
     },
     {
       id: "travel",
-      title: "Travel Arrangements",
+      title: language === 'en' ? "Travel Arrangements" : "Urusan Perjalanan",
       icon: <Plane className="h-4 w-4 text-white" />,
       color: "bg-green-500",
       lightColor: "bg-green-200",
@@ -1128,7 +1129,7 @@ const Index = () => {
     },
     {
       id: "umrahStepByStep",
-      title: "Umrah Step By Step",
+      title: language === 'en' ? "Umrah Step By Step" : "Umrah Langkah Demi Langkah",
       icon: <Footprints className="h-4 w-4 text-white" />,
       color: "bg-[#ff6b00]",
       lightColor: "bg-orange-200",
@@ -1150,7 +1151,9 @@ const Index = () => {
                 <PanelsTopLeft className="h-5 w-5" />
               </Button>
             )}
-            <h1 className="text-2xl font-semibold tracking-tight">Umrah Journey Planner</h1>
+            <h1 className="text-2xl font-semibold tracking-tight">
+              {language === 'en' ? 'Umrah Journey Planner' : 'Perancang Perjalanan Umrah'}
+            </h1>
           </div>
           <ThemeToggle />
         </div>
@@ -1174,9 +1177,12 @@ const Index = () => {
           <JourneySidebar 
             show={showSidebar} 
             onClose={() => setShowSidebar(false)}
-            sections={[]}
-            activeSectionId={null}
-            onSectionSelect={() => {}}
+            sections={journeySections}
+            activeSectionId={activeSectionId}
+            onSectionSelect={(sectionId) => {
+              setActiveSectionId(sectionId);
+              setShowSidebar(false);
+            }}
           >
             <div className="p-4">
               <JourneyIndex 
@@ -1194,39 +1200,45 @@ const Index = () => {
 
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8">
           <div className="max-w-4xl mx-auto space-y-8">
-            <JourneySection
-              id="preparation"
-              title="Preparation"
-              description="Steps to prepare for Umrah"
-              icon={<Book />}
-              items={preparationItems}
-              registerRef={registerRef}
-              currentRole={currentRole}
-              initiallyOpen={true}
-            />
+            {language === 'ms' ? (
+              <MalaysianContent sectionId="all" />
+            ) : (
+              <>
+                <JourneySection
+                  id="preparation"
+                  title="Preparation"
+                  description="Steps to prepare for Umrah"
+                  icon={<Book />}
+                  items={preparationItems}
+                  registerRef={registerRef}
+                  currentRole={currentRole}
+                  initiallyOpen={true}
+                />
 
-            <JourneySection
-              id="travel"
-              title="Travel Arrangements"
-              description="Planning your journey to the Holy Land"
-              icon={<Luggage />}
-              items={travelArrangementsItems}
-              registerRef={registerRef}
-              currentRole={currentRole}
-              initiallyOpen={true}
-            />
-            
-            <JourneySection
-              id="umrahStepByStep"
-              title="Umrah Step By Step"
-              description="Detailed instructions for performing Umrah rituals"
-              icon={<Footprints />}
-              items={umrahStepByStepItems}
-              registerRef={registerRef}
-              currentRole={currentRole}
-              initiallyOpen={true}
-              color="amber"
-            />
+                <JourneySection
+                  id="travel"
+                  title="Travel Arrangements"
+                  description="Planning your journey to the Holy Land"
+                  icon={<Luggage />}
+                  items={travelArrangementsItems}
+                  registerRef={registerRef}
+                  currentRole={currentRole}
+                  initiallyOpen={true}
+                />
+                
+                <JourneySection
+                  id="umrahStepByStep"
+                  title="Umrah Step By Step"
+                  description="Detailed instructions for performing Umrah rituals"
+                  icon={<Footprints />}
+                  items={umrahStepByStepItems}
+                  registerRef={registerRef}
+                  currentRole={currentRole}
+                  initiallyOpen={true}
+                  color="amber"
+                />
+              </>
+            )}
           </div>
         </div>
       </div>

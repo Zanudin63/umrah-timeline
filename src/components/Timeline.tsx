@@ -10,6 +10,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from "@/components/ui/select";
+import { LanguageSelector } from "./LanguageSelector";
 
 interface TimelineProps {
   locations: Location[];
@@ -20,7 +21,9 @@ const Timeline: React.FC<TimelineProps> = ({ locations }) => {
 
   return (
     <div className="relative mx-auto max-w-4xl px-2">
-      <div className="mb-2 flex justify-end">
+      <div className="mb-2 flex justify-between items-center">
+        <LanguageSelector />
+        
         <Card className="p-1">
           <Select 
             value={currentRole} 
