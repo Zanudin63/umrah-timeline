@@ -99,10 +99,10 @@ export function SectionContent({
                           <div className="bg-muted p-3 rounded-md">
                             <h4 className="font-medium mb-2">Maka Anda Perlu:</h4>
                             <ul className="list-disc list-inside text-sm mt-2 space-y-1">
-                              <li>Terlupa bilangan: Ambil jumlah yang pasti atau paling minimum. <Badge className="ml-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">Tiada Damm</Badge></li>
-                              <li>Terbatal wudhu: Keluar ambil wudhu semula, sambung dari tempat terakhir. <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Wajib Damm jika tidak</Badge></li>
-                              <li>Kita menyentuh Hajarul Aswad atau Kelambu Kaabah yang sememangnya diwangikan. <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Wajib Bayar Dam</Badge></li>
-                              <li>Terputus solat fardhu: Sambung tawaf selepas solat. <Badge className="ml-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Tiada Damm</Badge></li>
+                              <li>Terlupa bilangan: Beritahu Mutawif. Lengkapkan 7 pusingan Tawaf sehingga yakin sempurna. <Badge className="ml-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">Tiada Damm</Badge></li>
+                              <li>Terbatal wudhu: Beritahu Mutawif, keluar ambil Wudhu semula. Sambung Tawaf dari tempat terbatalnya Wudhu tadi. <Badge className="ml-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Tiada Kesalahan</Badge></li>
+                              <li>Menyentuh Hajarul Aswad atau Kelambu Kaabah. <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Wajib Bayar Dam</Badge></li>
+                              <li>Terputus Tawaf disebabkan oleh solat fardhu: Lengkapkanlah Tawaf selepas Solat. <Badge className="ml-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Tiada Kesalahan</Badge></li>
                               <li>Tidak cukup 7 pusingan: Lengkapkan 7 pusingan atau ulang semula tawaf. <Badge className="ml-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Wajib Damm jika tidak</Badge></li>
                             </ul>
                           </div>
