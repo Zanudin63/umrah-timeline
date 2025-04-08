@@ -191,7 +191,7 @@ export function MalaysianContent({ sectionId }: MalaysianContentProps) {
         </TabsContent>
         
         <TabsContent value="sekiranya" className="p-2 text-sm">
-          <p>Panduan tambahan sekiranya dokumen hilang atau terdapat masalah dengan pengenalan diri.</p>
+          <p>Sekiranya terpisah daripada kumpulan jemaah, pastinya sukar dikenali oleh pehak penguasa.</p>
         </TabsContent>
         
         <TabsContent value="nota" className="p-2 text-sm">
