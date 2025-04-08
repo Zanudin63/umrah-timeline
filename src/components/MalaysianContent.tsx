@@ -8,6 +8,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Speaker, Clock } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
+import { umrahStepByStepMS } from '@/data/malaysianContent';
 
 interface MalaysianContentProps {
   sectionId: string;
