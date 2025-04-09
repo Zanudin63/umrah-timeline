@@ -206,6 +206,263 @@ export function SectionContent({
     );
   }
   
+  // Adding similar structure for Miqat, Niat dan Ihram section
+  if (section.title === "Miqat, Niat dan Ihram") {
+    return (
+      <div>
+        <h2 className="uppercase font-bold text-2xl mb-4" style={{ color: '#cff059' }}>MIQAT, NIAT DAN IHRAM</h2>
+        <Tabs defaultValue="persiapan" className="w-full">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="persiapan">Persiapan</TabsTrigger>
+            <TabsTrigger value="prosedur">Prosedur</TabsTrigger>
+            <TabsTrigger value="larangan">Larangan</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="persiapan" className="space-y-4">
+            <div className="mb-4">
+              <p className="text-sm text-muted-foreground mb-4">Persiapan sebelum memasuki keadaan Ihram.</p>
+              
+              <Card className="mt-4">
+                <CardHeader className="px-2 py-2">
+                  <CardTitle className="text-base">Persiapan Ihram</CardTitle>
+                </CardHeader>
+                <CardContent className="px-2 py-2">
+                  <Tabs defaultValue="lelaki" className="w-full mb-4">
+                    <TabsList className="grid w-full grid-cols-3">
+                      <TabsTrigger value="lelaki">Lelaki</TabsTrigger>
+                      <TabsTrigger value="wanita">Wanita</TabsTrigger>
+                      <TabsTrigger value="semua">Umum</TabsTrigger>
+                    </TabsList>
+                    
+                    <TabsContent value="lelaki" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Persiapan Lelaki:</h4>
+                        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                          <li>Memotong kuku</li>
+                          <li>Menghilangkan bulu yang tidak diingini</li>
+                          <li>Melakukan ghusl (penyucian ritual seluruh badan)</li>
+                          <li>Memakai wangian (sebelum Ihram sahaja)</li>
+                          <li>Memakai dua helai kain putih tidak berjahit</li>
+                          <li>Satu kain dibalut di pinggang (izar)</li>
+                          <li>Satu kain disampirkan di bahu (rida)</li>
+                        </ul>
+                      </div>
+                    </TabsContent>
+                    
+                    <TabsContent value="wanita" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Persiapan Wanita:</h4>
+                        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                          <li>Melakukan ghusl (penyucian ritual seluruh badan)</li>
+                          <li>Memakai pakaian sederhana, lebih baik berwarna putih</li>
+                          <li>Pakaian harus menutupi seluruh badan kecuali muka dan tangan</li>
+                          <li>Mengelakkan sebarang perhiasan</li>
+                          <li>Memakai wangian (sebelum Ihram sahaja)</li>
+                          <li>Boleh memakai pakaian berjahit</li>
+                        </ul>
+                      </div>
+                    </TabsContent>
+                    
+                    <TabsContent value="semua" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Persiapan Umum:</h4>
+                        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                          <li>Mandi sunat Ihram (wajib bagi yang berhadas besar)</li>
+                          <li>Memastikan barang-barang keperluan seperti dompet, telefon, dan ubat-ubatan disimpan dengan selamat</li>
+                          <li>Memastikan tiket, pasport dan dokumen lain disimpan dengan selamat</li>
+                          <li>Membawa air zam-zam atau air mineral</li>
+                          <li>Memastikan niat Ihram diingati</li>
+                        </ul>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="prosedur" className="space-y-4">
+            <div className="mb-4">
+              <p className="text-sm text-muted-foreground mb-4">Prosedur dan langkah-langkah memasuki keadaan Ihram.</p>
+              
+              <Card className="mt-4">
+                <CardHeader className="px-2 py-2">
+                  <CardTitle className="text-base">Langkah-langkah Ihram</CardTitle>
+                </CardHeader>
+                <CardContent className="px-2 py-2">
+                  <Tabs defaultValue="miqat" className="w-full mb-4">
+                    <TabsList className="grid w-full grid-cols-4">
+                      <TabsTrigger value="miqat">Miqat</TabsTrigger>
+                      <TabsTrigger value="niat">Niat</TabsTrigger>
+                      <TabsTrigger value="talbiyah">Talbiyah</TabsTrigger>
+                      <TabsTrigger value="solat">Solat Sunat</TabsTrigger>
+                    </TabsList>
+                    
+                    <TabsContent value="miqat" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Miqat (Titik Sempadan):</h4>
+                        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                          <li>Dhul Hulaifah (Abyar Ali) - untuk penduduk Madinah</li>
+                          <li>Juhfah - untuk penduduk Syria, Mesir, dan Afrika Utara</li>
+                          <li>Qarn al-Manazil - untuk penduduk Najd dan Taif</li>
+                          <li>Dhat Irq - untuk penduduk Iraq</li>
+                          <li>Yalamlam - untuk penduduk Yaman</li>
+                          <li>Untuk penerbangan ke Jeddah: berniat Ihram sebelum melepasi miqat udara</li>
+                        </ul>
+                      </div>
+                    </TabsContent>
+                    
+                    <TabsContent value="niat" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Niat Ihram:</h4>
+                        <div className="my-2">
+                          <span className="text-[#f2e941] block mt-1 mb-1">لَبَّيْكَ اللَّهُمَّ عُمْرَة</span>
+                          <span className="text-xs italic block">Labbaika Allahumma 'Umrah</span>
+                          <span className="text-xs block">Aku memenuhi panggilan-Mu, Ya Allah, untuk Umrah</span>
+                        </div>
+                        <p className="text-sm">Sebaik sahaja berniat, anda telah memasuki keadaan Ihram dan semua larangan Ihram mula berkuatkuasa.</p>
+                      </div>
+                    </TabsContent>
+                    
+                    <TabsContent value="talbiyah" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Talbiyah:</h4>
+                        <div className="my-2">
+                          <span className="text-[#f2e941] block mt-1 mb-1">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ</span>
+                          <span className="text-xs italic block">Labbaik Allahumma labbaik, labbaik la sharika laka labbaik, innal hamda wan ni'mata laka wal mulk, la sharika lak</span>
+                          <span className="text-xs block">Aku memenuhi panggilan-Mu Ya Allah, aku memenuhi panggilan-Mu. Aku memenuhi panggilan-Mu, tiada sekutu bagi-Mu, aku memenuhi panggilan-Mu. Sesungguhnya segala puji, nikmat dan kerajaan adalah milik-Mu. Tiada sekutu bagi-Mu.</span>
+                        </div>
+                        <p className="text-sm">Disunatkan untuk sentiasa membaca Talbiyah dengan suara yang kuat (lelaki) atau perlahan (wanita) sepanjang perjalanan ke Makkah.</p>
+                      </div>
+                    </TabsContent>
+                    
+                    <TabsContent value="solat" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Solat Sunat Ihram:</h4>
+                        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                          <li>Sebelum berniat Ihram, disunatkan menunaikan solat sunat Ihram sebanyak 2 rakaat</li>
+                          <li>Rakaat pertama: Surah Al-Fatihah dan Surah Al-Kafirun</li>
+                          <li>Rakaat kedua: Surah Al-Fatihah dan Surah Al-Ikhlas</li>
+                          <li>Setelah solat, barulah berniat Ihram dan membaca Talbiyah</li>
+                          <li>Jika berada dalam waktu yang dilarang untuk solat, boleh berniat Ihram tanpa solat sunat</li>
+                        </ul>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="larangan" className="space-y-4">
+            <div className="mb-4">
+              <p className="text-sm text-muted-foreground mb-4">Larangan-larangan semasa dalam keadaan Ihram.</p>
+              
+              <Card className="mt-4">
+                <CardHeader className="px-2 py-2">
+                  <CardTitle className="text-base">Larangan Ihram</CardTitle>
+                </CardHeader>
+                <CardContent className="px-2 py-2">
+                  <Tabs defaultValue="umum" className="w-full mb-4">
+                    <TabsList className="grid w-full grid-cols-3">
+                      <TabsTrigger value="umum">Umum</TabsTrigger>
+                      <TabsTrigger value="lelaki">Khusus Lelaki</TabsTrigger>
+                      <TabsTrigger value="wanita">Khusus Wanita</TabsTrigger>
+                    </TabsList>
+                    
+                    <TabsContent value="umum" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Larangan Umum:</h4>
+                        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                          <li>Memakai wangian atau menyentuh benda yang wangi</li>
+                          <li>Memotong kuku, rambut atau bulu badan</li>
+                          <li>Memburu atau membunuh haiwan darat</li>
+                          <li>Melakukan akad nikah</li>
+                          <li>Berhubungan intim dengan pasangan</li>
+                          <li>Bertengkar, berbuat maksiat atau berdebat</li>
+                        </ul>
+                      </div>
+                    </TabsContent>
+                    
+                    <TabsContent value="lelaki" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Larangan Khusus Lelaki:</h4>
+                        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                          <li>Memakai pakaian berjahit yang meliputi anggota badan</li>
+                          <li>Menutup kepala secara langsung (topi, serban, dsb)</li>
+                          <li>Memakai sarung tangan</li>
+                          <li>Memakai kasut yang menutupi mata kaki</li>
+                        </ul>
+                      </div>
+                    </TabsContent>
+                    
+                    <TabsContent value="wanita" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Larangan Khusus Wanita:</h4>
+                        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                          <li>Memakai sarung tangan</li>
+                          <li>Menutup muka dengan penutup yang menyentuh muka (niqab)</li>
+                          <li>Nota: Wanita boleh memakai pakaian berjahit dan menutup kepala</li>
+                          <li>Wanita boleh menutupi muka dari pandangan lelaki ajnabi dengan menurunkan tudung tanpa menyentuh muka</li>
+                        </ul>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
+                  
+                  <Tabs defaultValue="jika-melanggar" className="w-full">
+                    <TabsList className="grid w-full grid-cols-3">
+                      <TabsTrigger value="jika-melanggar">Jika Melanggar</TabsTrigger>
+                      <TabsTrigger value="bayaran-dam">Bayaran Dam</TabsTrigger>
+                      <TabsTrigger value="pengecualian">Pengecualian</TabsTrigger>
+                    </TabsList>
+                    
+                    <TabsContent value="jika-melanggar" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Jika Melanggar Larangan:</h4>
+                        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                          <li>Segera berhenti melakukan pelanggaran</li>
+                          <li>Bertaubat dan beristighfar</li>
+                          <li>Membayar Dam (denda) mengikut jenis pelanggaran</li>
+                          <li>Teruskan ibadah Umrah</li>
+                          <li>Jika tidak pasti, rujuk Mutawif atau ulama</li>
+                        </ul>
+                      </div>
+                    </TabsContent>
+                    
+                    <TabsContent value="bayaran-dam" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Bayaran Dam:</h4>
+                        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                          <li>Memotong rambut: <span className="text-[#f2e941]">Berpuasa 3 hari atau memberi makan 6 orang miskin atau menyembelih seekor kambing</span></li>
+                          <li>Memakai wangian/pakaian berjahit (lelaki): <span className="text-[#f2e941]">Menyembelih seekor kambing</span></li>
+                          <li>Memotong kuku: <span className="text-[#f2e941]">Memberi makan seorang miskin untuk setiap kuku</span></li>
+                          <li>Pelanggaran berat (hubungan suami isteri): <span className="text-[#f2e941]">Menyembelih seekor unta/lembu atau 7 ekor kambing</span></li>
+                        </ul>
+                      </div>
+                    </TabsContent>
+                    
+                    <TabsContent value="pengecualian" className="mt-2">
+                      <div className="bg-muted p-2 rounded-md">
+                        <h4 className="font-medium mb-2">Pengecualian dan Keringanan:</h4>
+                        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+                          <li>Memakai jam tangan, cincin, cermin mata, alat bantu pendengaran</li>
+                          <li>Memakai tali pinggang bukan jahitan untuk menyimpan wang/telefon</li>
+                          <li>Memakai payung untuk berteduh dari panas</li>
+                          <li>Memakai kasut perubatan jika perlu</li>
+                          <li>Membasuh badan dan rambut tanpa sengaja menyebabkan rambut gugur</li>
+                        </ul>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    );
+  }
+  
   return (
     <>
       <div className="mb-4">
