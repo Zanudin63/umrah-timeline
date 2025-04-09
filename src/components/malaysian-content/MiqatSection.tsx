@@ -16,14 +16,14 @@ export function MiqatSection({ section }: MiqatSectionProps) {
   return (
     <div>
       <h2 className="uppercase font-bold text-2xl mb-4" style={{ color: '#cff059' }}>MIQAT, NIAT DAN IHRAM</h2>
-      <Tabs defaultValue="persiapan" className="w-full">
+      <Tabs defaultValue="miqat" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="persiapan">Persiapan</TabsTrigger>
-          <TabsTrigger value="prosedur">Prosedur</TabsTrigger>
+          <TabsTrigger value="miqat">Miqat</TabsTrigger>
+          <TabsTrigger value="niat">Niat</TabsTrigger>
           <TabsTrigger value="larangan">Larangan</TabsTrigger>
         </TabsList>
         
-        <TabsContent value="persiapan" className="space-y-4">
+        <TabsContent value="miqat" className="space-y-4">
           <div className="mb-4">
             <p className="text-sm text-muted-foreground mb-4">Persiapan sebelum memasuki keadaan Ihram.</p>
             
@@ -38,7 +38,7 @@ export function MiqatSection({ section }: MiqatSectionProps) {
           </div>
         </TabsContent>
         
-        <TabsContent value="prosedur" className="space-y-4">
+        <TabsContent value="niat" className="space-y-4">
           <div className="mb-4">
             <p className="text-sm text-muted-foreground mb-4">Prosedur dan langkah-langkah memasuki keadaan Ihram.</p>
             
