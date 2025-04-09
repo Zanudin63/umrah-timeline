@@ -45,6 +45,7 @@ export function MiqatRestrictionsTabs() {
             <li>Menutup muka dengan penutup yang menyentuh muka (niqab)</li>
             <li>Nota: Wanita boleh memakai pakaian berjahit dan menutup kepala</li>
             <li>Wanita boleh menutupi muka dari pandangan lelaki ajnabi dengan menurunkan tudung tanpa menyentuh muka</li>
+            <li>Selepas Tahallul, semua larangan ihram sudah terangkat, akan tetapi perlu diingat bahawa Larangan Tanah Haram masih berkuatkuasa.</li>
           </ul>
         </div>
       </TabsContent>
