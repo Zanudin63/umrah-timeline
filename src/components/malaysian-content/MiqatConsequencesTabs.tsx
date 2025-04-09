@@ -4,14 +4,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function MiqatConsequencesTabs() {
   return (
-    <Tabs defaultValue="jika-melanggar" className="w-full">
+    <Tabs defaultValue="jika" className="w-full">
       <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="jika-melanggar">Jika Melanggar</TabsTrigger>
-        <TabsTrigger value="bayaran-dam">Bayaran Dam</TabsTrigger>
-        <TabsTrigger value="pengecualian">Pengecualian</TabsTrigger>
+        <TabsTrigger value="jika">JIKA</TabsTrigger>
+        <TabsTrigger value="kecuali">kecuali</TabsTrigger>
+        <TabsTrigger value="dam">Dam</TabsTrigger>
       </TabsList>
       
-      <TabsContent value="jika-melanggar" className="mt-2">
+      <TabsContent value="jika" className="mt-2">
         <div className="bg-muted p-2 rounded-md">
           <h4 className="font-medium mb-2">Jika Melanggar Larangan:</h4>
           <ul className="list-disc list-inside text-sm mt-2 space-y-1">
@@ -24,19 +24,7 @@ export function MiqatConsequencesTabs() {
         </div>
       </TabsContent>
       
-      <TabsContent value="bayaran-dam" className="mt-2">
-        <div className="bg-muted p-2 rounded-md">
-          <h4 className="font-medium mb-2">Bayaran Dam:</h4>
-          <ul className="list-disc list-inside text-sm mt-2 space-y-1">
-            <li>Memotong rambut: <span className="text-[#f2e941]">Berpuasa 3 hari atau memberi makan 6 orang miskin atau menyembelih seekor kambing</span></li>
-            <li>Memakai wangian/pakaian berjahit (lelaki): <span className="text-[#f2e941]">Menyembelih seekor kambing</span></li>
-            <li>Memotong kuku: <span className="text-[#f2e941]">Memberi makan seorang miskin untuk setiap kuku</span></li>
-            <li>Pelanggaran berat (hubungan suami isteri): <span className="text-[#f2e941]">Menyembelih seekor unta/lembu atau 7 ekor kambing</span></li>
-          </ul>
-        </div>
-      </TabsContent>
-      
-      <TabsContent value="pengecualian" className="mt-2">
+      <TabsContent value="kecuali" className="mt-2">
         <div className="bg-muted p-2 rounded-md">
           <h4 className="font-medium mb-2">Pengecualian dan Keringanan:</h4>
           <ul className="list-disc list-inside text-sm mt-2 space-y-1">
@@ -45,6 +33,18 @@ export function MiqatConsequencesTabs() {
             <li>Memakai payung untuk berteduh dari panas</li>
             <li>Memakai kasut perubatan jika perlu</li>
             <li>Membasuh badan dan rambut tanpa sengaja menyebabkan rambut gugur</li>
+          </ul>
+        </div>
+      </TabsContent>
+      
+      <TabsContent value="dam" className="mt-2">
+        <div className="bg-muted p-2 rounded-md">
+          <h4 className="font-medium mb-2">Bayaran Dam:</h4>
+          <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+            <li>Memotong rambut: <span className="text-[#f2e941]">Berpuasa 3 hari atau memberi makan 6 orang miskin atau menyembelih seekor kambing</span></li>
+            <li>Memakai wangian/pakaian berjahit (lelaki): <span className="text-[#f2e941]">Menyembelih seekor kambing</span></li>
+            <li>Memotong kuku: <span className="text-[#f2e941]">Memberi makan seorang miskin untuk setiap kuku</span></li>
+            <li>Pelanggaran berat (hubungan suami isteri): <span className="text-[#f2e941]">Menyembelih seekor unta/lembu atau 7 ekor kambing</span></li>
           </ul>
         </div>
       </TabsContent>

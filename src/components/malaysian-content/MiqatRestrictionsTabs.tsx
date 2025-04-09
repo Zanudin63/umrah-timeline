@@ -7,8 +7,8 @@ export function MiqatRestrictionsTabs() {
     <Tabs defaultValue="umum" className="w-full mb-4">
       <TabsList className="grid w-full grid-cols-3">
         <TabsTrigger value="umum">Umum</TabsTrigger>
-        <TabsTrigger value="lelaki">Khusus Lelaki</TabsTrigger>
-        <TabsTrigger value="wanita">Khusus Wanita</TabsTrigger>
+        <TabsTrigger value="lelaki">Lelaki</TabsTrigger>
+        <TabsTrigger value="wanita">Wanita</TabsTrigger>
       </TabsList>
       
       <TabsContent value="umum" className="mt-2">
